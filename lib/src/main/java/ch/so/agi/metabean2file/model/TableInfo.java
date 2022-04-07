@@ -4,12 +4,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonInclude(Include.NON_NULL)
 public class TableInfo {
     private String name; 
+    @JacksonXmlCData
     private String description;
     @JacksonXmlElementWrapper(localName = "attributesInfo")
     @JacksonXmlProperty(localName = "attributeInfo")

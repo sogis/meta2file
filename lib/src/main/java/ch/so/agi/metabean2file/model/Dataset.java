@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -17,9 +18,11 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 @JsonInclude(Include.NON_NULL)
 public class Dataset {
     private String id; // uuid
+    private String name; 
     private String model;
     private LocalDate lastEditingDate; 
     private String title;
+    @JacksonXmlCData
     private String shortDescription;
     private String keywords;
     private Office owner; 
@@ -43,6 +46,12 @@ public class Dataset {
     }
     public void setId(String id) {
         this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
     public String getModel() {
         return model;
