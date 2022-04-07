@@ -1,24 +1,42 @@
 package ch.so.agi.metabean2file.model;
 
 import java.net.URI;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+@JacksonXmlRootElement(localName = "dataset")
+@JsonInclude(Include.NON_NULL)
 public class Dataset {
     private String id; // uuid
     private String model;
-    private Date lastEditingDate; 
+    private LocalDate lastEditingDate; 
     private String title;
     private String shortDescription;
     private String keywords;
-    private String owner; // Datenherr (Office)
-    private String servicer; // "AGI" (Office)
-    private URI furtherInformation; // Weitere Infos
-    private URI furtherMetadata; // Link auf Metadaten-Whatever, z.B. geocat
-    private List<String> fileFormats; // (FileFormat) List
+    private Office owner; 
+    private Office servicer; 
+    private URI furtherInformation; 
+    private URI furtherMetadata;
+    @JacksonXmlElementWrapper(localName = "fileFormats")
+    //@JacksonXmlElementWrapper(useWrapping = false)
+    @JacksonXmlProperty(localName = "fileFormat")
+    private List<FileFormat> fileFormats; 
     private String subunits; // base64
-    private List<String> tablesInfo; //(TableInfo) List
-    private List<String> serviceLayers; //(ServiceLayerr) List
+    @JacksonXmlElementWrapper(localName = "tablesInfo")
+    @JacksonXmlProperty(localName = "tableInfo")
+    private List<TableInfo> tablesInfo; 
+    @JacksonXmlElementWrapper(localName = "services")
+    @JacksonXmlProperty(localName = "service")
+    private List<Service> services; 
     
     public String getId() {
         return id;
@@ -32,10 +50,10 @@ public class Dataset {
     public void setModel(String model) {
         this.model = model;
     }
-    public Date getLastEditingDate() {
+    public LocalDate getLastEditingDate() {
         return lastEditingDate;
     }
-    public void setLastEditingDate(Date lastEditingDate) {
+    public void setLastEditingDate(LocalDate lastEditingDate) {
         this.lastEditingDate = lastEditingDate;
     }
     public String getTitle() {
@@ -56,16 +74,16 @@ public class Dataset {
     public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
-    public String getOwner() {
+    public Office getOwner() {
         return owner;
     }
-    public void setOwner(String owner) {
+    public void setOwner(Office owner) {
         this.owner = owner;
     }
-    public String getServicer() {
+    public Office getServicer() {
         return servicer;
     }
-    public void setServicer(String servicer) {
+    public void setServicer(Office servicer) {
         this.servicer = servicer;
     }
     public URI getFurtherInformation() {
@@ -80,10 +98,10 @@ public class Dataset {
     public void setFurtherMetadata(URI furtherMetadata) {
         this.furtherMetadata = furtherMetadata;
     }
-    public List<String> getFileFormats() {
+    public List<FileFormat> getFileFormats() {
         return fileFormats;
     }
-    public void setFileFormats(List<String> fileFormats) {
+    public void setFileFormats(List<FileFormat> fileFormats) {
         this.fileFormats = fileFormats;
     }
     public String getSubunits() {
@@ -92,17 +110,17 @@ public class Dataset {
     public void setSubunits(String subunits) {
         this.subunits = subunits;
     }
-    public List<String> getTablesInfo() {
+    public List<TableInfo> getTablesInfo() {
         return tablesInfo;
     }
-    public void setTablesInfo(List<String> tablesInfo) {
+    public void setTablesInfo(List<TableInfo> tablesInfo) {
         this.tablesInfo = tablesInfo;
     }
-    public List<String> getServiceLayers() {
-        return serviceLayers;
+    public List<Service> getServices() {
+        return services;
     }
-    public void setServiceLayers(List<String> serviceLayers) {
-        this.serviceLayers = serviceLayers;
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 
     
