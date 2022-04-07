@@ -64,8 +64,8 @@ public class TestUtils {
         dataset.setServicer(servicer);
         
         try {
-            dataset.setFurtherInformation(new URI("http://google.ch"));
-            dataset.setFurtherMetadata(new URI("http://geocat.ch"));
+            dataset.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
+            dataset.setFurtherMetadata(new URI("http://geocat.ch/path/to/xxxx"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -126,7 +126,7 @@ public class TestUtils {
         {
             var service = new Service();
             try {
-                service.setEndpoint(new URI("https://geo.so.ch/wms"));
+                service.setEndpoint(new URI("https://geo.so.ch/api/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0"));
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }

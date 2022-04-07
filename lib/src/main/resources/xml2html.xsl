@@ -260,6 +260,31 @@
                     <xsl:value-of disable-output-escaping="yes" select="shortDescription"/>
                 </p>
 
+                <h2>Weiterführende Informationen</h2>
+                <p>
+                    <xsl:if test="furtherInformation">
+                        Sachinformationen: 
+                        <xsl:element name="a">
+                            <xsl:attribute name="target">
+                                <xsl:text>_blank</xsl:text>
+                            </xsl:attribute>
+                            <xsl:attribute name="href"><xsl:value-of select="furtherInformation"/></xsl:attribute>
+                            <xsl:value-of select="furtherInformation"/>
+                        </xsl:element>
+                        <br/>
+                    </xsl:if>
+                    <xsl:if test="furtherInformation">
+                        Metainformationen: 
+                        <xsl:element name="a">
+                            <xsl:attribute name="target">
+                                <xsl:text>_blank</xsl:text>
+                            </xsl:attribute>
+                            <xsl:attribute name="href"><xsl:value-of select="furtherMetadata"/></xsl:attribute>
+                            <xsl:value-of select="furtherMetadata"/>
+                        </xsl:element>
+                    </xsl:if>
+                </p>
+
                 <h2>Datum der letzten Publikation</h2>
                 <p>
                     <xsl:value-of select="format-date(lastEditingDate,'[D01]. [MNn] [Y0001]')"/>
@@ -275,7 +300,6 @@
                         <xsl:value-of select="model"/>
                     </xsl:element>
                 </p>
-
 
                 <h2>Kontakt (fachlich)</h2>
                 <p>
@@ -314,6 +338,36 @@
                         <xsl:attribute name="href"><xsl:value-of select="servicer/officeAtWeb"/></xsl:attribute>
                         <xsl:value-of select="substring(servicer/officeAtWeb, 9)"/>
                     </xsl:element>
+                </p>
+
+                <h2>Dienste</h2>
+                <p class="datenebene">
+                    <xsl:if test="services">
+                        Folgende Layer des Datensatzes stehen als Webdienst zur Verfügung:
+                        <xsl:for-each select="services/service">
+                            <h3><xsl:value-of select="type"/></h3>
+                            <xsl:element name="a">
+                                <xsl:attribute name="target">
+                                    <xsl:text>_blank</xsl:text>
+                                </xsl:attribute>
+                                <xsl:attribute name="href"><xsl:value-of select="endpoint"/></xsl:attribute>
+                                <xsl:value-of select="endpoint"/>
+                            </xsl:element>
+                            <ul>
+                            <xsl:for-each select="layerNames/layerName">
+                                <li>
+                                    <xsl:element name="a">
+                                        <xsl:attribute name="target">
+                                            <xsl:text>_blank</xsl:text>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="href">https://geo.so.ch/map/?bl=hintergrundkarte_sw&amp;l=<xsl:value-of select="."/></xsl:attribute>
+                                        <xsl:value-of select="."/>
+                                    </xsl:element>
+                                </li>
+                            </xsl:for-each>
+                            </ul>
+                        </xsl:for-each>
+                    </xsl:if>
                 </p>
 
                 <h2>Inhalt</h2>
