@@ -42,7 +42,7 @@ public class MetaBean2FileConverter {
     
     private static XmlMapper xmlMapper = null;
 
-    public static void runBean2Html(Dataset dataset) throws MetaBean2FileException {
+    public static File runBean2Html(Dataset dataset) throws MetaBean2FileException {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
@@ -72,8 +72,8 @@ public class MetaBean2FileConverter {
             //out.setOutputProperty(Serializer.Property.INDENT, "yes");
             Xslt30Transformer transformer = stylesheet.load30();
             transformer.transform(new StreamSource(xmlFile), out);
-
-
+            
+            return htmlFile;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             throw new MetaBean2FileException(e.getMessage());
