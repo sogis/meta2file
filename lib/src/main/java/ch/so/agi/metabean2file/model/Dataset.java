@@ -29,6 +29,7 @@ public class Dataset {
     private Office servicer; 
     private URI furtherInformation; 
     private URI furtherMetadata;
+    private URI baseUrl; // Falls Spezialfall und Datei irgendwo anders liegt (??)
     @JacksonXmlElementWrapper(localName = "fileFormats")
     //@JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "fileFormat")
@@ -107,6 +108,12 @@ public class Dataset {
     public void setFurtherMetadata(URI furtherMetadata) {
         this.furtherMetadata = furtherMetadata;
     }
+    public URI getBaseUrl() {
+        return baseUrl;
+    }
+    public void setBaseUrl(URI baseUrl) {
+        this.baseUrl = baseUrl;
+    }
     public List<FileFormat> getFileFormats() {
         return fileFormats;
     }
@@ -130,7 +137,5 @@ public class Dataset {
     }
     public void setServices(List<Service> services) {
         this.services = services;
-    }
-
-    
+    }    
 }
