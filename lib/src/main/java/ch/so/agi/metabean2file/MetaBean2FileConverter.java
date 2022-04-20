@@ -2,6 +2,7 @@ package ch.so.agi.metabean2file;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.xml.transform.stream.StreamSource;
@@ -40,8 +41,8 @@ public class MetaBean2FileConverter {
             xmlResult = xmlMapper.writeValueAsString(dataset);
             System.out.println(xmlResult);
             
-            //File tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
-            File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+            File tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
+            //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
             File xmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getName()+".xml").toFile();
             log.info(xmlFile.getAbsolutePath());
             xmlMapper.writeValue(xmlFile, dataset);
