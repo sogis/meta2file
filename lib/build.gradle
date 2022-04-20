@@ -47,20 +47,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-/*
-distZip {
-    archiveName myArtifactId + '-'  + project.version.toString() + '.zip'
-}
-
-distTar {
-    archiveName myArtifactId + '-'  + project.version.toString() + '.gzip'
-}
-
-tasks.distTar {
-    compression = Compression.GZIP
-}
-*/
-
 task sourcesJar(type: Jar, dependsOn: classes) {
     baseName myArtifactId
     classifier = 'sources'
