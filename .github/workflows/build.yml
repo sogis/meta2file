@@ -1,4 +1,4 @@
-name: pdf4oereb CI
+name: metabean2file CI
 
 on: 
   push:
@@ -24,8 +24,7 @@ jobs:
           distribution: 'temurin'
           
       - name: Build with Gradle
-        #run: ./gradlew -i clean app:build app:assembleDist
-        run: ./gradlew -i clean lib:build 
+        run: ./gradlew clean lib:build 
 
       - uses: actions/upload-artifact@v2
         if: ${{ failure() }}
@@ -44,7 +43,7 @@ jobs:
         run: ./gradlew -i lib:publishToSonatype closeAndReleaseSonatypeStagingRepository -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password=${{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo ~/.gradle/sonatype_upload.gpg)
         env:
           OSSRH_USERNAME: ${{secrets.OSSRH_USERNAME}}
-          OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}}
+          OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}} 
 
       # - name: Release 
       #   run: |
