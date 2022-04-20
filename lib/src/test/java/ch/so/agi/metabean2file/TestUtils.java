@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
 import java.time.LocalDate;
@@ -16,11 +17,11 @@ import ch.so.agi.metabean2file.model.Service;
 import ch.so.agi.metabean2file.model.TableInfo;
 
 public class TestUtils {
-    public static List<Dataset> getDatasets() {
+    public static HashMap<String,Dataset> getDatasets() {
         var df = new SimpleDateFormat("yyyy-MM-dd");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        var datasets = new ArrayList<Dataset>();
+        var datasets = new HashMap<String,Dataset>();
         var dataset = new Dataset();
         dataset.setId("60D2441A-A358-4F3E-A94A-369AE3B2F8A7");
         dataset.setName("ch.so.agi.av_gb_administrative_einteilung");
@@ -139,7 +140,7 @@ public class TestUtils {
         }
         dataset.setServices(services);
         
-        datasets.add(dataset);
+        datasets.put(dataset.getName(), dataset);
         
         return datasets;
     }

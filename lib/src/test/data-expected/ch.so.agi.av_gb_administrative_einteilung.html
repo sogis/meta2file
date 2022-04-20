@@ -1,17 +1,13 @@
-<?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
-    <xsl:output encoding="UTF-8" indent="yes" method="html"/>
-    <xsl:template match="/dataset">
-        <html>
-        <head>
-            <title>Datenbeschreibung • Amt für Geoinformation Kanton Solothurn</title>
-            <meta name="description" content="Metadaten der Geodaten des Kantons Solothurn."/>
-            <meta name="keywords" content="Metadaten, Geodaten, Datenmodell, Solothurn, AGI, SOGIS"/>
-            <meta name="author" content="Stefan Ziegler" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta http-equiv="cache-control" content="no-cache"/>
-
-            <style>
+<!DOCTYPE HTML><html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Datenbeschreibung • Amt für Geoinformation Kanton Solothurn</title>
+      <meta name="description" content="Metadaten der Geodaten des Kantons Solothurn.">
+      <meta name="keywords" content="Metadaten, Geodaten, Datenmodell, Solothurn, AGI, SOGIS">
+      <meta name="author" content="Stefan Ziegler">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="cache-control" content="no-cache">
+      <style>
                 @font-face {
                     font-family:Frutiger;
                     font-weight:400;
@@ -131,24 +127,7 @@
                     margin-bottom: 15px;
                 }
 
-<!--
-                a.default-link {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    color: #c62828; 
-                    text-decoration: none !important;
-                }
 
-                a.default-link:hover {
-                    color: #c62828;
-                    text-decoration: underline !important;
-                }  
-
-                a.default-link:visited {
-                    color: #c62828; 
-                    text-decoration: underline !important;
-                }  
--->
 
                 a {
                     overflow: hidden;
@@ -232,198 +211,83 @@
 
                 }
             </style>
-        </head>
-
-        <body>
-            <div id="container">
-                <div class="logo">
-                    <div>
-                        <img id="logo" src="data:image/png;base64,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" alt="Logo Kanton Solothurn"/>
-                    </div>
-                </div>
-
-                <div id="breadcrumb">
-                    <i style="line-height:40px; vertical-align:middle;" ></i>
-                    <ul class="breadcrumb">
-                        <li><a href="https://geo.so.ch">Home</a></li>
-                        <li><a href="https://sogis-sodata-kfjfk.ondigitalocean.app/">Datenbezug</a></li>
-                        <li class="active">Datenbeschreibung</li>
-                    </ul>
-                </div>
-
-                <div id="title">
-                    <xsl:value-of select="title"/>
-                </div>
-
-                <h2>Beschreibung</h2>
-                <p>
-                    <xsl:value-of disable-output-escaping="yes" select="shortDescription"/>
-                </p>
-
-                <h2>Weiterführende Informationen</h2>
-                <p>
-                    <xsl:if test="furtherInformation">
-                        Sachinformationen: 
-                        <xsl:element name="a">
-                            <xsl:attribute name="target">
-                                <xsl:text>_blank</xsl:text>
-                            </xsl:attribute>
-                            <xsl:attribute name="href"><xsl:value-of select="furtherInformation"/></xsl:attribute>
-                            <xsl:value-of select="furtherInformation"/>
-                        </xsl:element>
-                        <br />
-                    </xsl:if>
-                    <xsl:if test="furtherMetadata">
-                        Metainformationen: 
-                        <xsl:element name="a">
-                            <xsl:attribute name="target">
-                                <xsl:text>_blank</xsl:text>
-                            </xsl:attribute>
-                            <xsl:attribute name="href"><xsl:value-of select="furtherMetadata"/></xsl:attribute>
-                            <xsl:value-of select="furtherMetadata"/>
-                        </xsl:element>
-                    </xsl:if>
-                </p>
-
-                <h2>Datum der letzten Publikation</h2>
-                <p>
-                    <xsl:value-of select="format-date(lastEditingDate,'[D01]. [MNn] [Y0001]')"/>
-                </p>
-
-                <h2>Datenmodell</h2>
-                <p>
-                    <xsl:element name="a">
-                        <xsl:attribute name="target">
-                            <xsl:text>_blank</xsl:text>
-                        </xsl:attribute>
-                        <xsl:attribute name="href">https://geo.so.ch/models/ilimodels.xml?q=<xsl:value-of select="model"/></xsl:attribute>
-                        <xsl:value-of select="model"/>
-                    </xsl:element>
-                </p>
-
-                <h2>Kontakt (fachlich)</h2>
-                <p>
-                    <xsl:value-of select="owner/name"/><br/>
-                    <xsl:if test="owner/division">
-                        <xsl:value-of select="owner/division"/><br/>
-                    </xsl:if>
-                    <xsl:value-of select="owner/street"/><xsl:text> </xsl:text><xsl:value-of select="owner/number"/><br/>
-                    <xsl:value-of select="owner/postalCode"/><xsl:text> </xsl:text><xsl:value-of select="owner/city"/><br/>
-                    Telefon <xsl:value-of select="owner/phone"/><br/>
-                    <xsl:element name="a">
-                        <xsl:attribute name="href"><xsl:value-of select="owner/email"/></xsl:attribute><xsl:value-of select="substring(owner/email, 8)"/>
-                    </xsl:element><br/>
-                    <xsl:element name="a">
-                        <xsl:attribute name="target">
-                            <xsl:text>_blank</xsl:text>
-                        </xsl:attribute>
-                        <xsl:attribute name="href"><xsl:value-of select="owner/officeAtWeb"/></xsl:attribute>
-                        <xsl:value-of select="substring(owner/officeAtWeb, 9)"/>
-                    </xsl:element>
-                </p>
-
-                <h2>Kontakt (technisch)</h2>
-                <p>
-                    <xsl:value-of select="servicer/name"/><br/>
-                    <xsl:value-of select="servicer/street"/><xsl:text> </xsl:text><xsl:value-of select="servicer/number"/><br/>
-                    <xsl:value-of select="servicer/postalCode"/><xsl:text> </xsl:text><xsl:value-of select="servicer/city"/><br/>
-                    Telefon <xsl:value-of select="servicer/phone"/><br/>
-                    <xsl:element name="a">
-                        <xsl:attribute name="href"><xsl:value-of select="servicer/email"/></xsl:attribute><xsl:value-of select="substring(servicer/email, 8)"/>
-                    </xsl:element><br/>
-                    <xsl:element name="a">
-                        <xsl:attribute name="target">
-                            <xsl:text>_blank</xsl:text>
-                        </xsl:attribute>
-                        <xsl:attribute name="href"><xsl:value-of select="servicer/officeAtWeb"/></xsl:attribute>
-                        <xsl:value-of select="substring(servicer/officeAtWeb, 9)"/>
-                    </xsl:element>
-                </p>
-
-                <h2>Dienste</h2>
-                <p class="datenebene">
-                    <xsl:if test="services">
-                        Folgende Layer des Datensatzes stehen als Webdienst zur Verfügung:
-                        <xsl:for-each select="services/service">
-                            <h3><xsl:value-of select="type"/></h3>
-                            <xsl:element name="a">
-                                <xsl:attribute name="target">
-                                    <xsl:text>_blank</xsl:text>
-                                </xsl:attribute>
-                                <xsl:attribute name="href"><xsl:value-of select="endpoint"/></xsl:attribute>
-                                <xsl:value-of select="endpoint"/>
-                            </xsl:element>
-                            <ul>
-                            <xsl:for-each select="layerNames/layerName">
-                                <li>
-                                    <xsl:element name="a">
-                                        <xsl:attribute name="target">
-                                            <xsl:text>_blank</xsl:text>
-                                        </xsl:attribute>
-                                        <xsl:attribute name="href">https://geo.so.ch/map/?bl=hintergrundkarte_sw&amp;l=<xsl:value-of select="."/></xsl:attribute>
-                                        <xsl:value-of select="."/>
-                                    </xsl:element>
-                                </li>
-                            </xsl:for-each>
-                            </ul>
-                        </xsl:for-each>
-                    </xsl:if>
-                </p>
-
-                <h2>Inhalt</h2>
-
-                <xsl:apply-templates select="tablesInfo/tableInfo" /> 
-
-            </div>
-        </body>
-        </html>
-    </xsl:template>
-
-    <xsl:template match="tableInfo">
-
-        <h3><xsl:value-of select="name"/></h3>
-
-        <p class="datenebene"><xsl:value-of disable-output-escaping="yes" select="description"/></p>
-
-            <table>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="font-style:italic;">
-                        Name
-                    </td>
-                    <th>
-                        Beschreibung
-                    </th>
-                    <th>
-                        Datentyp
-                    </th>
-                    <th>
-                        Pflichtattribut
-                    </th>
-                </tr>
-
-                <xsl:for-each select="attributesInfo/attributeInfo">
-                    <tr>
-                        <td>
-                            <xsl:value-of select="name"/>
-                        </td>
-                        <td>
-                            <xsl:value-of disable-output-escaping="yes" select="description"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="datatype"/>
-                        </td>
-                        <td>
-                            <xsl:if test="mandatory='true'">
-                                <xsl:text>ja</xsl:text>
-                            </xsl:if>
-                            <xsl:if test="mandatory='false'">
-                                <xsl:text>nein</xsl:text>
-                            </xsl:if>
-                        </td>
-                    </tr>
-                </xsl:for-each>
-            </table>
-
-    </xsl:template>
-
-</xsl:stylesheet>
+   </head>
+   <body>
+      <div id="container">
+         <div class="logo">
+            <div><img id="logo" src="data:image/png;base64,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" alt="Logo Kanton Solothurn"></div>
+         </div>
+         <div id="breadcrumb"><i style="line-height:40px; vertical-align:middle;"></i><ul class="breadcrumb">
+               <li><a href="https://geo.so.ch">Home</a></li>
+               <li><a href="https://sogis-sodata-kfjfk.ondigitalocean.app/">Datenbezug</a></li>
+               <li class="active">Datenbeschreibung</li>
+            </ul>
+         </div>
+         <div id="title">Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs</div>
+         <h2>Beschreibung</h2>
+         <p>Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+         <h2>Weiterführende Informationen</h2>
+         <p>
+            Sachinformationen: 
+            <a target="_blank" href="http://google.ch/oder/wikipedia">http://google.ch/oder/wikipedia</a><br>
+            Metainformationen: 
+            <a target="_blank" href="http://geocat.ch/path/to/xxxx">http://geocat.ch/path/to/xxxx</a></p>
+         <h2>Datum der letzten Publikation</h2>
+         <p>05. April 2022</p>
+         <h2>Datenmodell</h2>
+         <p><a target="_blank" href="https://geo.so.ch/models/ilimodels.xml?q=SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822">SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822</a></p>
+         <h2>Kontakt (fachlich)</h2>
+         <p>Amt für Umwelt<br>Ich bin die Abteilung<br>Werkhofstrasse 5<br>4509 Solothurn<br>
+            Telefon 032 627 12 34<br><a href="mailto:afu@bd.so.ch">afu@bd.so.ch</a><br><a target="_blank" href="https://afu.so.ch">afu.so.ch</a></p>
+         <h2>Kontakt (technisch)</h2>
+         <p>Amt für Geoinformation<br>Rötistrasse 4<br>4509 Solothurn<br>
+            Telefon 032 627 75 96<br><a href="mailto:agi@bd.so.ch">agi@bd.so.ch</a><br><a target="_blank" href="https://agi.so.ch">agi.so.ch</a></p>
+         <h2>Dienste</h2>
+         <p class="datenebene">
+            Folgende Layer des Datensatzes stehen als Webdienst zur Verfügung:
+            
+            <h3>WMS</h3><a target="_blank" href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0">https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0</a><ul>
+               <li><a target="_blank" href="https://geo.so.ch/map/?bl=hintergrundkarte_sw&amp;l=ch.so.awjf.forstreviere.forstkreis">ch.so.awjf.forstreviere.forstkreis</a></li>
+               <li><a target="_blank" href="https://geo.so.ch/map/?bl=hintergrundkarte_sw&amp;l=ch.so.awjf.forstreviere.forstreviere">ch.so.awjf.forstreviere.forstreviere</a></li>
+            </ul>
+         </p>
+         <h2>Inhalt</h2>
+         <h3>grundbuchkreise_grundbuchkreis</h3>
+         <p class="datenebene">Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise</p>
+         <table>
+            <tr style="border-bottom: 1px solid #eee;">
+               <td style="font-style:italic;">
+                  Name
+                  </td>
+               <th>
+                  Beschreibung
+                  </th>
+               <th>
+                  Datentyp
+                  </th>
+               <th>
+                  Pflichtattribut
+                  </th>
+            </tr>
+            <tr>
+               <td>t_id</td>
+               <td></td>
+               <td>int8</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>aname</td>
+               <td>Name des Grundbuches</td>
+               <td>text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>perimeter</td>
+               <td>Perimeter des Grundbuchkreises</td>
+               <td>polygon</td>
+               <td>ja</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>
