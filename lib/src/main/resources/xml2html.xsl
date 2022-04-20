@@ -273,7 +273,7 @@
                         </xsl:element>
                         <br/>
                     </xsl:if>
-                    <xsl:if test="furtherInformation">
+                    <xsl:if test="furtherMetadata">
                         Metainformationen: 
                         <xsl:element name="a">
                             <xsl:attribute name="target">
