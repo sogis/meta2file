@@ -12,7 +12,6 @@ import java.util.HashMap;
 import ch.so.agi.metabean2file.model.Dataset;
 
 class MetaBean2FileConverterTest {
-    
     @Test
     public void bean2html_Ok() throws Exception {
         String datasetName = "ch.so.agi.av_gb_administrative_einteilung";

@@ -1,8 +1,14 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
-apply from: "$rootDir/gradle/versioning.gradle"
+apply plugin: 'maven-publish'
+
+group = 'io.github.sogis'
+
+def myArtifactId = "metabean2file"
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -13,6 +19,10 @@ compileJava {
 
 repositories {
     mavenCentral()
+}
+
+configurations {
+    jar.archiveName = myArtifactId+"-"+version+".jar"
 }
 
 dependencies {
@@ -36,3 +46,71 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+/*
+distZip {
+    archiveName myArtifactId + '-'  + project.version.toString() + '.zip'
+}
+
+distTar {
+    archiveName myArtifactId + '-'  + project.version.toString() + '.gzip'
+}
+
+tasks.distTar {
+    compression = Compression.GZIP
+}
+*/
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    baseName myArtifactId
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+javadoc.failOnError = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    baseName myArtifactId
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId = group
+            artifactId = myArtifactId
+
+            pom {
+                name = "metabean2file"
+                url = "https://github.com/sogis/metabean2file"
+                description = myArtifactId
+                scm {
+                    connection = "scm:git:https@github.com/sogis/metabean2file"
+                    developerConnection = "scm:git:https@github.com/sogis/metabean2file"
+                    url = "https://github.com/sogis/metabean2file"
+                }
+                licenses {
+                    license {
+                        name = "MIT"
+                        url = "https://github.com/sogis/metabean2file/blob/master/LICENSE"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "edigonzales"
+                        name = "Stefan Ziegler"
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+signing {
+    sign publishing.publications.mavenJava
+}
+*/
