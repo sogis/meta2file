@@ -3,7 +3,6 @@ package ch.so.agi.metabean2file;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.xmlunit.matchers.CompareMatcher;
 
 import java.io.File;
 import java.nio.file.Files;
