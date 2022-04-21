@@ -39,7 +39,6 @@ public class MetaBean2FileConverter {
         String xmlResult;
         try {
             xmlResult = xmlMapper.writeValueAsString(dataset);
-            System.out.println(xmlResult);
             
             File tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
             //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
@@ -51,7 +50,7 @@ public class MetaBean2FileConverter {
             Util.loadFile(XSL2HTML_FILE, xslFile);
             
             File htmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getName()+".html").toFile();
-            log.info(htmlFile.getAbsolutePath());
+            //log.info(htmlFile.getAbsolutePath());
 
             Processor processor = new Processor(false);
             XsltCompiler compiler = processor.newXsltCompiler();
