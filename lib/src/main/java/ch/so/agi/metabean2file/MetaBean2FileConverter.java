@@ -3,7 +3,9 @@ package ch.so.agi.metabean2file;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.s9api.Processor;
@@ -30,8 +32,13 @@ public class MetaBean2FileConverter {
     private static final String XSL2HTML_FILE = "xml2html.xsl"; 
     
     private static XmlMapper xmlMapper = null;
+    
+    public static void runBeans2Xml(Path xmlFilePath, Iterator<ThemePublication> datasetsIterator) {
+        
+    }
+    
 
-    public static File runBean2Html(ThemePublication dataset) throws MetaBean2FileException {
+    public static void runBean2Html(Path htmlFilePath, ThemePublication dataset) throws MetaBean2FileException {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
@@ -49,7 +56,7 @@ public class MetaBean2FileConverter {
             File xslFile = Paths.get(tmpFolder.getAbsolutePath(), XSL2HTML_FILE).toFile();
             Util.loadFile(XSL2HTML_FILE, xslFile);
             
-            File htmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getIdentifier()+".html").toFile();
+            File htmlFile = htmlFilePath.toFile();
             //log.info(htmlFile.getAbsolutePath());
 
             Processor processor = new Processor(false);
@@ -61,7 +68,6 @@ public class MetaBean2FileConverter {
             Xslt30Transformer transformer = stylesheet.load30();
             transformer.transform(new StreamSource(xmlFile), out);
             
-            return htmlFile;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             throw new MetaBean2FileException(e.getMessage());

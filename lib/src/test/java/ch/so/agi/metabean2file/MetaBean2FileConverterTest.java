@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
@@ -19,8 +20,12 @@ class MetaBean2FileConverterTest {
         HashMap<String,ThemePublication> datasets = TestUtils.getDatasets();
         ThemePublication dataset = datasets.get(datasetName);
 
-        File htmlFile = MetaBean2FileConverter.runBean2Html(dataset);
-        String htmlContent = new String(Files.readAllBytes(Paths.get(htmlFile.getAbsolutePath())));
+        File tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
+        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        Path htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), dataset.getIdentifier()+".html");
+
+        MetaBean2FileConverter.runBean2Html(htmlFilePath, dataset);
+        String htmlContent = new String(Files.readAllBytes(Paths.get(htmlFilePath.toFile().getAbsolutePath())));
         
         File controlFile = new File("src/test/data-expected/"+datasetName+".html");
         String controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
