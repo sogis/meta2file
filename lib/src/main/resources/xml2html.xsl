@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
     <xsl:output encoding="UTF-8" indent="yes" method="html"/>
-    <xsl:template match="/dataset">
+    <xsl:template match="/themePublication">
         <html>
         <head>
             <title>Datenbeschreibung • Amt für Geoinformation Kanton Solothurn</title>
@@ -258,12 +258,9 @@
                 <h2>Beschreibung</h2>
                 <p>
                     <xsl:value-of disable-output-escaping="yes" select="shortDescription"/>
-                </p>
-
-                <h2>Weiterführende Informationen</h2>
-                <p>
                     <xsl:if test="furtherInformation">
-                        Sachinformationen: 
+                        <br/><br/>
+                        Weiterführende Informationen: 
                         <xsl:element name="a">
                             <xsl:attribute name="target">
                                 <xsl:text>_blank</xsl:text>
@@ -271,23 +268,14 @@
                             <xsl:attribute name="href"><xsl:value-of select="furtherInformation"/></xsl:attribute>
                             <xsl:value-of select="furtherInformation"/>
                         </xsl:element>
-                        <br />
                     </xsl:if>
-                    <xsl:if test="furtherMetadata">
-                        Metainformationen: 
-                        <xsl:element name="a">
-                            <xsl:attribute name="target">
-                                <xsl:text>_blank</xsl:text>
-                            </xsl:attribute>
-                            <xsl:attribute name="href"><xsl:value-of select="furtherMetadata"/></xsl:attribute>
-                            <xsl:value-of select="furtherMetadata"/>
-                        </xsl:element>
-                    </xsl:if>
+
                 </p>
+
 
                 <h2>Datum der letzten Publikation</h2>
                 <p>
-                    <xsl:value-of select="format-date(lastEditingDate,'[D01]. [MNn] [Y0001]')"/>
+                    <xsl:value-of select="format-date(lastPublishingDate,'[D01]. [MNn] [Y0001]')"/>
                 </p>
 
                 <h2>Datenmodell</h2>
@@ -303,7 +291,7 @@
 
                 <h2>Kontakt (fachlich)</h2>
                 <p>
-                    <xsl:value-of select="owner/name"/><br/>
+                    <xsl:value-of select="owner/agencyName"/><br/>
                     <xsl:if test="owner/division">
                         <xsl:value-of select="owner/division"/><br/>
                     </xsl:if>
@@ -324,7 +312,7 @@
 
                 <h2>Kontakt (technisch)</h2>
                 <p>
-                    <xsl:value-of select="servicer/name"/><br/>
+                    <xsl:value-of select="servicer/agencyName"/><br/>
                     <xsl:value-of select="servicer/street"/><xsl:text> </xsl:text><xsl:value-of select="servicer/number"/><br/>
                     <xsl:value-of select="servicer/postalCode"/><xsl:text> </xsl:text><xsl:value-of select="servicer/city"/><br/>
                     Telefon <xsl:value-of select="servicer/phone"/><br/>
@@ -381,9 +369,9 @@
 
     <xsl:template match="tableInfo">
 
-        <h3><xsl:value-of select="name"/></h3>
+        <h3><xsl:value-of select="identifier"/></h3>
 
-        <p class="datenebene"><xsl:value-of disable-output-escaping="yes" select="description"/></p>
+        <p class="datenebene"><xsl:value-of disable-output-escaping="yes" select="shortDescription"/></p>
 
             <table>
                 <tr style="border-bottom: 1px solid #eee;">
@@ -407,7 +395,7 @@
                             <xsl:value-of select="name"/>
                         </td>
                         <td>
-                            <xsl:value-of disable-output-escaping="yes" select="description"/>
+                            <xsl:value-of disable-output-escaping="yes" select="shortDescription"/>
                         </td>
                         <td>
                             <xsl:value-of select="datatype"/>

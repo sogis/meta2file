@@ -2,6 +2,8 @@ package ch.so.agi.metabean2file.model;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
@@ -10,24 +12,34 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonInclude(Include.NON_NULL)
 public class TableInfo {
-    private String name; 
+    @NotNull
+    private String identifier;
+    @NotNull
+    private String title;
     @JacksonXmlCData
-    private String description;
+    @NotNull
+    private String shortDescription;
     @JacksonXmlElementWrapper(localName = "attributesInfo")
     @JacksonXmlProperty(localName = "attributeInfo")
     private List<AttributeInfo> attributesInfo;
     
-    public String getName() {
-        return name;
+    public String getIdentifier() {
+        return identifier;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getShortDescription() {
+        return shortDescription;
+    }
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
     public List<AttributeInfo> getAttributesInfo() {
         return attributesInfo;

@@ -2,15 +2,21 @@ package ch.so.agi.metabean2file.model;
 
 import java.net.URI;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class Office {
-    private String name;
+    @NotNull
+    private String agencyName;
+    @NotNull
     private String abbrevation;
     private String division;
+    @NotNull
     private URI officeAtWeb;
+    @NotNull
     private URI email;
     private String phone;
     private String line1;
@@ -20,11 +26,11 @@ public class Office {
     private String postalCode;
     private String city;
     
-    public String getName() {
-        return name;
+    public String getAgencyName() {
+        return agencyName;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setAgencyName(String agencyName) {
+        this.agencyName = agencyName;
     }
     public String getAbbrevation() {
         return abbrevation;

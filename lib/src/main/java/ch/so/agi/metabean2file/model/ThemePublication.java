@@ -16,7 +16,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-@JacksonXmlRootElement(localName = "ThemePublication")
+@JacksonXmlRootElement(localName = "themePublication")
 @JsonInclude(Include.NON_NULL)
 public class ThemePublication {
     @NotNull
@@ -31,6 +31,7 @@ public class ThemePublication {
     @NotNull
     private String shortDescription;
     private String keywords;
+    private String synonyms;
     @NotNull
     private Office owner;
     @NotNull
@@ -85,6 +86,12 @@ public class ThemePublication {
     }
     public void setKeywords(String keywords) {
         this.keywords = keywords;
+    }
+    public String getSynonyms() {
+        return synonyms;
+    }
+    public void setSynonyms(String synonyms) {
+        this.synonyms = synonyms;
     }
     public Office getOwner() {
         return owner;

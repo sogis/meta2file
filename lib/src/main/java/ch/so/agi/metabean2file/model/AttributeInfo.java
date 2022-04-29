@@ -1,13 +1,18 @@
 package ch.so.agi.metabean2file.model;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class AttributeInfo {
+    @NotNull
     private String name;
-    private String description;
+    private String shortDescription;
+    @NotNull
     private String datatype;
+    @NotNull
     private boolean mandatory;
     
     public String getName() {
@@ -16,11 +21,11 @@ public class AttributeInfo {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDescription() {
-        return description;
+    public String getShortDescription() {
+        return shortDescription;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
     public String getDatatype() {
         return datatype;

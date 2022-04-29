@@ -31,7 +31,7 @@ public class TestUtils {
         dataset.setKeywords("AGI,Grundbuch,AS,AV,Amtliche Vermessung,Vermessung,Einteilung");
         
         Office owner = new Office();
-        owner.setName("Amt für Umwelt");
+        owner.setAgencyName("Amt für Umwelt");
         owner.setAbbrevation("AfU");
         owner.setDivision("Ich bin die Abteilung");
         try {
@@ -48,7 +48,7 @@ public class TestUtils {
         dataset.setOwner(owner);
 
         Office servicer = new Office();
-        servicer.setName("Amt für Geoinformation");
+        servicer.setAgencyName("Amt für Geoinformation");
         servicer.setAbbrevation("AGI");
         try {
             servicer.setOfficeAtWeb(new URI("https://agi.so.ch"));
@@ -89,8 +89,8 @@ public class TestUtils {
         List<TableInfo> tablesInfo = new ArrayList<>();
         {
             var tableInfo = new TableInfo();
-            tableInfo.setName("grundbuchkreise_grundbuchkreis");
-            tableInfo.setDescription("Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise");
+            tableInfo.setIdentifier("grundbuchkreise_grundbuchkreis");
+            tableInfo.setShortDescription("Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise");
             
             List<AttributeInfo> attributesInfo = new ArrayList<>();
             {
@@ -103,7 +103,7 @@ public class TestUtils {
             {
                 var attributeInfo = new AttributeInfo();
                 attributeInfo.setName("aname");
-                attributeInfo.setDescription("Name des Grundbuches");
+                attributeInfo.setShortDescription("Name des Grundbuches");
                 attributeInfo.setDatatype("text");
                 attributeInfo.setMandatory(true);
                 attributesInfo.add(attributeInfo);
@@ -111,7 +111,7 @@ public class TestUtils {
             {
                 var attributeInfo = new AttributeInfo();
                 attributeInfo.setName("perimeter");
-                attributeInfo.setDescription("Perimeter des Grundbuchkreises");
+                attributeInfo.setShortDescription("Perimeter des Grundbuchkreises");
                 attributeInfo.setDatatype("polygon");
                 attributeInfo.setMandatory(true);
                 attributesInfo.add(attributeInfo);
