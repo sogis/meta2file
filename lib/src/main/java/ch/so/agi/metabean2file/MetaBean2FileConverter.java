@@ -34,7 +34,11 @@ public class MetaBean2FileConverter {
     private static XmlMapper xmlMapper = null;
     
     public static void runBeans2Xml(Path xmlFilePath, Iterator<ThemePublication> datasetsIterator) {
-        
+        //XmlStreamReader
+        while(datasetsIterator.hasNext()) {
+            ThemePublication themePub = datasetsIterator.next();
+            log.info(themePub.toString());
+        }
     }
     
 

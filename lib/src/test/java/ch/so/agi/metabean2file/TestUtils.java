@@ -21,14 +21,14 @@ public class TestUtils {
         var df = new SimpleDateFormat("yyyy-MM-dd");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        var datasets = new HashMap<String,ThemePublication>();
-        var dataset = new ThemePublication();
-        dataset.setIdentifier("ch.so.agi.av_gb_administrative_einteilung");
-        dataset.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");
-        dataset.setLastPublishingDate(LocalDate.parse("2022-04-05"));
-        dataset.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
-        dataset.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
-        dataset.setKeywords("AGI,Grundbuch,AS,AV,Amtliche Vermessung,Vermessung,Einteilung");
+        var themePublications = new HashMap<String,ThemePublication>();
+        var themePublication = new ThemePublication();
+        themePublication.setIdentifier("ch.so.agi.av_gb_administrative_einteilung");
+        themePublication.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");
+        themePublication.setLastPublishingDate(LocalDate.parse("2022-04-05"));
+        themePublication.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
+        themePublication.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
+        themePublication.setKeywords("AGI,Grundbuch,AS,AV,Amtliche Vermessung,Vermessung,Einteilung");
         
         Office owner = new Office();
         owner.setAgencyName("Amt für Umwelt");
@@ -45,7 +45,7 @@ public class TestUtils {
         owner.setNumber("5");
         owner.setPostalCode("4509");
         owner.setCity("Solothurn");
-        dataset.setOwner(owner);
+        themePublication.setOwner(owner);
 
         Office servicer = new Office();
         servicer.setAgencyName("Amt für Geoinformation");
@@ -61,10 +61,10 @@ public class TestUtils {
         servicer.setNumber("4");
         servicer.setPostalCode("4509");
         servicer.setCity("Solothurn");
-        dataset.setServicer(servicer);
+        themePublication.setServicer(servicer);
         
         try {
-            dataset.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
+            themePublication.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class TestUtils {
             fileFormat.setMimetype("application/geopackage+sqlite3 ");
             fileFormats.add(fileFormat);
         }        
-        dataset.setFileFormats(fileFormats);
+        themePublication.setFileFormats(fileFormats);
         
         List<TableInfo> tablesInfo = new ArrayList<>();
         {
@@ -119,7 +119,7 @@ public class TestUtils {
             tableInfo.setAttributesInfo(attributesInfo);
             tablesInfo.add(tableInfo);
         }
-        dataset.setTablesInfo(tablesInfo);
+        themePublication.setTablesInfo(tablesInfo);
         
         List<Service> services = new ArrayList<>();
         {
@@ -136,10 +136,10 @@ public class TestUtils {
             service.setLayerNames(layers);
             services.add(service);
         }
-        dataset.setServices(services);
+        themePublication.setServices(services);
         
-        datasets.put(dataset.getIdentifier(), dataset);
+        themePublications.put(themePublication.getIdentifier(), themePublication);
         
-        return datasets;
+        return themePublications;
     }
 }
