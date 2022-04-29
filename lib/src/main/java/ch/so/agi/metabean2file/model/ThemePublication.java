@@ -4,6 +4,8 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,45 +16,45 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-@JacksonXmlRootElement(localName = "dataset")
+@JacksonXmlRootElement(localName = "ThemePublication")
 @JsonInclude(Include.NON_NULL)
 public class ThemePublication {
-    private String id; // uuid
-    private String name; 
+    @NotNull
+    private String identifier; 
+    @NotNull
     private String model;
-    private LocalDate lastEditingDate; 
+    @NotNull
+    private LocalDate lastPublishingDate;
+    @NotNull
     private String title;
     @JacksonXmlCData
+    @NotNull
     private String shortDescription;
     private String keywords;
-    private Office owner; 
+    @NotNull
+    private Office owner;
+    @NotNull
     private Office servicer; 
-    private URI furtherInformation; 
-    private URI furtherMetadata;
-    private URI baseUrl; // Falls Spezialfall und Datei irgendwo anders liegt (??)
+    private URI furtherInformation;
+    @NotNull
+    private URI baseUrl;
     @JacksonXmlElementWrapper(localName = "fileFormats")
-    //@JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "fileFormat")
+    @NotNull
     private List<FileFormat> fileFormats; 
-    private String subunits; // base64
+    private String subunits; 
     @JacksonXmlElementWrapper(localName = "tablesInfo")
     @JacksonXmlProperty(localName = "tableInfo")
     private List<TableInfo> tablesInfo; 
     @JacksonXmlElementWrapper(localName = "services")
     @JacksonXmlProperty(localName = "service")
-    private List<Service> services; 
+    private List<Service> services;
     
-    public String getId() {
-        return id;
+    public String getIdentifier() {
+        return identifier;
     }
-    public void setId(String id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
     public String getModel() {
         return model;
@@ -60,11 +62,11 @@ public class ThemePublication {
     public void setModel(String model) {
         this.model = model;
     }
-    public LocalDate getLastEditingDate() {
-        return lastEditingDate;
+    public LocalDate getLastPublishingDate() {
+        return lastPublishingDate;
     }
-    public void setLastEditingDate(LocalDate lastEditingDate) {
-        this.lastEditingDate = lastEditingDate;
+    public void setLastPublishingDate(LocalDate lastPublishingDate) {
+        this.lastPublishingDate = lastPublishingDate;
     }
     public String getTitle() {
         return title;
@@ -102,12 +104,6 @@ public class ThemePublication {
     public void setFurtherInformation(URI furtherInformation) {
         this.furtherInformation = furtherInformation;
     }
-    public URI getFurtherMetadata() {
-        return furtherMetadata;
-    }
-    public void setFurtherMetadata(URI furtherMetadata) {
-        this.furtherMetadata = furtherMetadata;
-    }
     public URI getBaseUrl() {
         return baseUrl;
     }
@@ -137,5 +133,5 @@ public class ThemePublication {
     }
     public void setServices(List<Service> services) {
         this.services = services;
-    }    
+    }     
 }

@@ -42,14 +42,14 @@ public class MetaBean2FileConverter {
             
             File tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
             //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
-            File xmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getName()+".xml").toFile();
+            File xmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getIdentifier()+".xml").toFile();
             log.info(xmlFile.getAbsolutePath());
             xmlMapper.writeValue(xmlFile, dataset);
 
             File xslFile = Paths.get(tmpFolder.getAbsolutePath(), XSL2HTML_FILE).toFile();
             Util.loadFile(XSL2HTML_FILE, xslFile);
             
-            File htmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getName()+".html").toFile();
+            File htmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getIdentifier()+".html").toFile();
             //log.info(htmlFile.getAbsolutePath());
 
             Processor processor = new Processor(false);

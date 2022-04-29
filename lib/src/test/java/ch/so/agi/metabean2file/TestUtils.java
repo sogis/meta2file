@@ -23,10 +23,9 @@ public class TestUtils {
 
         var datasets = new HashMap<String,ThemePublication>();
         var dataset = new ThemePublication();
-        dataset.setId("60D2441A-A358-4F3E-A94A-369AE3B2F8A7");
-        dataset.setName("ch.so.agi.av_gb_administrative_einteilung");
+        dataset.setIdentifier("ch.so.agi.av_gb_administrative_einteilung");
         dataset.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");
-        dataset.setLastEditingDate(LocalDate.parse("2022-04-05"));
+        dataset.setLastPublishingDate(LocalDate.parse("2022-04-05"));
         dataset.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
         dataset.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
         dataset.setKeywords("AGI,Grundbuch,AS,AV,Amtliche Vermessung,Vermessung,Einteilung");
@@ -66,7 +65,6 @@ public class TestUtils {
         
         try {
             dataset.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
-            dataset.setFurtherMetadata(new URI("http://geocat.ch/path/to/xxxx"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -140,7 +138,7 @@ public class TestUtils {
         }
         dataset.setServices(services);
         
-        datasets.put(dataset.getName(), dataset);
+        datasets.put(dataset.getIdentifier(), dataset);
         
         return datasets;
     }
