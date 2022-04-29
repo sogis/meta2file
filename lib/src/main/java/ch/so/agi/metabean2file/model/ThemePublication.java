@@ -16,7 +16,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @JacksonXmlRootElement(localName = "dataset")
 @JsonInclude(Include.NON_NULL)
-public class Dataset {
+public class ThemePublication {
     private String id; // uuid
     private String name; 
     private String model;

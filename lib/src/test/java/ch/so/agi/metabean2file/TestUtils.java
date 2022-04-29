@@ -10,19 +10,19 @@ import java.util.TimeZone;
 import java.time.LocalDate;
 
 import ch.so.agi.metabean2file.model.AttributeInfo;
-import ch.so.agi.metabean2file.model.Dataset;
+import ch.so.agi.metabean2file.model.ThemePublication;
 import ch.so.agi.metabean2file.model.FileFormat;
 import ch.so.agi.metabean2file.model.Office;
 import ch.so.agi.metabean2file.model.Service;
 import ch.so.agi.metabean2file.model.TableInfo;
 
 public class TestUtils {
-    public static HashMap<String,Dataset> getDatasets() {
+    public static HashMap<String,ThemePublication> getDatasets() {
         var df = new SimpleDateFormat("yyyy-MM-dd");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        var datasets = new HashMap<String,Dataset>();
-        var dataset = new Dataset();
+        var datasets = new HashMap<String,ThemePublication>();
+        var dataset = new ThemePublication();
         dataset.setId("60D2441A-A358-4F3E-A94A-369AE3B2F8A7");
         dataset.setName("ch.so.agi.av_gb_administrative_einteilung");
         dataset.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");

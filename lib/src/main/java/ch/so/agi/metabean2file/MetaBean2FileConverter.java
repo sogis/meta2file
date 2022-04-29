@@ -22,7 +22,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-import ch.so.agi.metabean2file.model.Dataset;
+import ch.so.agi.metabean2file.model.ThemePublication;
 
 public class MetaBean2FileConverter {
     static Logger log = LoggerFactory.getLogger(MetaBean2FileConverter.class);
@@ -31,7 +31,7 @@ public class MetaBean2FileConverter {
     
     private static XmlMapper xmlMapper = null;
 
-    public static File runBean2Html(Dataset dataset) throws MetaBean2FileException {
+    public static File runBean2Html(ThemePublication dataset) throws MetaBean2FileException {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
