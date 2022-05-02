@@ -21,7 +21,7 @@ class MetaBean2FileConverterTest {
     public void beans2xml_Ok() throws Exception {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
         Set entrySet = themePublications.entrySet();
-        Iterator<ThemePublication> it = entrySet.iterator();
+        Iterator it = entrySet.iterator();
 
         while(it.hasNext()){
             Map.Entry me = (Map.Entry)it.next();
