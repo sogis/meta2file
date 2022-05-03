@@ -38,6 +38,8 @@ public class ThemePublication {
     private Office servicer; 
     private URI furtherInformation;
     @NotNull
+    private URI licence;
+    @NotNull
     private URI baseUrl;
     @JacksonXmlElementWrapper(localName = "fileFormats")
     @JacksonXmlProperty(localName = "fileFormat")
@@ -110,6 +112,12 @@ public class ThemePublication {
     }
     public void setFurtherInformation(URI furtherInformation) {
         this.furtherInformation = furtherInformation;
+    }
+    public URI getLicence() {
+        return licence;
+    }
+    public void setLicence(URI licence) {
+        this.licence = licence;
     }
     public URI getBaseUrl() {
         return baseUrl;

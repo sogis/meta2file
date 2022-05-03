@@ -8,10 +8,10 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 import ch.so.agi.metabean2file.model.ThemePublication;
 
@@ -20,17 +20,22 @@ class MetaBean2FileConverterTest {
     @Test
     public void beans2xml_Ok() throws Exception {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
-        Set entrySet = themePublications.entrySet();
-        Iterator it = entrySet.iterator();
+        List<ThemePublication> list = new ArrayList<ThemePublication>(themePublications.values());
 
-        while(it.hasNext()){
-            Map.Entry me = (Map.Entry)it.next();
-            System.out.println("Key is: "+me.getKey() + 
-            " & " + 
-            " value is: "+me.getValue());
-        }
+        Iterator<ThemePublication> it = list.iterator();
+        
+        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        Path xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
+
+        MetaBean2FileConverter.runBeans2Xml(xmlFilePath, it);
+        String xmlContent = new String(Files.readAllBytes(Paths.get(xmlFilePath.toFile().getAbsolutePath())));
+        
+        File controlFile = new File("src/test/data-expected/themepublications.xml");
+        String controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
+      
+        assertEquals(controlContent, xmlContent);
     }
-    
     
     @Test
     public void bean2html_Ok() throws Exception {
@@ -39,7 +44,7 @@ class MetaBean2FileConverterTest {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
         ThemePublication themePublication = themePublications.get(themePublicationName);
 
-        File tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
+        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
         //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         Path htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublication.getIdentifier()+".html");
 
