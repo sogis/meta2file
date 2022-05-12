@@ -14,26 +14,25 @@ public class Service {
     @JacksonXmlElementWrapper(localName = "layerNames")
     @JacksonXmlProperty(localName = "layerName")
     @NotNull
-    private List<String> layerNames;
+    private List<String> layerIdentifiers;
     @NotNull
-    private String type;
-    
+    private ServiceType type;
     public URI getEndpoint() {
         return endpoint;
     }
     public void setEndpoint(URI endpoint) {
         this.endpoint = endpoint;
     }
-    public List<String> getLayerNames() {
-        return layerNames;
+    public List<String> getLayerIdentifiers() {
+        return layerIdentifiers;
     }
-    public void setLayerNames(List<String> layerNames) {
-        this.layerNames = layerNames;
+    public void setLayerIdentifiers(List<String> layerIdentifiers) {
+        this.layerIdentifiers = layerIdentifiers;
     }
-    public String getType() {
+    public ServiceType getType() {
         return type;
     }
-    public void setType(String type) {
+    public void setType(ServiceType type) {
         this.type = type;
     }
 }

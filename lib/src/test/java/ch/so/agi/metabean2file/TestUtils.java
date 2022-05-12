@@ -14,6 +14,7 @@ import ch.so.agi.metabean2file.model.ThemePublication;
 import ch.so.agi.metabean2file.model.FileFormat;
 import ch.so.agi.metabean2file.model.Office;
 import ch.so.agi.metabean2file.model.Service;
+import ch.so.agi.metabean2file.model.ServiceType;
 import ch.so.agi.metabean2file.model.TableInfo;
 
 public class TestUtils {
@@ -43,12 +44,8 @@ public class TestUtils {
                 e.printStackTrace();
             }
             owner.setPhone("032 627 12 34");
-            owner.setStreet("Werkhofstrasse");
-            owner.setNumber("5");
-            owner.setPostalCode("4509");
-            owner.setCity("Solothurn");
             themePublication.setOwner(owner);
-    
+
             Office servicer = new Office();
             servicer.setAgencyName("Amt für Geoinformation");
             servicer.setAbbrevation("AGI");
@@ -59,10 +56,6 @@ public class TestUtils {
                 e.printStackTrace();
             }
             servicer.setPhone("032 627 75 96");
-            servicer.setStreet("Rötistrasse");
-            servicer.setNumber("4");
-            servicer.setPostalCode("4509");
-            servicer.setCity("Solothurn");
             themePublication.setServicer(servicer);
             
             try {
@@ -92,7 +85,7 @@ public class TestUtils {
             List<TableInfo> tablesInfo = new ArrayList<>();
             {
                 var tableInfo = new TableInfo();
-                tableInfo.setIdentifier("grundbuchkreise_grundbuchkreis");
+                tableInfo.setSqlName("grundbuchkreise_grundbuchkreis");
                 tableInfo.setShortDescription("Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise");
                 
                 List<AttributeInfo> attributesInfo = new ArrayList<>();
@@ -132,11 +125,11 @@ public class TestUtils {
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
-                service.setType("WMS");
+                service.setType(ServiceType.WMS);
                 var layers = new ArrayList<String>();
                 layers.add("ch.so.awjf.forstreviere.forstkreis");
                 layers.add("ch.so.awjf.forstreviere.forstreviere");
-                service.setLayerNames(layers);
+                service.setLayerIdentifiers(layers);
                 services.add(service);
             }
             themePublication.setServices(services);
@@ -163,10 +156,6 @@ public class TestUtils {
                 e.printStackTrace();
             }
             owner.setPhone("032 627 12 34");
-            owner.setStreet("Werkhofstrasse");
-            owner.setNumber("5");
-            owner.setPostalCode("4509");
-            owner.setCity("Solothurn");
             themePublication.setOwner(owner);
     
             Office servicer = new Office();
@@ -179,10 +168,6 @@ public class TestUtils {
                 e.printStackTrace();
             }
             servicer.setPhone("032 627 75 96");
-            servicer.setStreet("Rötistrasse");
-            servicer.setNumber("4");
-            servicer.setPostalCode("4509");
-            servicer.setCity("Solothurn");
             themePublication.setServicer(servicer);
             
             try {
@@ -212,7 +197,7 @@ public class TestUtils {
             List<TableInfo> tablesInfo = new ArrayList<>();
             {
                 var tableInfo = new TableInfo();
-                tableInfo.setIdentifier("grundbuchkreise_grundbuchkreis");
+                tableInfo.setSqlName("grundbuchkreise_grundbuchkreis");
                 tableInfo.setShortDescription("Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise");
                 
                 List<AttributeInfo> attributesInfo = new ArrayList<>();
@@ -252,11 +237,11 @@ public class TestUtils {
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
                 }
-                service.setType("WMS");
+                service.setType(ServiceType.WMS);
                 var layers = new ArrayList<String>();
                 layers.add("ch.so.awjf.forstreviere.forstkreis");
                 layers.add("ch.so.awjf.forstreviere.forstreviere");
-                service.setLayerNames(layers);
+                service.setLayerIdentifiers(layers);
                 services.add(service);
             }
             themePublication.setServices(services);

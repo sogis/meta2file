@@ -13,7 +13,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 @JsonInclude(Include.NON_NULL)
 public class TableInfo {
     @NotNull
-    private String identifier;
+    private String sqlName;
     @NotNull
     private String title;
     @JacksonXmlCData
@@ -23,11 +23,11 @@ public class TableInfo {
     @JacksonXmlProperty(localName = "attributeInfo")
     private List<AttributeInfo> attributesInfo;
     
-    public String getIdentifier() {
-        return identifier;
+    public String getSqlName() {
+        return sqlName;
     }
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+    public void setSqlName(String sqlName) {
+        this.sqlName = sqlName;
     }
     public String getTitle() {
         return title;

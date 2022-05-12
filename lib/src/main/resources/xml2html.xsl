@@ -295,8 +295,6 @@
                     <xsl:if test="owner/division">
                         <xsl:value-of select="owner/division"/><br/>
                     </xsl:if>
-                    <xsl:value-of select="owner/street"/><xsl:text> </xsl:text><xsl:value-of select="owner/number"/><br/>
-                    <xsl:value-of select="owner/postalCode"/><xsl:text> </xsl:text><xsl:value-of select="owner/city"/><br/>
                     Telefon <xsl:value-of select="owner/phone"/><br/>
                     <xsl:element name="a">
                         <xsl:attribute name="href"><xsl:value-of select="owner/email"/></xsl:attribute><xsl:value-of select="substring(owner/email, 8)"/>
@@ -313,8 +311,6 @@
                 <h2>Kontakt (technisch)</h2>
                 <p>
                     <xsl:value-of select="servicer/agencyName"/><br/>
-                    <xsl:value-of select="servicer/street"/><xsl:text> </xsl:text><xsl:value-of select="servicer/number"/><br/>
-                    <xsl:value-of select="servicer/postalCode"/><xsl:text> </xsl:text><xsl:value-of select="servicer/city"/><br/>
                     Telefon <xsl:value-of select="servicer/phone"/><br/>
                     <xsl:element name="a">
                         <xsl:attribute name="href"><xsl:value-of select="servicer/email"/></xsl:attribute><xsl:value-of select="substring(servicer/email, 8)"/>
@@ -369,7 +365,7 @@
 
     <xsl:template match="tableInfo">
 
-        <h3><xsl:value-of select="identifier"/></h3>
+        <h3><xsl:value-of select="sqlName"/></h3>
 
         <p class="datenebene"><xsl:value-of disable-output-escaping="yes" select="shortDescription"/></p>
 
