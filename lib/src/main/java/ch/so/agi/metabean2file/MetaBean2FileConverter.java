@@ -1,13 +1,17 @@
 package ch.so.agi.metabean2file;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -29,15 +33,65 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
+import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.PolyglotException;
+import org.graalvm.polyglot.Source;
+import org.graalvm.polyglot.Value;
+
 import ch.so.agi.metabean2file.model.ThemePublication;
 
 public class MetaBean2FileConverter {
     static Logger log = LoggerFactory.getLogger(MetaBean2FileConverter.class);
 
     private static final String XSL2HTML_FILE = "xml2html.xsl"; 
-    
+
     private static XmlMapper xmlMapper = null;
     
+    private static String PYTHON = "python";
+    private static String VENV_EXECUTABLE = MetaBean2FileConverter.class.getClassLoader().getResource(Paths.get("venv", "bin", "graalpython").toString()).getPath();
+    private static String SOURCE_FILE_NAME = "staccreator.py";
+
+    public void createStacFiles() throws IOException {
+        Context context = Context.newBuilder(PYTHON).
+        allowAllAccess(true).
+        option("python.Executable", VENV_EXECUTABLE).
+        option("python.ForceImportSite", "true").
+        build();
+        InputStreamReader code = new InputStreamReader(MetaBean2FileConverter.class.getClassLoader().getResourceAsStream(SOURCE_FILE_NAME));
+        
+//        BufferedReader reader = new BufferedReader(code);
+//        StringBuffer sb = new StringBuffer();
+//        String str;
+//        while((str = reader.readLine())!= null){
+//           sb.append(str);
+//        }
+//        System.out.println(sb.toString());
+
+        
+        
+        
+        Source source;
+        try {
+            source = Source.newBuilder(PYTHON, code, SOURCE_FILE_NAME).build();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        context.eval(source);
+        Value pystacCreatorClass = context.getPolyglotBindings().getMember("StacCreator");
+        System.out.println(context);
+        System.out.println(context.getPolyglotBindings());
+        System.out.println(context.getPolyglotBindings().hasMembers());
+        System.out.println(context.getPolyglotBindings().getMemberKeys());
+        
+        
+        
+        
+        System.out.println(pystacCreatorClass);
+        Value pystacCreator = pystacCreatorClass.newInstance();
+
+
+    }
+
     /**
      * Converts a collection of theme publications to a xml file.
      * 

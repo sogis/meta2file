@@ -16,7 +16,18 @@ import java.util.List;
 import ch.so.agi.metabean2file.model.ThemePublication;
 
 class MetaBean2FileConverterTest {
-    
+    @Test
+    public void createStacFiles_Ok() throws Exception {
+        System.out.println("Hallo Welt.");
+        
+        MetaBean2FileConverter converter = new MetaBean2FileConverter();
+        converter.createStacFiles();
+        
+        
+        System.out.println("Hallo Stefan.");
+    }
+
+
     @Test
     public void beans2xml_Ok() throws Exception {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
