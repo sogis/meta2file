@@ -45,7 +45,6 @@ public class MetaBean2FileConverter {
     static Logger log = LoggerFactory.getLogger(MetaBean2FileConverter.class);
 
     private static final String XSL2HTML_FILE = "xml2html.xsl"; 
-
     private static XmlMapper xmlMapper = null;
     
     private static String PYTHON = "python";
@@ -73,6 +72,8 @@ public class MetaBean2FileConverter {
         StacCreator stacCreator = pystacCreator.as(StacCreator.class);
         stacCreator.create(collectionFilePath.toFile().getAbsolutePath(), themePublication);
 
+        
+        context.close(); // static?
     }
 
     /**
