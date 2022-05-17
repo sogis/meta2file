@@ -3,7 +3,7 @@ import math
 import re
 
 class StacCreator:
-    def render(self):
+    def create(self):
         print("Hallo Python.")
 
         return "fubar"
