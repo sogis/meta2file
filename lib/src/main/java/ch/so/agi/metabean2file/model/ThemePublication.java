@@ -52,6 +52,8 @@ public class ThemePublication {
     @JacksonXmlElementWrapper(localName = "services")
     @JacksonXmlProperty(localName = "service")
     private List<Service> services;
+    private BoundingBox bbox;
+    private String geometry;
     
     public String getIdentifier() {
         return identifier;
@@ -148,5 +150,17 @@ public class ThemePublication {
     }
     public void setServices(List<Service> services) {
         this.services = services;
+    }
+    public BoundingBox getBbox() {
+        return bbox;
+    }
+    public void setBbox(BoundingBox bbox) {
+        this.bbox = bbox;
+    }
+    public String getGeometry() {
+        return geometry;
+    }
+    public void setGeometry(String geometry) {
+        this.geometry = geometry;
     }     
 }

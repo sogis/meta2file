@@ -20,8 +20,16 @@ class MetaBean2FileConverterTest {
     public void createStacFiles_Ok() throws Exception {
         System.out.println("Hallo Welt.");
         
+        String themePublicationName = "ch.so.agi.av_gb_administrative_einteilung";
+        HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
+        ThemePublication themePublication = themePublications.get(themePublicationName);
+
+        //File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        Path collectionFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublicationName+"_collection.json");
+
         MetaBean2FileConverter converter = new MetaBean2FileConverter();
-        converter.createStacFiles();
+        converter.createStacFiles(collectionFilePath, themePublication);
         
         
         System.out.println("Hallo Stefan.");

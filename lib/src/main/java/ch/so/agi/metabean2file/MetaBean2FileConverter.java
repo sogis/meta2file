@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.xml.stream.XMLOutputFactory;
@@ -51,25 +52,14 @@ public class MetaBean2FileConverter {
     private static String VENV_EXECUTABLE = MetaBean2FileConverter.class.getClassLoader().getResource(Paths.get("venv", "bin", "graalpython").toString()).getPath();
     private static String SOURCE_FILE_NAME = "staccreator.py";
 
-    public void createStacFiles() throws IOException {
+    public void createStacFiles(Path collectionFilePath, ThemePublication themePublication) throws IOException {
         Context context = Context.newBuilder(PYTHON).
         allowAllAccess(true).
         option("python.Executable", VENV_EXECUTABLE).
         option("python.ForceImportSite", "true").
         build();
         InputStreamReader code = new InputStreamReader(MetaBean2FileConverter.class.getClassLoader().getResourceAsStream(SOURCE_FILE_NAME));
-        
-//        BufferedReader reader = new BufferedReader(code);
-//        StringBuffer sb = new StringBuffer();
-//        String str;
-//        while((str = reader.readLine())!= null){
-//           sb.append(str);
-//        }
-//        System.out.println(sb.toString());
-
-        
-        
-        
+                
         Source source;
         try {
             source = Source.newBuilder(PYTHON, code, SOURCE_FILE_NAME).build();
@@ -78,17 +68,10 @@ public class MetaBean2FileConverter {
         }
         context.eval(source);
         Value pystacCreatorClass = context.getPolyglotBindings().getMember("StacCreator");
-        System.out.println(context);
-        System.out.println(context.getPolyglotBindings());
-        System.out.println(context.getPolyglotBindings().hasMembers());
-        System.out.println(context.getPolyglotBindings().getMemberKeys());
-        
-        
-        
-        
-        System.out.println(pystacCreatorClass);
         Value pystacCreator = pystacCreatorClass.newInstance();
-
+        
+        StacCreator stacCreator = pystacCreator.as(StacCreator.class);
+        stacCreator.create(collectionFilePath.toFile().getAbsolutePath(), themePublication);
 
     }
 
