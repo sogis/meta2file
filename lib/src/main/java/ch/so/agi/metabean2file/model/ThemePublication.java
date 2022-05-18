@@ -45,7 +45,20 @@ public class ThemePublication {
     @JacksonXmlProperty(localName = "fileFormat")
     @NotNull
     private List<FileFormat> fileFormats; 
-    private String subunits; 
+    /* Braucht es das noch? Ja, damit ich nicht das GeoJson herstellen muss.
+     * Wenn man aber alles an den Client schickt, könnte man die Features dort herstellen.
+     * Eher aber nicht, weil dann sehr viel immer an den Client geschickt wird (bei jeder
+     * Suche / bei jedem Filtern und beim
+     * GeoJson-Ansatz das GeoJson nur wenn ich auf die Gebietsauswahl klicke.
+     * Mittelweg wäre Herstellen der GeoJson-Dateien beim Startup (einmalig).
+     * D.h. mindestens intern will ich eine GeoJson-Datei.
+     */
+    private String subunits;
+    /* Kann nicht Subunit heissen, weil es keine Subunit mehr ist. */
+    @NotNull
+    @JacksonXmlElementWrapper(localName = "items")
+    @JacksonXmlProperty(localName = "item")
+    private List<Item> items;
     @JacksonXmlElementWrapper(localName = "tablesInfo")
     @JacksonXmlProperty(localName = "tableInfo")
     private List<TableInfo> tablesInfo; 
@@ -53,7 +66,6 @@ public class ThemePublication {
     @JacksonXmlProperty(localName = "service")
     private List<Service> services;
     private BoundingBox bbox;
-    private String geometry;
     
     public String getIdentifier() {
         return identifier;
@@ -139,6 +151,12 @@ public class ThemePublication {
     public void setSubunits(String subunits) {
         this.subunits = subunits;
     }
+    public List<Item> getItems() {
+        return items;
+    }
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
     public List<TableInfo> getTablesInfo() {
         return tablesInfo;
     }
@@ -157,10 +175,4 @@ public class ThemePublication {
     public void setBbox(BoundingBox bbox) {
         this.bbox = bbox;
     }
-    public String getGeometry() {
-        return geometry;
-    }
-    public void setGeometry(String geometry) {
-        this.geometry = geometry;
-    }     
 }

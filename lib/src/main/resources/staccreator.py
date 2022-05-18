@@ -8,6 +8,7 @@ class StacCreator:
 
         print(collection_file_path)
         print(theme_publication.getIdentifier())
+        print(theme_publication.getItems()[0].getGeometry())
 
         return "fubar"
 

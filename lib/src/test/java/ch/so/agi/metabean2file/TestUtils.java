@@ -1,5 +1,6 @@
 package ch.so.agi.metabean2file;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
@@ -7,11 +8,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
+
 import java.time.LocalDate;
 
 import ch.so.agi.metabean2file.model.AttributeInfo;
+import ch.so.agi.metabean2file.model.BoundingBox;
 import ch.so.agi.metabean2file.model.ThemePublication;
 import ch.so.agi.metabean2file.model.FileFormat;
+import ch.so.agi.metabean2file.model.Item;
 import ch.so.agi.metabean2file.model.Office;
 import ch.so.agi.metabean2file.model.Service;
 import ch.so.agi.metabean2file.model.ServiceType;
@@ -19,6 +23,13 @@ import ch.so.agi.metabean2file.model.TableInfo;
 
 public class TestUtils {
     public static HashMap<String,ThemePublication> getDatasets() {
+        String cantonWkt = "";
+        try {
+            cantonWkt = Util.loadUtf8("canton.wkt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         var df = new SimpleDateFormat("yyyy-MM-dd");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -65,6 +76,19 @@ public class TestUtils {
                 e.printStackTrace();
             }
             
+            themePublication.setBbox(new BoundingBox());
+
+            List<Item> items = new ArrayList<>();
+            {
+                Item item = new Item();
+                item.setIdentifier(themePublication.getIdentifier());
+                item.setTitle(themePublication.getTitle());
+                item.setBbox(themePublication.getBbox());
+                item.setGeometry(cantonWkt);
+                items.add(item);
+            }
+            themePublication.setItems(items);
+
             List<FileFormat> fileFormats = new ArrayList<>();
             {
                 FileFormat fileFormat = new FileFormat();
