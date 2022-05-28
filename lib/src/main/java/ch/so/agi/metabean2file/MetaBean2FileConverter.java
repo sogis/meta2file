@@ -1,45 +1,32 @@
 package ch.so.agi.metabean2file;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import javax.xml.transform.stream.StreamSource;
-import net.sf.saxon.s9api.Processor;
-import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.Serializer;
-import net.sf.saxon.s9api.Xslt30Transformer;
-import net.sf.saxon.s9api.XsltCompiler;
-import net.sf.saxon.s9api.XsltExecutable;
 
+import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.Source;
+import org.graalvm.polyglot.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-
-import org.graalvm.polyglot.Context;
-import org.graalvm.polyglot.PolyglotException;
-import org.graalvm.polyglot.Source;
-import org.graalvm.polyglot.Value;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import ch.so.agi.metabean2file.model.ThemePublication;
+import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.SaxonApiException;
 
 public class MetaBean2FileConverter {
     static Logger log = LoggerFactory.getLogger(MetaBean2FileConverter.class);
@@ -47,9 +34,9 @@ public class MetaBean2FileConverter {
     private static final String XSL2HTML_FILE = "xml2html.xsl"; 
     private static XmlMapper xmlMapper = null;
     
-    private static String PYTHON = "python";
-    private static String VENV_EXECUTABLE = MetaBean2FileConverter.class.getClassLoader().getResource(Paths.get("venv", "bin", "graalpython").toString()).getPath();
-    private static String SOURCE_FILE_NAME = "staccreator.py";
+    private static final String PYTHON = "python";
+    private static final String VENV_EXECUTABLE = MetaBean2FileConverter.class.getClassLoader().getResource(Paths.get("venv", "bin", "graalpython").toString()).getPath();
+    private static final String SOURCE_FILE_NAME = "staccreator.py";
 
     public void createStacFiles(Path collectionFilePath, ThemePublication themePublication) throws IOException {
         Context context = Context.newBuilder(PYTHON).
