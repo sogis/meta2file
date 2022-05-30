@@ -26,7 +26,7 @@ class MetaBean2FileConverterTest {
 
         //File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
         File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
-        Path collectionFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublicationName+"_collection.json");
+        Path collectionFilePath = Paths.get(tmpFolder.getAbsolutePath(), "stac-collections");
 
         MetaBean2FileConverter converter = new MetaBean2FileConverter();
         converter.createStacFiles(collectionFilePath, themePublication);

@@ -41,7 +41,7 @@ class StacCreator:
 
 
         # Save everything to disk
-        collection.normalize_and_save(root_href=os.path.join(collection_file_path, 'stac-collection'),
+        collection.normalize_and_save(root_href=os.path.join(collection_file_path, collection_id),
                            catalog_type=pystac.CatalogType.SELF_CONTAINED)
 
         return "fubar"
