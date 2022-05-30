@@ -43,8 +43,8 @@ class MetaBean2FileConverterTest {
 
         Iterator<ThemePublication> it = list.iterator();
         
-        //File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         Path xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
 
         MetaBean2FileConverter.runBeans2Xml(xmlFilePath, it);
