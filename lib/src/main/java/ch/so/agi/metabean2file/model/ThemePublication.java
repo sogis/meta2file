@@ -26,6 +26,8 @@ public class ThemePublication {
     @NotNull
     private LocalDate lastPublishingDate;
     @NotNull
+    private LocalDate secondToLastPublishingDate = LocalDate.of(1848, 9, 12);
+    @NotNull
     private String title;
     @JacksonXmlCData
     @NotNull
@@ -84,6 +86,12 @@ public class ThemePublication {
     }
     public void setLastPublishingDate(LocalDate lastPublishingDate) {
         this.lastPublishingDate = lastPublishingDate;
+    }
+    public LocalDate getSecondToLastPublishingDate() {
+        return secondToLastPublishingDate;
+    }
+    public void setSecondToLastPublishingDate(LocalDate secondToLastPublishingDate) {
+        this.secondToLastPublishingDate = secondToLastPublishingDate;
     }
     public String getTitle() {
         return title;

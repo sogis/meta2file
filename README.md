@@ -2,8 +2,12 @@
 
 ## PySTAC
 ```
+./mvnw -f lib/pom.xml test
 ./mvnw -f lib/pom.xml compile
 ```
+
+Cmd + Shift + P: Select Python Interpreter -> Pfad zu venv/bin/python3. Pystac wird gefunden.
+
 
 ## Geometrien
 ```

@@ -40,10 +40,10 @@ public class MetaBean2FileConverter {
 
     public void createStacFiles(Path collectionFilePath, ThemePublication themePublication) throws IOException {
         Context context = Context.newBuilder(PYTHON).
-        allowAllAccess(true).
-        option("python.Executable", VENV_EXECUTABLE).
-        option("python.ForceImportSite", "true").
-        build();
+            allowAllAccess(true).
+            option("python.Executable", VENV_EXECUTABLE).
+            option("python.ForceImportSite", "true").
+            build();
         InputStreamReader code = new InputStreamReader(MetaBean2FileConverter.class.getClassLoader().getResourceAsStream(SOURCE_FILE_NAME));
                 
         Source source;
