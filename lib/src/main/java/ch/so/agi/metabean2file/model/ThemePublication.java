@@ -26,6 +26,8 @@ public class ThemePublication {
     @NotNull
     private LocalDate lastPublishingDate;
     @NotNull
+    private LocalDate secondToLastPublishingDate = LocalDate.of(1848, 9, 12);
+    @NotNull
     private String title;
     @JacksonXmlCData
     @NotNull
@@ -45,13 +47,17 @@ public class ThemePublication {
     @JacksonXmlProperty(localName = "fileFormat")
     @NotNull
     private List<FileFormat> fileFormats; 
-    private String subunits; 
+    @NotNull
+    @JacksonXmlElementWrapper(localName = "items")
+    @JacksonXmlProperty(localName = "item")
+    private List<Item> items;
     @JacksonXmlElementWrapper(localName = "tablesInfo")
     @JacksonXmlProperty(localName = "tableInfo")
     private List<TableInfo> tablesInfo; 
     @JacksonXmlElementWrapper(localName = "services")
     @JacksonXmlProperty(localName = "service")
     private List<Service> services;
+    private BoundingBox bbox;
     
     public String getIdentifier() {
         return identifier;
@@ -70,6 +76,12 @@ public class ThemePublication {
     }
     public void setLastPublishingDate(LocalDate lastPublishingDate) {
         this.lastPublishingDate = lastPublishingDate;
+    }
+    public LocalDate getSecondToLastPublishingDate() {
+        return secondToLastPublishingDate;
+    }
+    public void setSecondToLastPublishingDate(LocalDate secondToLastPublishingDate) {
+        this.secondToLastPublishingDate = secondToLastPublishingDate;
     }
     public String getTitle() {
         return title;
@@ -131,11 +143,11 @@ public class ThemePublication {
     public void setFileFormats(List<FileFormat> fileFormats) {
         this.fileFormats = fileFormats;
     }
-    public String getSubunits() {
-        return subunits;
+    public List<Item> getItems() {
+        return items;
     }
-    public void setSubunits(String subunits) {
-        this.subunits = subunits;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
     public List<TableInfo> getTablesInfo() {
         return tablesInfo;
@@ -148,5 +160,11 @@ public class ThemePublication {
     }
     public void setServices(List<Service> services) {
         this.services = services;
-    }     
+    }
+    public BoundingBox getBbox() {
+        return bbox;
+    }
+    public void setBbox(BoundingBox bbox) {
+        this.bbox = bbox;
+    }
 }
