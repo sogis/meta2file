@@ -118,19 +118,7 @@ public class MetaBean2FileConverter {
         } catch (SaxonApiException e) {
             e.printStackTrace();
             throw new MetaBean2FileException(e.getMessage());
-        }
-        
-        /*
-        YAMLFactory factory = new YAMLFactory();
-        factory.disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER);
-        factory.enable(YAMLGenerator.Feature.MINIMIZE_QUOTES);
-        factory.enable(YAMLGenerator.Feature.SPLIT_LINES);
-        List<Dataset> foo = new ArrayList<>();
-        foo.add(dataset);
-        ObjectMapper om = new ObjectMapper(factory);
-        om.enable(SerializationFeature.WRAP_ROOT_VALUE);
-        System.out.println(om.writeValueAsString(foo));
-        */        
+        }        
     }
     
     private static void initMapper() {
