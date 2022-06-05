@@ -7,7 +7,6 @@ plugins {
 apply plugin: 'maven-publish'
 
 group = 'io.github.sogis'
-
 def myArtifactId = "metabean2file"
 
 sourceCompatibility = 11
