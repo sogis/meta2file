@@ -33,7 +33,7 @@ jobs:
           path: lib/build/reports/tests/
 
       - name: Build app with Gradle
-        run: ./gradlew clean app:build 
+        run: ./gradlew clean app:build -i
 
       - uses: actions/upload-artifact@v2
         if: ${{ failure() }}
@@ -54,9 +54,9 @@ jobs:
           OSSRH_USERNAME: ${{secrets.OSSRH_USERNAME}}
           OSSRH_PASSWORD: ${{secrets.OSSRH_PASSWORD}} 
 
-      # - name: Release cli
-      #   run: |
-      #     ./gradlew -i app:jreleaserRelease
-      #   env:
-      #     JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   if: ${{ success() }} && ${{ (github.ref == 'refs/heads/master') && (github.event_name != 'pull_request') && !env.ACT }}
+      - name: Release cli
+        run: |
+          ./gradlew -i app:jreleaserRelease
+        env:
+          JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ success() && github.ref == 'refs/heads/main'}}
