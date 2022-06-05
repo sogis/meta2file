@@ -30,8 +30,8 @@ dependencies {
     testImplementation 'org.xmlunit:xmlunit-core:2.9.0'
     testImplementation 'org.xmlunit:xmlunit-matchers:2.9.0'
 
-    api 'org.slf4j:slf4j-api:1.7.36'
-    api 'org.slf4j:slf4j-simple:1.7.36'
+    //api 'org.slf4j:slf4j-api:1.7.36'
+    //api 'org.slf4j:slf4j-simple:1.7.36'
     
     api 'com.fasterxml.jackson.core:jackson-core:2.13.2'
     api 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'  

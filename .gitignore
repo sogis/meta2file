@@ -1,5 +1,8 @@
 lib/bin
 lib/build
+app/bin
+app/build
+.LCKbuild.gradle*
 
 .vscode
 

@@ -1,0 +1,26 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+
+    implementation project(':lib')
+}
+
+application {
+    mainClass = 'ch.so.agi.metabean2file.cli.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+run {
+    args = ["--dburl", "jdbc:postgresql://localhost:54321/edit", "--foo", "bar"]
+    //args = ["--help"]
+}
