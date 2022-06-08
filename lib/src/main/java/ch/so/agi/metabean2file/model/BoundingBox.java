@@ -4,13 +4,13 @@ import javax.validation.constraints.NotNull;
 
 public class BoundingBox {
     @NotNull
-    private double left = 7.34;
+    private double left = 2592550; //7.34;
     @NotNull
-    private double bottom = 47.074;
+    private double bottom = 1213700; // 47.074;
     @NotNull
-    private double right = 8.032;
+    private double right = 2644770; // 8.032;
     @NotNull
-    private double top = 47.503;
+    private double top = 1261340; // 47.503;
     
     public double getLeft() {
         return left;

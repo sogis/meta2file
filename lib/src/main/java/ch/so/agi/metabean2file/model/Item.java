@@ -11,7 +11,7 @@ public class Item {
     private String title;
     @NotNull
     private LocalDate lastPublishingDate;
-    @NotNull
+    // Darf Null sein, wird momentan bei Bedarf aus Geometrie abgeleitet.
     private BoundingBox bbox;
     // WKT-String, EPSG:2056
     @NotNull
