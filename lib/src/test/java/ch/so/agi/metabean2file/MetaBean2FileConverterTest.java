@@ -24,8 +24,8 @@ class MetaBean2FileConverterTest {
 
         Iterator<ThemePublication> it = list.iterator();
         
-        //File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         Path xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
 
         MetaBean2FileConverter.runBeans2Xml(xmlFilePath, it);
@@ -44,8 +44,8 @@ class MetaBean2FileConverterTest {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
         ThemePublication themePublication = themePublications.get(themePublicationName);
 
-        //File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         Path htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublication.getIdentifier()+".html");
 
         MetaBean2FileConverter.runBean2Html(htmlFilePath, themePublication);

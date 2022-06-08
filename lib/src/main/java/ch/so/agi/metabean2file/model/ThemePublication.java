@@ -16,11 +16,20 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ *  Themapubliaktion entspricht einer Zeile in der Datensuche 
+ */
 @JacksonXmlRootElement(localName = "themePublication")
 @JsonInclude(Include.NON_NULL)
 public class ThemePublication {
+    /**
+     *  Eindeutiger Identifier, z.B. ch.so.arp.waldreservate
+     */
     @NotNull
     private String identifier; 
+    /** 
+     * INTERLIS-Datenmodell
+     */
     @NotNull
     private String model;
     @NotNull
