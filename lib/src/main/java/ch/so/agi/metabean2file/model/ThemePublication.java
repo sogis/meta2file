@@ -32,17 +32,40 @@ public class ThemePublication {
      */
     @NotNull
     private String model;
+    /**
+     * Zeitpunkt der letzten Publikation der Daten.
+     * Den eigentlichen Nachführungsstand kennen wir nicht.
+     */
     @NotNull
     private LocalDate lastPublishingDate;
+    /**
+     * Zeitpunkt der vorletzten Publikation. Damit man 
+     * das "Gültigkeitsintervall" einer publizierten
+     * Themenpublikation angeben kann.
+     */
     @NotNull
     private LocalDate secondToLastPublishingDate = LocalDate.of(1848, 9, 12);
+    /**
+     * Sprechender Titel
+     */
     @NotNull
     private String title;
+    /**
+     * Kurze Beschreibung. In SIMI auf 1000 Zeichen limitiert. Vorgabe
+     * circa 500 Zeichen.
+     */
     @JacksonXmlCData
     @NotNull
     private String shortDescription;
+    /**
+     * Schlüsselwörter
+     */
     private String keywords;
+    /**
+     * Synonyme
+     */
     private String synonyms;
+    
     @NotNull
     private Office owner;
     @NotNull
