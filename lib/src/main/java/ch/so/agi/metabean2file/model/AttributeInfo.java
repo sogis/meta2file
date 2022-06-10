@@ -5,13 +5,28 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+/**
+ * Informationen zu einzelnen Attributen einer Tabelle.
+ */
 @JsonInclude(Include.NON_NULL)
 public class AttributeInfo {
+    /**
+     * Name des Attributes in der PostgreSQL-Datenbank
+     */
     @NotNull
     private String name;
+    /**
+     * Beschreibung des Attributes.
+     */
     private String shortDescription;
+    /**
+     * Datentyp
+     */
     @NotNull
     private String datatype;
+    /**
+     * Ist das Attribut zwingend?
+     */
     @NotNull
     private boolean mandatory;
     

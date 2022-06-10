@@ -7,10 +7,19 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
 public class FileFormat {
+    /**
+     * Sprechender ("schöner") Name
+     */
     @NotNull
     private String name;
+    /**
+     * Technischer Name des Formats.
+     */
     @NotNull
     private String mimetype;
+    /**
+     * Abkürzung des Formats.
+     */
     @NotNull
     private String abbrevation;
     

@@ -10,15 +10,30 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+/**
+ * Informationen zu einer einzelnen Tabelle
+ */
 @JsonInclude(Include.NON_NULL)
 public class TableInfo {
+    /**
+     * Name der Tabelle in der PostgreSQL-Datenbank
+     */
     @NotNull
     private String sqlName;
+    /**
+     * Sprechender ("schöner") Name der Tabelle
+     */
     @NotNull
     private String title;
+    /**
+     * Kurze Beschreibung
+     */
     @JacksonXmlCData
     @NotNull
     private String shortDescription;
+    /**
+     * Liste sämtlicher Attribut-Infos
+     */
     @JacksonXmlElementWrapper(localName = "attributesInfo")
     @JacksonXmlProperty(localName = "attributeInfo")
     private List<AttributeInfo> attributesInfo;

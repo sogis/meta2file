@@ -17,7 +17,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 /**
- *  Themapubliaktion entspricht einer Zeile in der Datensuche 
+ *  Eine Themenpubliaktion entspricht einer Zeile in der Datensuche 
  */
 @JacksonXmlRootElement(localName = "themePublication")
 @JsonInclude(Include.NON_NULL)
@@ -35,6 +35,7 @@ public class ThemePublication {
     /**
      * Zeitpunkt der letzten Publikation der Daten.
      * Den eigentlichen Nachführungsstand kennen wir nicht.
+     * Aggregiert aus den den Nachführungsdaten der Items.
      */
     @NotNull
     private LocalDate lastPublishingDate;
@@ -42,6 +43,7 @@ public class ThemePublication {
      * Zeitpunkt der vorletzten Publikation. Damit man 
      * das "Gültigkeitsintervall" einer publizierten
      * Themenpublikation angeben kann.
+     * Aggregiert aus den den Nachführungsdaten der Items.
      */
     @NotNull
     private LocalDate secondToLastPublishingDate = LocalDate.of(1848, 9, 12);
@@ -65,30 +67,66 @@ public class ThemePublication {
      * Synonyme
      */
     private String synonyms;
-    
+    /**
+     * Datenherr / zuständige Stelle
+     */
     @NotNull
     private Office owner;
+    /**
+     * Verantwortliche technische Stelle
+     */
     @NotNull
     private Office servicer; 
+    /**
+     * Link zu weiteren Informationen
+     */
     private URI furtherInformation;
+    /**
+     * Lizenzbestimmungen und/oder Nutzungsbestimmungen
+     */
     @NotNull
     private URI licence;
+    /**
+     * Basis-Url der Datenablage, z.B. https://data.geo.so.ch/
+     * Die komplette Url der Themenpublikation ergibt sich
+     * automatisch aus dem Identifier.
+     */
     @NotNull
     private URI baseUrl;
+    /**
+     * Angebotene Datenformate
+     */
     @JacksonXmlElementWrapper(localName = "fileFormats")
     @JacksonXmlProperty(localName = "fileFormat")
     @NotNull
     private List<FileFormat> fileFormats; 
+    /**
+     * Liste der vorhandenen Daten-Einheiten in 
+     * der Themenpublikation. Jede Orthofoto-Kachel
+     * entspricht einem Item. Für viele Datenthemen
+     * gibt es nur ein Item (=Kanton).
+     */
     @NotNull
     @JacksonXmlElementWrapper(localName = "items")
     @JacksonXmlProperty(localName = "item")
     private List<Item> items;
+    /**
+     * Informationen zu den Tabellen, inkl. die Beschreibung
+     * der Attribute.
+     */
     @JacksonXmlElementWrapper(localName = "tablesInfo")
     @JacksonXmlProperty(localName = "tableInfo")
     private List<TableInfo> tablesInfo; 
+    /**
+     * Informationen zu den Diensten, in welchen dieses
+     * Thema in irgendeiner Form vorkommt.
+     */
     @JacksonXmlElementWrapper(localName = "services")
     @JacksonXmlProperty(localName = "service")
     private List<Service> services;
+    /** 
+     * Boundingbox der Themenpublikation
+     */
     private BoundingBox bbox;
     
     public String getIdentifier() {

@@ -8,13 +8,26 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+/**
+ * Informationen zu einem Service, in welchem Daten
+ * publiziert sind.
+ */
 public class Service {
+    /**
+     * Endpunkt, z.B. WMS-GetCapabilities
+     */
     @NotNull
     private URI endpoint;
+    /**
+     * Layernamen in welchen Daten dieses Themas publiziert sind.
+     */
     @JacksonXmlElementWrapper(localName = "layerNames")
     @JacksonXmlProperty(localName = "layerName")
     @NotNull
     private List<String> layerIdentifiers;
+    /**
+     * Service-Typ
+     */
     @NotNull
     private ServiceType type;
     public URI getEndpoint() {

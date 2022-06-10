@@ -7,17 +7,38 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+/**
+ * Informationen zu einem Amt
+ */
 @JsonInclude(Include.NON_NULL)
 public class Office {
+    /**
+     * Name des Amts.
+     */
     @NotNull
     private String agencyName;
+    /**
+     * Abkürzung, z.B. AfU.
+     */
     @NotNull
     private String abbrevation;
+    /**
+     * Abteilung resp. Untereinheit des Amts.
+     */
     private String division;
+    /**
+     * Webseite
+     */
     @NotNull
     private URI officeAtWeb;
+    /**
+     * E-Mail des Amts oder der Unterheinheit (?)
+     */
     @NotNull
     private URI email;
+    /**
+     * Telefonnummer des Amts oder der Unterheinheit (?)
+     */
     private String phone;
     
     public String getAgencyName() {
