@@ -151,8 +151,8 @@
                 a {
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    color: #c62828;
-                    text-decoration: underline !important;
+                    color: #c62828; 
+                    text-decoration: none !important;
                 }
 
                 a:hover {
