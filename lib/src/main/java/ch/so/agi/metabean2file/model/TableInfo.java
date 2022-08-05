@@ -28,7 +28,7 @@ public class TableInfo {
     /**
      * Kurze Beschreibung
      */
-    @JacksonXmlCData
+    //@JacksonXmlCData
     @NotNull
     private String shortDescription;
     /**

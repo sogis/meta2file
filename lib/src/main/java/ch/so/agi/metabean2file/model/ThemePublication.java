@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -56,7 +57,8 @@ public class ThemePublication {
      * Kurze Beschreibung. In SIMI auf 1000 Zeichen limitiert. Vorgabe
      * circa 500 Zeichen.
      */
-    @JacksonXmlCData
+    //@JacksonXmlCData
+    @JsonRawValue
     @NotNull
     private String shortDescription;
     /**
