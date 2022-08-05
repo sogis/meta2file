@@ -31,12 +31,107 @@
   </xsl:template>
 
   <xsl:template match="shortDescription">
-    <xsl:apply-templates/>
+    <!--Dummy Element hinzufügen, damit der Text wohlgeformt ist.-->
+    <xsl:variable name="shortDescriptionText">&lt;span&gt;<xsl:value-of select="."/>&lt;/span&gt;</xsl:variable> 
+    <!--<xsl:message><xsl:value-of disable-output-escaping="yes" select="$shortDescriptionText"/></xsl:message>-->
+  <!--<xsl:value-of disable-output-escaping="yes" select="."/>-->
+          <!--<xsl:element name="{local-name()}">-->
+            <xsl:apply-templates select="parse-xml($shortDescriptionText)/node()"/>
+        <!--</xsl:element>-->
+
+    <!--<xsl:apply-templates/>-->
+
+<fo:block text-align="justify" font-size="15pt">
+<fo:list-block provisional-distance-between-starts="10mm" end-indent="10mm" start-indent="10mm">
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()">
+<fo:block>
+&#x02022;
+</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+Bodtext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()">
+<fo:block>
+&#x02022;
+</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()">
+<fo:block/>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:list-block provisional-distance-between-starts="10mm">
+<fo:list-item>
+<fo:list-item-label end-indent="label-end()">
+<fo:block>
+&#x02022;
+</fo:block>
+</fo:list-item-label>
+<fo:list-item-body start-indent="body-start()">
+<fo:block>
+Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
+</fo:block>
+</fo:list-item-body>
+</fo:list-item>
+</fo:list-block>
+</fo:list-item-body>
+</fo:list-item>
+</fo:list-block>
+</fo:block>
+
+
+
   </xsl:template>
 
   <xsl:template match="b">
-    <fo:inline font-weight="700"><xsl:apply-templates/></fo:inline>
+    <fo:inline font-weight="700">
+    <xsl:apply-templates/>
+    </fo:inline>
   </xsl:template>
+
+  <xsl:template match="a">
+        <fo:basic-link text-decoration="none" color="rgb(198,40,40)"><xsl:attribute name="external-destination"><xsl:value-of select="@href"/></xsl:attribute><xsl:value-of select="."/></fo:basic-link>
+  </xsl:template>
+
+  <xsl:template match="br">
+          <xsl:value-of select="'&#x2028;'"/>
+  </xsl:template>
+
+  <xsl:template match="ul">
+Hallo Stefan
+    <fo:list-block padding="4pt" margin-left="10mm" margin-top="4mm">
+
+                <fo:list-item margin-left="13mm"  margin-top="8mm" margin-right="5mm" font-family="Times, 'Times New Roman', serif" font-size="15pt">
+                    <fo:list-item-label end-indent="label-end()">
+                        <fo:block>&#x02022;</fo:block>
+                    </fo:list-item-label>
+                    <fo:list-item-body start-indent="body-start()">
+                        <fo:block margin-left="10mm">
+                            Hallo Stefan
+                        </fo:block>
+                    </fo:list-item-body>
+
+                </fo:list-item>
+
+    </fo:list-block>
+
+
+ 
+  </xsl:template>
+
+
 
   <xsl:template name="insertHeaderAndFooter">
     <fo:static-content flow-name="xsl-region-before">
