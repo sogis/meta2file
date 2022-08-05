@@ -10,7 +10,7 @@ Die XSL-Transformation kann ohne zusätzlichen Code in der Konsole getestet resp
 java -jar /Users/stefan/apps/SaxonHE10-6J/saxon-he-10.6.jar -s:ch.so.agi.av_gb_administrative_einteilung.xml -xsl:xml2html.xsl -o:fubar.html
 ```
 
-Die Quell-XML-Datei muss aber allenfalls aus einem Test (`runBean2Html`) hergestellt werden, da die XML-Datei nur ein internes Zwischenprodukt ist.
+Die Quell-XML-Datei muss aber allenfalls aus einem Test (`bean2html_Ok`) hergestellt werden und dabei in einen persistenten Ordner kopiert werden, da die XML-Datei nur ein internes Zwischenprodukt ist. 
 
 Einfacher, aber eventuell schwieriger zu debuggen:
 
