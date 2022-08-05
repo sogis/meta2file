@@ -42,10 +42,10 @@ public class MetaBean2FileConverter {
      * Converts a collection of theme publications to a xml file.
      * 
      * @param xmlFilePath
-     * @param datasetsIterator
+     * @param themePublicationsIterator
      * @throws MetaBean2FileException
      */
-    public static void runBeans2Xml(Path xmlFilePath, Iterator<ThemePublication> datasetsIterator) throws MetaBean2FileException {
+    public static void runBeans2Xml(Path xmlFilePath, Iterator<ThemePublication> themePublicationsIterator) throws MetaBean2FileException {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
@@ -57,8 +57,8 @@ public class MetaBean2FileConverter {
             var xsw = xof.createXMLStreamWriter(new FileWriter(xmlFilePath.toFile().getAbsolutePath()));
             xsw.writeStartDocument("utf-8", "1.0");
             xsw.writeStartElement("themePublications");
-            while(datasetsIterator.hasNext()) {
-                var themePub = datasetsIterator.next();
+            while(themePublicationsIterator.hasNext()) {
+                var themePub = themePublicationsIterator.next();
                 xmlMapper.writeValue(xsw, themePub);
             }
             xsw.writeEndElement();
@@ -77,22 +77,22 @@ public class MetaBean2FileConverter {
      * Converts a single theme publication to a html file.
      * 
      * @param htmlFilePath
-     * @param dataset
+     * @param themePublications
      * @throws MetaBean2FileException
      */
-    public static void runBean2Html(Path htmlFilePath, ThemePublication dataset) throws MetaBean2FileException {
+    public static void runBean2Html(Path htmlFilePath, ThemePublication themePublications) throws MetaBean2FileException {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
         
         String xmlResult;
         try {
-            xmlResult = xmlMapper.writeValueAsString(dataset);
+            xmlResult = xmlMapper.writeValueAsString(themePublications);
             
             var tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
-            //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
-            var xmlFile = Paths.get(tmpFolder.getAbsolutePath(), dataset.getIdentifier()+".xml").toFile();
-            xmlMapper.writeValue(xmlFile, dataset);
+            //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+            var xmlFile = Paths.get(tmpFolder.getAbsolutePath(), themePublications.getIdentifier()+".xml").toFile();
+            xmlMapper.writeValue(xmlFile, themePublications);
 
             var xslFile = Paths.get(tmpFolder.getAbsolutePath(), XSL2HTML_FILE).toFile();
             Util.loadFile(XSL2HTML_FILE, xslFile);

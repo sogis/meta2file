@@ -132,6 +132,34 @@ public class TestUtils {
                 service.setLayerIdentifiers(layers);
                 services.add(service);
             }
+            {
+                var service = new Service();
+                try {
+                    service.setEndpoint(new URI("https://geo.so.ch/api/wms?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=1.0.0"));
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                service.setType(ServiceType.WFS);
+                var layers = new ArrayList<String>();
+                layers.add("ch.so.awjf.forstreviere.forstkreis");
+                service.setLayerIdentifiers(layers);
+                services.add(service);
+            }
+            {
+                var service = new Service();
+                try {
+                    service.setEndpoint(new URI("https://geo.so.ch/api/data/v1/api"));
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                service.setType(ServiceType.DATA);
+                var layers = new ArrayList<String>();
+                layers.add("ch.so.awjf.forstreviere.forstkreis.data");
+                layers.add("ch.so.awjf.forstreviere.forstreviere");
+                layers.add("ch.so.awjf.forstreviere.fubar");
+                service.setLayerIdentifiers(layers);
+                services.add(service);
+            }
             themePublication.setServices(services);
             themePublications.put(themePublication.getIdentifier(), themePublication);
         }

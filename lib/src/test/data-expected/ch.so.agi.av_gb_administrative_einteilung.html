@@ -127,13 +127,28 @@
                     margin-bottom: 15px;
                 }
 
+                a.black-link {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: #333333; 
+                    text-decoration: none !important;
+                }
 
+                a.black-link:hover {
+                    color: #333333;
+                    text-decoration: underline !important;
+                }  
+
+                a.black-link:visited {
+                    color: #333333; 
+                    text-decoration: underline !important;
+                }  
 
                 a {
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    color: #c62828; 
-                    text-decoration: none !important;
+                    color: #c62828;
+                    text-decoration: underline !important;
                 }
 
                 a:hover {
@@ -160,7 +175,7 @@
                 }
 
                 tr {
-                    line-height: 1.3;
+                    line-height: 1.5;
                 }
 
                 tr:first-child {
@@ -231,7 +246,7 @@
          <h2>Datum der letzten Publikation</h2>
          <p>05. April 2022</p>
          <h2>Datenmodell</h2>
-         <p><a target="_blank" href="https://geo.so.ch/models/ilimodels.xml?q=SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822">SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822</a></p>
+         <p><a target="_blank" href="https://geo.so.ch/modelfinder/?expanded=true&amp;query=SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822">SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822</a></p>
          <h2>Kontakt (fachlich)</h2>
          <p>Amt für Umwelt<br>Ich bin die Abteilung<br>
             Telefon 032 627 12 34<br><a href="mailto:afu@bd.so.ch">afu@bd.so.ch</a><br><a target="_blank" href="https://afu.so.ch">afu.so.ch</a></p>
@@ -240,21 +255,76 @@
             Telefon 032 627 75 96<br><a href="mailto:agi@bd.so.ch">agi@bd.so.ch</a><br><a target="_blank" href="https://agi.so.ch">agi.so.ch</a></p>
          <h2>Dienste</h2>
          <p class="datenebene">
-            Folgende Layer des Datensatzes stehen als Webdienst zur Verfügung:
+            Tabellen dieses Themas sind in folgenden Diensten als Karten- oder Datenlayer publiziert:
             
-            <h3>WMS</h3><a target="_blank" href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0">https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0</a><ul>
-               <li><a target="_blank" href="https://geo.so.ch/map/?bl=hintergrundkarte_sw&amp;l=ch.so.awjf.forstreviere.forstkreis">ch.so.awjf.forstreviere.forstkreis</a></li>
-               <li><a target="_blank" href="https://geo.so.ch/map/?bl=hintergrundkarte_sw&amp;l=ch.so.awjf.forstreviere.forstreviere">ch.so.awjf.forstreviere.forstreviere</a></li>
-            </ul>
-         </p>
+            
+            <table>
+               <thead>
+                  <tr>
+                     <th>Karten-/Datenlayer</th>
+                     <th><a href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0" target="_blank">WMS</a></th>
+                     <th><a href="https://geo.so.ch/api/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetCapabilities" target="_blank">WFS</a></th>
+                     <th><a href="https://geo.so.ch/api/data/v1/api/" target="_blank">Dataservice</a></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ch.so.awjf.forstreviere.forstkreis</td>
+                     <!--https://icons.getbootstrap.com/-->
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><a class="black-link" href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere.forstkreis" target="_blank">
+                              <rect width="16" height="16" style="fill:white;stroke:none"/>
+                              <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                              <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></a></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                           <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                  </tr>
+                  <tr>
+                     <td>ch.so.awjf.forstreviere.forstkreis.data</td>
+                     <!--https://icons.getbootstrap.com/-->
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                  </tr>
+                  <tr>
+                     <td>ch.so.awjf.forstreviere.forstreviere</td>
+                     <!--https://icons.getbootstrap.com/-->
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><a class="black-link" href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere.forstreviere" target="_blank">
+                              <rect width="16" height="16" style="fill:white;stroke:none"/>
+                              <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                              <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></a></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                  </tr>
+                  <tr>
+                     <td>ch.so.awjf.forstreviere.fubar</td>
+                     <!--https://icons.getbootstrap.com/-->
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                  </tr>
+               </tbody>
+            </table>
+            
+            Geobasidaten nach Bundesrecht sind ebenfalls auf <a href="https://geodienste.ch">geodienste.ch</a> publiziert.
+            </p>
          <h2>Inhalt</h2>
          <h3>grundbuchkreise_grundbuchkreis</h3>
          <p class="datenebene">Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise</p>
          <table>
             <tr style="border-bottom: 1px solid #eee;">
-               <td style="font-style:italic;">
+               <th>
                   Name
-                  </td>
+                  </th>
                <th>
                   Beschreibung
                   </th>

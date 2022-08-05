@@ -20,39 +20,39 @@ class MetaBean2FileConverterTest {
     @Test
     public void beans2xml_Ok() throws Exception {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
-        List<ThemePublication> list = new ArrayList<ThemePublication>(themePublications.values());
+        var list = new ArrayList<ThemePublication>(themePublications.values());
 
-        Iterator<ThemePublication> it = list.iterator();
+        var it = list.iterator();
         
-        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
-        Path xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
+        var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        var xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
 
         MetaBean2FileConverter.runBeans2Xml(xmlFilePath, it);
-        String xmlContent = new String(Files.readAllBytes(Paths.get(xmlFilePath.toFile().getAbsolutePath())));
+        var xmlContent = new String(Files.readAllBytes(Paths.get(xmlFilePath.toFile().getAbsolutePath())));
         
-        File controlFile = new File("src/test/data-expected/themepublications.xml");
-        String controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
+        var controlFile = new File("src/test/data-expected/themepublications.xml");
+        var controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
       
         assertEquals(controlContent, xmlContent);
     }
     
     @Test
     public void bean2html_Ok() throws Exception {
-        String themePublicationName = "ch.so.agi.av_gb_administrative_einteilung";
+        var themePublicationName = "ch.so.agi.av_gb_administrative_einteilung";
         
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
-        ThemePublication themePublication = themePublications.get(themePublicationName);
+        var themePublication = themePublications.get(themePublicationName);
 
-        File tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        //File tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
-        Path htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublication.getIdentifier()+".html");
+        var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        var htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublication.getIdentifier()+".html");
 
         MetaBean2FileConverter.runBean2Html(htmlFilePath, themePublication);
-        String htmlContent = new String(Files.readAllBytes(Paths.get(htmlFilePath.toFile().getAbsolutePath())));
+        var htmlContent = new String(Files.readAllBytes(Paths.get(htmlFilePath.toFile().getAbsolutePath())));
         
-        File controlFile = new File("src/test/data-expected/"+themePublicationName+".html");
-        String controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
+        var controlFile = new File("src/test/data-expected/"+themePublicationName+".html");
+        var controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
       
         assertEquals(controlContent, htmlContent);
     }
