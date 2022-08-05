@@ -26,9 +26,10 @@ public class TableInfo {
     @NotNull
     private String title;
     /**
-     * Kurze Beschreibung
+     * Kurze Beschreibung. Der Text wird in einem CDATA-Abschnitt serialisiert, darf aber 
+     * nur valide XHTML-Tags enthalten. 
      */
-    //@JacksonXmlCData
+    @JacksonXmlCData
     @NotNull
     private String shortDescription;
     /**

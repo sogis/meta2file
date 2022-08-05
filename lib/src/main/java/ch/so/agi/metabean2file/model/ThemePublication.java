@@ -57,8 +57,7 @@ public class ThemePublication {
      * Kurze Beschreibung. In SIMI auf 1000 Zeichen limitiert. Vorgabe
      * circa 500 Zeichen.
      */
-    //@JacksonXmlCData
-    @JsonRawValue
+    @JacksonXmlCData
     @NotNull
     private String shortDescription;
     /**

@@ -54,15 +54,12 @@ public class MetaBean2FileConverter {
         xmlMapper.disable(SerializationFeature.INDENT_OUTPUT);
 
         var xof = XMLOutputFactory.newFactory();
-        xof.setProperty(XMLOutputFactory2.P_TEXT_ESCAPER, new CustomXmlEscapingWriterFactory());
-
         try {
             var xsw = xof.createXMLStreamWriter(new FileWriter(xmlFilePath.toFile().getAbsolutePath()));
             xsw.writeStartDocument("utf-8", "1.0");
             xsw.writeStartElement("themePublications");
             while(themePublicationsIterator.hasNext()) {
                 var themePub = themePublicationsIterator.next();
-                System.out.println(themePub.getShortDescription());
                 xmlMapper.writeValue(xsw, themePub);
             }
             xsw.writeEndElement();
@@ -88,18 +85,13 @@ public class MetaBean2FileConverter {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
-        
-        // Funktioniert nicht mit Streaming-Ansatz. Bei diesem muss XMLOutputFactory analog
-        // konfiguriert werden.
-//        xmlMapper.getFactory().getXMLOutputFactory().setProperty(XMLOutputFactory2.P_TEXT_ESCAPER, 
-//                new CustomXmlEscapingWriterFactory());
-        
+                
         String xmlResult;
         try {
             xmlResult = xmlMapper.writeValueAsString(themePublications);
             
-            //var tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
-            var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+            var tmpFolder = Files.createTempDirectory("metabean2file-").toFile();
+            //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
             var xmlFile = Paths.get(tmpFolder.getAbsolutePath(), themePublications.getIdentifier()+".xml").toFile();
             xmlMapper.writeValue(xmlFile, themePublications);
 
