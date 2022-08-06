@@ -25,5 +25,5 @@ Alpha stuff.
 ```
 java -jar /Users/stefan/apps/SaxonHE10-6J/saxon-he-10.6.jar -s:ch.so.agi.av_gb_administrative_einteilung.xml -xsl:xml2pdf.xsl -o:ch.so.agi.av_gb_administrative_einteilung.fo
 
-/Users/stefan/apps/fop-2.7/fop/fop -fo ch.so.agi.av_gb_administrative_einteilung.fo -pdf fubar.pdf
+/Users/stefan/apps/fop-2.7/fop/fop -fo ch.so.agi.av_gb_administrative_einteilung.fo -pdf fubar.pdf -c fop.xconf
 ```

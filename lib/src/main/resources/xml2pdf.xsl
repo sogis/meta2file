@@ -3,7 +3,7 @@
   <xsl:output method="xml" indent="yes"/>
   <xsl:decimal-format name="swiss" decimal-separator="." grouping-separator="'"/>
     <xsl:template match="/themePublication">
-    <fo:root language="de" font-family="Cadastra" font-weight="400" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en">
+    <fo:root language="de" font-family="Frutiger" font-weight="400" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en">
       <fo:layout-master-set>
         <fo:simple-page-master master-name="mainPage" page-height="297mm" page-width="210mm" margin-top="10mm" margin-bottom="12mm" margin-left="18mm" margin-right="18mm">
           <fo:region-body margin-top="30mm" margin-bottom="5mm" background-color="transparent"/>
@@ -15,7 +15,7 @@
         <xsl:call-template name="insertHeaderAndFooter"/>
         <fo:flow flow-name="xsl-region-body">
           <fo:block-container height="28mm" background-color="transparent">
-            <fo:block line-height="21pt" linefeed-treatment="preserve" font-weight="400" font-size="18pt">
+            <fo:block  font-weight="400" font-size="12pt">
 
                 Beschreibung:
                 <!--<xsl:value-of disable-output-escaping="yes" select="shortDescription"/>-->
@@ -41,54 +41,21 @@
 
     <!--<xsl:apply-templates/>-->
 
-<fo:block text-align="justify" font-size="15pt">
-<fo:list-block provisional-distance-between-starts="10mm" end-indent="10mm" start-indent="10mm">
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()">
-<fo:block>
-&#x02022;
-</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-Bodtext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()">
-<fo:block>
-&#x02022;
-</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()">
-<fo:block/>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:list-block provisional-distance-between-starts="10mm">
-<fo:list-item>
-<fo:list-item-label end-indent="label-end()">
-<fo:block>
-&#x02022;
-</fo:block>
-</fo:list-item-label>
-<fo:list-item-body start-indent="body-start()">
-<fo:block>
-Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
-</fo:block>
-</fo:list-item-body>
-</fo:list-item>
-</fo:list-block>
-</fo:list-item-body>
-</fo:list-item>
-</fo:list-block>
+<fo:block text-align="justify" font-size="12pt">
+	<fo:list-block>
+		<fo:list-item>
+			<fo:list-item-label >
+				<fo:block>
+          &#x02022;
+        </fo:block>
+			</fo:list-item-label>
+			<fo:list-item-body start-indent="5mm">
+				<fo:block>
+          Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext BodytextBodytext Bodytext Bodytext Bodytext BodytextBodytext Bodytext Bodytext Bodytext BodytextBodytext Bodytext Bodytext Bodytext Bodytext
+        </fo:block>
+			</fo:list-item-body>
+		</fo:list-item>
+	</fo:list-block>
 </fo:block>
 
 
@@ -110,14 +77,35 @@ Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext Bodytext
   </xsl:template>
 
   <xsl:template match="ul">
-Hallo Stefan
+<fo:block margin="0mm" padding="0mm" padding-after="0mm" text-align="justify" font-size="12pt" background-color="green">
+<fo:block margin="0mm" padding="0mm" background-color="yellow" linefeed-treatment="ignore">
+Hallo Welt.
+</fo:block>
+    <fo:list-block margin="0mm" padding="0mm" background-color="blue">
+      <xsl:for-each select="li">
+        <fo:list-item>
+          <fo:list-item-label >
+            <fo:block>&#x02022;</fo:block>
+          </fo:list-item-label>
+          <fo:list-item-body start-indent="5mm">
+            <fo:block><xsl:value-of select="."/></fo:block>
+          </fo:list-item-body>
+        </fo:list-item>
+      </xsl:for-each>
+    </fo:list-block>
+
+</fo:block>
+
+
+
+
     <fo:list-block padding="4pt" margin-left="10mm" margin-top="4mm">
 
-                <fo:list-item margin-left="13mm"  margin-top="8mm" margin-right="5mm" font-family="Times, 'Times New Roman', serif" font-size="15pt">
-                    <fo:list-item-label end-indent="label-end()">
+                <fo:list-item margin-left="13mm"  margin-top="8mm" margin-right="5mm" font-size="15pt">
+                    <fo:list-item-label >
                         <fo:block>&#x02022;</fo:block>
                     </fo:list-item-label>
-                    <fo:list-item-body start-indent="body-start()">
+                    <fo:list-item-body >
                         <fo:block margin-left="10mm">
                             Hallo Stefan
                         </fo:block>
