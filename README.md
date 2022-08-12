@@ -2,6 +2,25 @@
 
 ## Develop
 
+### Packages and jar's
+
+Die Artefakte werden als executable fat-jar auf github deployt (modul app). Die Teilfunktionalität für das Erzeugen der HTML-Datenbeschreibung (modul lib) als normales jar auf dem Maven-Repo XXX.
+
+### Package-Struktur
+
+Der im Ganzen Repo gleichbleibende Präfix ch.so.agi.metabean2file wird folgend ausgelassen.
+
+* **lib**
+  * **main**: Enthält das Java-Interface, über welches die "Lib-Nutzer" app (in diesem Repo) und SIMI die Funktionen anstossen.  
+  * **in.json**: Liest die erforderlichen Metadaten einer Themenbereitstellung aus einem Json-Objektstring in die Java-Beans des model ein.  
+    * **in.json.fromSimi**:  Liest die Metadaten von 1-n Themenbereitstellungen aus SIMI ein und wandelt sie in den Json-Objektstring um.
+  * **model**: Java-Beans Domain-Model der Metainformationen. Wird in allen packages verwendet.
+  * **out.html**: Erzeugt aus den Beans die HTML-Datenbeschreibung. Hinweis: Eventuell folgt später out.pdf für die Erzeugung des pdf (Alternativ: out.text.html und out.text.pdf).   
+* **app**
+  * **main**: Eingangsklasse und CLI-parsing der Kommandozeilen-App.
+  * **out.metaapp**: Generiert aus den Beans die XML-Konfiguration für die Applikation "Datensuche".
+  * **out.geocat**: Generiert aus den Beans die ISO-CH XML-Dateien für geocat (Eine Datei pro Themen-Bereitstellung).
+
 ### XSLT
 
 Die XSL-Transformation kann ohne zusätzlichen Code in der Konsole getestet resp. entwickelt werden. Es muss lediglich Saxon-HE vorliegen (https://www.saxonica.com/html/download/java.html). Siehe _build.gradle_ betreffend der verwendeten Version.
