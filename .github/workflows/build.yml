@@ -3,7 +3,7 @@ name: metabean2file CI
 on: 
   push:
     paths-ignore:
-      - '**/README.md'
+      - '**.md'
   workflow_dispatch:
 
 jobs:
