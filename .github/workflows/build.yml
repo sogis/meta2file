@@ -2,6 +2,8 @@ name: metabean2file CI
 
 on: 
   push:
+    paths-ignore:
+      - '**/README.md'
   workflow_dispatch:
 
 jobs:
