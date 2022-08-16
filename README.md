@@ -1,25 +1,25 @@
-# metabean2file
+# meta2file
 
 ## Develop
 
 ### Packages and jars
 
-Die Artefakte werden als executable fat-jar auf GitHub deployt (Modul _app_). Die Teilfunktionalität für das Erzeugen der HTML-Datenbeschreibung (Module _lib_) als normales jar auf dem Maven-Repo "Maven Central" (https://mvnrepository.com/artifact/io.github.sogis/metabean2file/).
+Die Artefakte werden als executable fat-jar auf GitHub deployt (Modul _app_). Die Teilfunktionalität für das Erzeugen der HTML-Datenbeschreibung (Module _lib_) als normales jar auf dem Maven-Repo "Maven Central" (https://mvnrepository.com/artifact/io.github.sogis/meta2file/).
 
 ### Package-Struktur
 
-Der im Ganzen Repo gleichbleibende Präfix `ch.so.agi.metabean2file` wird folgend ausgelassen.
+Der im Ganzen Repo gleichbleibende Präfix **`ch.so.agi.meta2file`** wird folgend als BASE abgekürzt.
 
 * `lib`
-  * `main`: Enthält das Java-Interface, über welches die "Lib-Nutzer" app (in diesem Repo) und SIMI die Funktionen anstossen.  
-  * `in.json`: Liest die erforderlichen Metadaten einer Themenbereitstellung aus einem Json-Objektstring in die Java-Beans des model ein.  
-    * `in.json.fromSimi`:  Liest die Metadaten von 1-n Themenbereitstellungen aus SIMI ein und wandelt sie in den Json-Objektstring um.
-  * `model`: Java-Beans Domain-Model der Metainformationen. Wird in allen packages verwendet.
-  * `out.html`: Erzeugt aus den Beans die HTML-Datenbeschreibung. Hinweis: Eventuell folgt später out.pdf für die Erzeugung des pdf (Alternativ: out.text.html und out.text.pdf).   
+  * `BASE.libmain`: Enthält das Java-Interface, über welches die "Lib-Nutzer" app (in diesem Repo) und SIMI die Funktionen anstossen.  
+  * `BASE.in.json`: Liest die erforderlichen Metadaten einer Themenbereitstellung aus einem Json-Objektstring in die Java-Beans des model ein.  
+    * `BASE.in.json.from_meta`:  Liest die Metadaten von 1-n Themenbereitstellungen aus SIMI ein und wandelt sie in den Json-Objektstring um.
+  * `BASE.model`: Java-Beans Domain-Model der Metainformationen. Wird in allen packages verwendet.
+  * `BASE.out.html`: Erzeugt aus den Beans die HTML-Datenbeschreibung. Hinweis: Eventuell folgt später out.pdf für die Erzeugung des pdf (Alternativ: out.text.html und out.text.pdf).   
 * `app`
-  * `main`: Eingangsklasse und CLI-parsing der Kommandozeilen-App.
-  * `out.metaapp`: Generiert aus den Beans die XML-Konfiguration für die Applikation "Datensuche".
-  * `out.geocat`: Generiert aus den Beans die ISO-CH XML-Dateien für geocat (Eine Datei pro Themen-Bereitstellung).
+  * `BASE.appmain`: Eingangsklasse und CLI-parsing der Kommandozeilen-App.
+  * `BASE.out.metaapp`: Generiert aus den Beans die XML-Konfiguration für die Applikation "Datensuche".
+  * `BASE.out.geocat`: Generiert aus den Beans die ISO-CH XML-Dateien für geocat (Eine Datei pro Themen-Bereitstellung).
 
 ### XSLT
 
