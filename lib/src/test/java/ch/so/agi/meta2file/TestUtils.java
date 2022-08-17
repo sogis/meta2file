@@ -11,10 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 import java.time.LocalDate;
 
 import ch.so.agi.meta2file.except.Meta2FileException;
@@ -42,7 +39,7 @@ public class TestUtils {
             themePublication.setLastPublishingDate(LocalDate.parse("2022-04-05"));
             themePublication.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
             themePublication.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
-            themePublication.setKeywords("AGI,Grundbuch,AS,AV,Amtliche Vermessung,Vermessung,Einteilung");
+            themePublication.setKeywordsList(Arrays.asList(new String[]{"AGI","Grundbuch","AS","AV","Amtliche Vermessung","Vermessung","Einteilung"}));
             
             Office owner = new Office();
             owner.setAgencyName("Amt für Umwelt");
@@ -182,7 +179,7 @@ public class TestUtils {
             themePublication.setLastPublishingDate(LocalDate.parse("2022-04-05"));
             themePublication.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
             themePublication.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
-            themePublication.setKeywords("AGI,Grundbuch,AS,AV,Amtliche Vermessung,Vermessung,Einteilung");
+            themePublication.setKeywordsList(Arrays.asList(new String[]{"AGI","Grundbuch","AS","AV","Amtliche Vermessung","Vermessung","Einteilung"}));
             
             Office owner = new Office();
             owner.setAgencyName("Amt für Umwelt");

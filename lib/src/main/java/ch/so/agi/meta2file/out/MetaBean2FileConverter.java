@@ -121,6 +121,8 @@ public class MetaBean2FileConverter {
 
     /**
      * Transforms the bean to the html data description.
+     *
+     * Todo: Merge with original runBean2Html(..) method while keeping new signature.
      * @param themePub The ThemePublication bean.
      * @return The rendered html (As simple String).
      */

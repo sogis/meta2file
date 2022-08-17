@@ -8,14 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Meta2HtmlTest {
 
-    //@Test
+    @Test
     public void vecSunny_OK(){
         String json = JsonFileUtil.getFileContent(JsonFileUtil.FileKeys.VEC_SUNNY);
 
 
         String html = Meta2Html.renderDataDescription(json);
 
-        TestUtils.assertContains(html, new String[]{"fuu"});
+        TestUtils.assertContains(html, new String[]{"https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-denkmalpflege-und-archaeologie"});
     }
-
 }

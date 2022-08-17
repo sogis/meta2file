@@ -2,11 +2,12 @@
   "model": "SO_DUMMYMODEL",
   "title": "ada Pseudo Thema",
   "baseUrl": "baseUrl",
-  "keywordsList": ["k1", "k2"],
-  "synonymsList": ["s1", "s2"],
+  "license": "license",
+  "keywords": ["k1", "k2"],
+  "synonyms": ["s1", "s2"],
   "identifier": "orgtheme.ada",
   "shortDescription": "Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
-  "furtherInformation": "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-denkmalpflege-und-archaeologie/",
+  "furtherInformation": "todo furtherInfo",
   "lastPublishingDate": null,
   "secondToLastPublishingDate": null
 }

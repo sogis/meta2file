@@ -23,7 +23,7 @@ public class JsonFileUtil {
 
         String res = null;
 
-        String filename = fileKey.name() + ".json";
+        String filename = fileKey.name().toLowerCase() + ".json";
 
         Path file = Path.of(BASE_PATH, filename).toAbsolutePath();
         try {

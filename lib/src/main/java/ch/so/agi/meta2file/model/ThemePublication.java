@@ -59,11 +59,12 @@ public class ThemePublication {
     /**
      * Schlüsselwörter
      */
-    private String keywords;
+    private List<String> keywordsList;
+
     /**
      * Synonyme
      */
-    private String synonyms;
+    private List<String> synonymsList;
     /**
      * Datenherr / zuständige Stelle
      */
@@ -162,18 +163,38 @@ public class ThemePublication {
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
+
     public String getKeywords() {
-        return keywords;
+        if(keywordsList != null && keywordsList.size() > 0)
+            return keywordsList.get(0);
+        else
+            return null;
     }
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
-    }
+
     public String getSynonyms() {
-        return synonyms;
+        if(synonymsList != null && synonymsList.size() > 0)
+            return synonymsList.get(0);
+        else
+            return null;
     }
-    public void setSynonyms(String synonyms) {
-        this.synonyms = synonyms;
+
+    public List<String> getSynonymsList() {
+        return synonymsList;
     }
+
+    public void setSynonymsList(List<String> synonymsList) {
+        this.synonymsList = synonymsList;
+    }
+
+    public List<String> getKeywordsList() {
+        return keywordsList;
+    }
+
+    public void setKeywordsList(List<String> keywordsList) {
+        this.keywordsList = keywordsList;
+    }
+
+
     public Office getOwner() {
         return owner;
     }
