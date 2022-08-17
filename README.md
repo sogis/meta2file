@@ -8,7 +8,7 @@ Die Artefakte werden als executable fat-jar auf GitHub deployt (Modul _app_). Di
 
 ### Package-Struktur
 
-Der im Ganzen Repo gleichbleibende Präfix **`ch.so.agi.meta2file`** wird folgend als BASE abgekürzt.
+Der im Ganzen Repo gleichbleibende Präfix **`ch.so.agi.meta2file_`** wird folgend als BASE abgekürzt.
 
 * `lib`
   * `BASE.libmain`: Enthält das Java-Interface, über welches die "Lib-Nutzer" app (in diesem Repo) und SIMI die Funktionen anstossen.  
@@ -34,7 +34,7 @@ Die Quell-XML-Datei muss aber allenfalls aus einem Test (`bean2html_Ok`) hergest
 Einfacher, aber eventuell schwieriger zu debuggen:
 
 ```
-./gradlew clean lib:test --tests ch.so.agi.metabean2file.MetaBean2FileConverterTest.bean2html_Ok
+./gradlew clean lib:test --tests ch.so.agi.meta2file.MetaBean2FileConverterTest.bean2html_Ok
 ```
 
 ### XSL-FO (PDF)
