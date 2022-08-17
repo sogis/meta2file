@@ -21,7 +21,7 @@ public class Office {
      * Abkürzung, z.B. AfU.
      */
     @NotNull
-    private String abbrevation;
+    private String abbreviation;
     /**
      * Abteilung resp. Untereinheit des Amts.
      */
@@ -47,11 +47,11 @@ public class Office {
     public void setAgencyName(String agencyName) {
         this.agencyName = agencyName;
     }
-    public String getAbbrevation() {
-        return abbrevation;
+    public String getAbbreviation() {
+        return abbreviation;
     }
-    public void setAbbrevation(String abbrevation) {
-        this.abbrevation = abbrevation;
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
     public String getDivision() {
         return division;

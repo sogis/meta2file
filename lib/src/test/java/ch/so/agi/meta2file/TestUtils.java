@@ -1,12 +1,8 @@
 package ch.so.agi.meta2file;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
@@ -22,7 +18,6 @@ import ch.so.agi.meta2file.model.Office;
 import ch.so.agi.meta2file.model.Service;
 import ch.so.agi.meta2file.model.ServiceType;
 import ch.so.agi.meta2file.model.TableInfo;
-import net.sf.saxon.lib.Resource;
 import org.junit.jupiter.api.Assertions;
 
 public class TestUtils {
@@ -43,7 +38,7 @@ public class TestUtils {
             
             Office owner = new Office();
             owner.setAgencyName("Amt für Umwelt");
-            owner.setAbbrevation("AfU");
+            owner.setAbbreviation("AfU");
             owner.setDivision("Ich bin die Abteilung");
             try {
                 owner.setOfficeAtWeb(new URI("https://afu.so.ch"));
@@ -56,7 +51,7 @@ public class TestUtils {
 
             Office servicer = new Office();
             servicer.setAgencyName("Amt für Geoinformation");
-            servicer.setAbbrevation("AGI");
+            servicer.setAbbreviation("AGI");
             try {
                 servicer.setOfficeAtWeb(new URI("https://agi.so.ch"));
                 servicer.setEmail(new URI("mailto:agi@bd.so.ch"));
@@ -183,7 +178,7 @@ public class TestUtils {
             
             Office owner = new Office();
             owner.setAgencyName("Amt für Umwelt");
-            owner.setAbbrevation("AfU");
+            owner.setAbbreviation("AfU");
             owner.setDivision("Ich bin die Abteilung");
             try {
                 owner.setOfficeAtWeb(new URI("https://afu.so.ch"));
@@ -196,7 +191,7 @@ public class TestUtils {
     
             Office servicer = new Office();
             servicer.setAgencyName("Amt für Geoinformation");
-            servicer.setAbbrevation("AGI");
+            servicer.setAbbreviation("AGI");
             try {
                 servicer.setOfficeAtWeb(new URI("https://agi.so.ch"));
                 servicer.setEmail(new URI("mailto:agi@bd.so.ch"));

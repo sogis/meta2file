@@ -12,9 +12,8 @@ class Meta2HtmlTest {
     public void vecSunny_OK(){
         String json = JsonFileUtil.getFileContent(JsonFileUtil.FileKeys.VEC_SUNNY);
 
-
         String html = Meta2Html.renderDataDescription(json);
 
-        TestUtils.assertContains(html, new String[]{"https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-denkmalpflege-und-archaeologie"});
+        TestUtils.assertContains(html, new String[]{"ada Pseudo Thema"});
     }
 }

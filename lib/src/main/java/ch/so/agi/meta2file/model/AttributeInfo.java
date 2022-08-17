@@ -15,6 +15,12 @@ public class AttributeInfo {
      */
     @NotNull
     private String name;
+
+    /**
+     * Sprechender Name des Attributes
+     */
+    private String alias;
+
     /**
      * Beschreibung des Attributes.
      */
@@ -53,5 +59,12 @@ public class AttributeInfo {
     }
     public void setMandatory(boolean mandatory) {
         this.mandatory = mandatory;
+    }
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 }

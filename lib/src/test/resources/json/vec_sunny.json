@@ -1,12 +1,682 @@
 {
   "model": "SO_DUMMYMODEL",
+  "owner": {
+    "email": "email",
+    "phone": "phone",
+    "division": null,
+    "agencyName": "Amt für Denkmalschutz und Archäologie",
+    "officeAtWeb": "url",
+    "abbreviation": "ada"
+  },
   "title": "ada Pseudo Thema",
-  "baseUrl": "baseUrl",
-  "keywordsList": ["k1", "k2"],
-  "synonymsList": ["s1", "s2"],
+  "baseUrl": "https://data.geo.so.ch",
+  "licence": "https://geo.so.ch/licence",
+  "servicer": {
+    "email": "email",
+    "phone": "phone",
+    "division": null,
+    "agencyName": "Amt für Geoinformation",
+    "officeAtWeb": "url",
+    "abbreviation": "agi"
+  },
+  "services": [
+    {
+      "endpoint": "https://geo.so.ch/api/wms",
+      "layerIdentifiers": [
+        "ch.so.ada.adagisa.punktfundstellen_nr_ungeschuetzt",
+        "ch.so.ada.denkmalschutz_geschuetzt",
+        "ch.so.ada.denkmalschutz.punktobjekt",
+        "ch.so.ada.denkmalschutz.flaechenobjekt",
+        "ch.so.ada.denkmalschutz.flaechenobjekt.data",
+        "ch.so.ada.adagisa.gemeindegrenzen_archaeologie",
+        "ch.so.ada.denkmalschutz",
+        "ch.so.ada.adagisa.punktfundstellen_ungeschuetzt",
+        "ch.so.ada.adagisa.schutz_olten_solothurn",
+        "ch.so.ada.adagisa.archaeologische_fundstellen_gruppe_geschuetzt",
+        "ch.so.ada.denkmalschutz.edit.denkmal.data",
+        "ch.so.ada.denkmalschutz.flaechenobjekt_geschuetzt",
+        "ch.so.ada.denkmalschutz.punktobjekt_geschuetzt",
+        "ch.so.ada.adagisa.flaechenfundstellen_nr_geschuetzt",
+        "ch.so.ada.adagisa.archaeologische_fundstellen_geschuetzt",
+        "ch.so.ada.adagisa.archaeologische_fundstellen_nr_geschuetzt",
+        "ch.so.ada.denkmalschutz.edit.denkmal",
+        "ch.so.ada.denkmalschutz.punktobjekt.data",
+        "ch.so.ada.adagisa.archaeologische_fundstellen_gruppe",
+        "ch.so.ada.adagisa.punktfundstellen_nr_geschuetzt",
+        "ch.so.ada.adagisa.punktfundstellen_geschuetzt",
+        "ch.so.ada.denkmalschutz.edit.rechtsvorschrift_link.data",
+        "ch.so.ada.adagisa.flaechenfundstellen_geschuetzt",
+        "ch.so.ada.schanzenplaene"
+      ]
+    }
+  ],
   "identifier": "orgtheme.ada",
+  "tablesInfo": [
+    {
+      "title": "denkmal_polygon",
+      "sqlName": "denkmal_polygon",
+      "tableType": "MULTIPOLYGON",
+      "attributesInfo": [
+        {
+          "name": "adr_strasse",
+          "alias": "Strasse",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
+        },
+        {
+          "name": "adr_hausnummer",
+          "alias": "Hausnummer",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
+        },
+        {
+          "name": "gemeindename",
+          "alias": "Gemeinde",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Name der Gemeinde, in welcher das Denkmal liegt\n\nArtPlusAttribut: Objekt.Gemeinde"
+        },
+        {
+          "name": "objektname",
+          "alias": "Name des Objektes",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Schutzstatus",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "fachapplikation_rechtsvorschrift_link",
+      "sqlName": "fachapplikation_rechtsvorschrift_link",
+      "tableType": "POINT",
+      "attributesInfo": [
+        {
+          "name": "denkmal_id",
+          "alias": null,
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": "Fremdschluessel auf Denkmal"
+        },
+        {
+          "name": "bfsnummer",
+          "alias": null,
+          "datatype": "int4",
+          "mandatory": false,
+          "shortDescription": "Bei von Gemeinde erlassener Schutzverfuegung: BfS-Nummer der Gemeinde\n\nArtPlusAttribut: Objekte.Grunddaten.Schutzverfuegung.BfS-Nummer"
+        },
+        {
+          "name": "titel",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Titel der Schutzverfuegung.\n\nWird aufgrund der bestehenden Feldverwendung in ArtPlus auf\ndas Bemerkungsfeld gemappt.\n\nArtPlusAttribut: Objekte.Grunddaten.Schutzverfuegung.Titel"
+        },
+        {
+          "name": "multimedia_link",
+          "alias": null,
+          "datatype": "varchar(1023)",
+          "mandatory": false,
+          "shortDescription": "URL, unter welcher die entsprechende Schutzverfuegung\nmittels HTTP(S) geladen werden kann.\n\nArtPlusAttribut: Keines (dynamisch generiert)"
+        },
+        {
+          "name": "nummer",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Nummer der Schutzverfuegung (so vorhanden).\n\nFalls Schutzverfuegung = RRB --> RRB-Nr.\n\nArtPlusAttribut: Objekte.Grunddaten.Schutzverfuegung.RRB-Nr"
+        },
+        {
+          "name": "multimedia_id",
+          "alias": null,
+          "datatype": "int4",
+          "mandatory": false,
+          "shortDescription": "Fremdschluessel auf die im Multimedia-Modul von\nArtPlus abgelegte Datei der Rechtsvorschrift.\n\nArtPlusAttribut: Multimedia.ID"
+        },
+        {
+          "name": "datum",
+          "alias": null,
+          "datatype": "date",
+          "mandatory": false,
+          "shortDescription": "Datum, an welchem die Rechtsvorschrift beschlossen wurde.\nBei RRB: Datum der RRB-Sitzung, an welcher der Beschluss gefasst wurde.\nKann bei vorbereiteten Daten NULL sein (Bsp. Wenn Einsprachefrist laeuft).\n\nArtPlusAttribut: Objekte.Grunddaten.Schutzverfuegung.Datum"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "denkmal_punkt",
+      "sqlName": "denkmal_punkt",
+      "tableType": "MULTIPOINT",
+      "attributesInfo": [
+        {
+          "name": "objektname",
+          "alias": "Name des Objektes",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "schutzstufe_code",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Code fuer die kantonale Schutzstufe des Objektes.\n(geschuetzt, schuetzenswert, erhaltenswert, ...)\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Schutzstufe",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "denkmal_punkt",
+      "sqlName": "denkmal_punkt",
+      "tableType": "MULTIPOINT",
+      "attributesInfo": [
+        {
+          "name": "adr_strasse",
+          "alias": "Strasse",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
+        },
+        {
+          "name": "adr_hausnummer",
+          "alias": "Hausnummer",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
+        },
+        {
+          "name": "gemeindename",
+          "alias": "Gemeinde",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Name der Gemeinde, in welcher das Denkmal liegt\n\nArtPlusAttribut: Objekt.Gemeinde"
+        },
+        {
+          "name": "objektname",
+          "alias": "Name des Objektes",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Schutzstufe",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "flaechenfundstellen",
+      "sqlName": "flaechenfundstellen",
+      "tableType": "POLYGON",
+      "attributesInfo": [
+        {
+          "name": "fundstellennummer",
+          "alias": "Fundstellennummer",
+          "datatype": "varchar(10)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "geschuetzt",
+          "alias": "Geschützt",
+          "datatype": "bool",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "qualitaet_lokalisierung",
+          "alias": "Qualität der Lokalisierung",
+          "datatype": "varchar(256)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "koord_x",
+          "alias": "X-Koordinate",
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "art",
+          "alias": "Art",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "flurname_adresse",
+          "alias": "Adresse/Flurname",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "grundbuchnummer",
+          "alias": "Grundbuchnummer",
+          "datatype": "varchar",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "koord_y",
+          "alias": "Y-Koordinate",
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "gemeinde",
+          "alias": "Gemeinde",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "denkmal_polygon",
+      "sqlName": "denkmal_polygon",
+      "tableType": "MULTIPOLYGON",
+      "attributesInfo": [
+        {
+          "name": "adr_strasse",
+          "alias": "Strasse",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
+        },
+        {
+          "name": "adr_hausnummer",
+          "alias": "Hausnummer",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
+        },
+        {
+          "name": "gemeindename",
+          "alias": "Gemeinde",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Name der Gemeinde, in welcher das Denkmal liegt\n\nArtPlusAttribut: Objekt.Gemeinde"
+        },
+        {
+          "name": "objektname",
+          "alias": "Name des Objektes",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Schutzstatus",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "denkmal_geomerge_v",
+      "sqlName": "denkmal_geomerge_v",
+      "tableType": "POLYGON",
+      "attributesInfo": [
+        {
+          "name": "objektname",
+          "alias": "Objektname",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Kantonale Schutzstufe",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "denkmal_id",
+          "alias": "Denkmal ID",
+          "datatype": "int4",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "schutzdurchgemeinde",
+          "alias": "Kommunaler Schutz",
+          "datatype": "bool",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "adr_hausnummer",
+          "alias": "Hausnummer",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "adr_strasse",
+          "alias": "Strasse",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "gemeindename",
+          "alias": "Gemeindename",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": null
+        },
+        {
+          "name": "gemeindeteil",
+          "alias": "Gemeindeteil",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": null
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "denkmal_punkt",
+      "sqlName": "denkmal_punkt",
+      "tableType": "MULTIPOINT",
+      "attributesInfo": [
+        {
+          "name": "adr_strasse",
+          "alias": "Strasse",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
+        },
+        {
+          "name": "adr_hausnummer",
+          "alias": "Hausnummer",
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
+        },
+        {
+          "name": "gemeindename",
+          "alias": "Gemeinde",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Name der Gemeinde, in welcher das Denkmal liegt\n\nArtPlusAttribut: Objekt.Gemeinde"
+        },
+        {
+          "name": "objektname",
+          "alias": "Name des Objektes",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Schutzstufe",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "denkmal_polygon",
+      "sqlName": "denkmal_polygon",
+      "tableType": "MULTIPOLYGON",
+      "attributesInfo": [
+        {
+          "name": "objektname",
+          "alias": "Name des Objektes",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "schutzstufe_code",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Code fuer die kantonale Schutzstufe des Objektes.\n(geschuetzt, schuetzenswert, erhaltenswert, ...)\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": "Schutzstatus",
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "punktfundstellen",
+      "sqlName": "punktfundstellen",
+      "tableType": "POINT",
+      "attributesInfo": [
+        {
+          "name": "fundstellennummer",
+          "alias": "Fundstellennummer",
+          "datatype": "varchar(10)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "flurname_adresse",
+          "alias": "Adresse/Flurname",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "grundbuchnummer",
+          "alias": "Grundbuchnummer",
+          "datatype": "varchar",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "koord_x",
+          "alias": "X-Koordinate",
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "koord_y",
+          "alias": "Y-Koordinate",
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "art",
+          "alias": "Art",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "qualitaet_lokalisierung",
+          "alias": "Qualität der Lokalisierung",
+          "datatype": "varchar(256)",
+          "mandatory": true,
+          "shortDescription": null
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "punktfundstellen",
+      "sqlName": "punktfundstellen",
+      "tableType": "POINT",
+      "attributesInfo": [
+        {
+          "name": "fundstellennummer",
+          "alias": "Fundstellennummer",
+          "datatype": "varchar(10)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "gemeinde",
+          "alias": "Gemeinde",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "qualitaet_lokalisierung",
+          "alias": "Qualität der Lokalisierung",
+          "datatype": "varchar(256)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "koord_x",
+          "alias": "X-Koordinate",
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "grundbuchnummer",
+          "alias": "Grundbuchnummer",
+          "datatype": "varchar",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "flurname_adresse",
+          "alias": "Adresse/Flurname",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "geschuetzt",
+          "alias": "Geschützt",
+          "datatype": "bool",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "art",
+          "alias": "Art",
+          "datatype": "varchar(512)",
+          "mandatory": true,
+          "shortDescription": null
+        },
+        {
+          "name": "koord_y",
+          "alias": "Y-Koordinate",
+          "datatype": "int4",
+          "mandatory": true,
+          "shortDescription": null
+        }
+      ],
+      "shortDescription": null
+    },
+    {
+      "title": "fachapplikation_denkmal",
+      "sqlName": "fachapplikation_denkmal",
+      "tableType": "POINT",
+      "attributesInfo": [
+        {
+          "name": "adr_hausnummer",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
+        },
+        {
+          "name": "adr_strasse",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
+        },
+        {
+          "name": "schutzdurchgemeinde",
+          "alias": null,
+          "datatype": "bool",
+          "mandatory": true,
+          "shortDescription": "Gibt an, ob das Denkmal kommunal geschuetzt ist.\n\nArtPlusAttribut: Objekte.Grunddaten.Schutz Gemeinde"
+        },
+        {
+          "name": "schutzstufe_text",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Sprechender Text fuer die kantonale Schutzstufe des Objektes.\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        },
+        {
+          "name": "objektart_code",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Code fuer die Art des Objektes. Bsp.: Schloss, Ruine, Portal, ...\n\nArtPlusAttribut: Objekte.Gattung/Typo"
+        },
+        {
+          "name": "schutzstufe_code",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "Code fuer die kantonale Schutzstufe des Objektes.\n(geschuetzt, schuetzenswert, erhaltenswert, ...)\n\nArtPlusAttribut: Objekte.Grunddaten.Einstufung Kanton"
+        },
+        {
+          "name": "objektname",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": true,
+          "shortDescription": "ArtPlusAttribut: Objekt.Objektname"
+        },
+        {
+          "name": "objektart_text",
+          "alias": null,
+          "datatype": "varchar(4000)",
+          "mandatory": false,
+          "shortDescription": "Sprechender Text fuer die Art des Objektes.\n\nArtPlusAttribut: Objekte.Gattung/Typo"
+        }
+      ],
+      "shortDescription": "In ArtPlus gefuerte Informationen zu einem Denkmal."
+    }
+  ],
+  "keywordsList": [
+    "k1",
+    "k2"
+  ],
+  "synonymsList": [
+    "s1",
+    "s2"
+  ],
   "shortDescription": "Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
-  "furtherInformation": "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-denkmalpflege-und-archaeologie/",
+  "furtherInformation": "https://geo.so.ch/map",
   "lastPublishingDate": null,
   "secondToLastPublishingDate": null
 }

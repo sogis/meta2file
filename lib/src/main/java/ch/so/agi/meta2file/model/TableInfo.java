@@ -25,6 +25,13 @@ public class TableInfo {
      */
     @NotNull
     private String title;
+
+    /**
+     * Typ der (Geo-Tabelle)
+     */
+    @NotNull
+    private String tableType;
+
     /**
      * Kurze thematische Beschreibung. 
      * 
@@ -64,5 +71,12 @@ public class TableInfo {
     }
     public void setAttributesInfo(List<AttributeInfo> attributesInfo) {
         this.attributesInfo = attributesInfo;
+    }
+    public String getTableType() {
+        return tableType;
+    }
+
+    public void setTableType(String tableType) {
+        this.tableType = tableType;
     }
 }
