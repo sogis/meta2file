@@ -1,7 +1,9 @@
 package ch.so.agi.meta2file.out;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,7 +14,8 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.stream.StreamSource;
 
 import ch.so.agi.meta2file.Util;
-import ch.so.agi.meta2file.except.MetaBean2FileException;
+import ch.so.agi.meta2file.except.Meta2FileException;
+import net.sf.saxon.s9api.Destination;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 
@@ -39,9 +42,8 @@ public class MetaBean2FileConverter {
      * 
      * @param xmlFilePath
      * @param themePublicationsIterator
-     * @throws MetaBean2FileException
      */
-    public static void runBeans2Xml(Path xmlFilePath, Iterator<ThemePublication> themePublicationsIterator) throws MetaBean2FileException {
+    public static void runBeans2Xml(Path xmlFilePath, Iterator<ThemePublication> themePublicationsIterator) {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
@@ -65,7 +67,7 @@ public class MetaBean2FileConverter {
         } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
             log.error(e.getMessage());
-            throw new MetaBean2FileException(e.getMessage());
+            throw new Meta2FileException(e.getMessage());
         }
     }
     
@@ -74,9 +76,8 @@ public class MetaBean2FileConverter {
      * 
      * @param htmlFilePath
      * @param themePublications
-     * @throws MetaBean2FileException
      */
-    public static void runBean2Html(Path htmlFilePath, ThemePublication themePublications) throws MetaBean2FileException {
+    public static void runBean2Html(Path htmlFilePath, ThemePublication themePublications) {
         if (xmlMapper == null) {
             MetaBean2FileConverter.initMapper();
         }
@@ -103,20 +104,39 @@ public class MetaBean2FileConverter {
             //out.setOutputProperty(Serializer.Property.METHOD, "html");
             //out.setOutputProperty(Serializer.Property.INDENT, "yes");
             var transformer = stylesheet.load30();
+
             transformer.transform(new StreamSource(xmlFile), out);
             
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            throw new MetaBean2FileException(e.getMessage());
+            throw new Meta2FileException(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
-            throw new MetaBean2FileException(e.getMessage());
+            throw new Meta2FileException(e.getMessage());
         } catch (SaxonApiException e) {
             e.printStackTrace();
-            throw new MetaBean2FileException(e.getMessage());
+            throw new Meta2FileException(e.getMessage());
         }        
     }
-    
+
+    /**
+     * Transforms the bean to the html data description.
+     * @param themePub The ThemePublication bean.
+     * @return The rendered html (As simple String).
+     */
+    public static String runBean2Html(ThemePublication themePub) {
+        String res = null;
+        try {
+            Path out = Files.createTempFile("", ".html");
+            runBean2Html(out, themePub);
+            byte[] content = Files.readAllBytes(out);
+            res = new String(content, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new Meta2FileException(e);
+        }
+        return res;
+    }
+
     private static void initMapper() {
         xmlMapper = new XmlMapper();
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);

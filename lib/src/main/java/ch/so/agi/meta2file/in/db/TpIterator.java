@@ -2,6 +2,7 @@ package ch.so.agi.meta2file.in.db;
 
 import ch.so.agi.meta2file.db.TpQuery;
 import ch.so.agi.meta2file.except.Meta2FileException;
+import ch.so.agi.meta2file.in.Read;
 import ch.so.agi.meta2file.in.json.Deserializer;
 import ch.so.agi.meta2file.model.ThemePublication;
 
@@ -71,7 +72,7 @@ public class TpIterator implements Iterator<ThemePublication> {
                 throw new Meta2FileException("Resultset is exhausted. Use hasNext() to break your iteration.");
 
             String jsonString = rs.getString(1);
-            ThemePublication tp = Deserializer.fromString(jsonString);
+            ThemePublication tp = Read.fromJson(jsonString);
         } catch (SQLException throwables) {
             throw new Meta2FileException(throwables);
         }

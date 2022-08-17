@@ -1,7 +1,15 @@
 package ch.so.agi.meta2file;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +17,7 @@ import java.util.List;
 import java.util.TimeZone;
 import java.time.LocalDate;
 
+import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.model.AttributeInfo;
 import ch.so.agi.meta2file.model.ThemePublication;
 import ch.so.agi.meta2file.model.FileFormat;
@@ -16,6 +25,8 @@ import ch.so.agi.meta2file.model.Office;
 import ch.so.agi.meta2file.model.Service;
 import ch.so.agi.meta2file.model.ServiceType;
 import ch.so.agi.meta2file.model.TableInfo;
+import net.sf.saxon.lib.Resource;
+import org.junit.jupiter.api.Assertions;
 
 public class TestUtils {
     public static HashMap<String,ThemePublication> getDatasets() {
@@ -276,5 +287,31 @@ public class TestUtils {
             themePublications.put(themePublication.getIdentifier(), themePublication);
         }
         return themePublications;
+    }
+
+    public static Path tempFile(String prefix, String suffix){
+        Path res = null;
+
+        try {
+            res = Files.createTempFile(prefix, suffix);
+        } catch (IOException e) {
+            throw new Meta2FileException(e);
+        }
+        return res;
+    }
+
+    public static void assertContains(String wholeString, String[] mandatoryParts) {
+        ArrayList<String> missing = new ArrayList();
+
+        for(String part : mandatoryParts){
+            if(!wholeString.contains(part)){
+                missing.add(part);
+            }
+        }
+
+        Assertions.assertEquals(
+                0,
+                missing.size(),
+                MessageFormat.format("Expected but missing string parts: {0}", missing));
     }
 }
