@@ -1,4 +1,19 @@
 {
+  "items": [
+    {
+      "bbox": {
+        "top": 1201000,
+        "left": 2600000,
+        "right": 2601000,
+        "bottom": 1200000
+      },
+      "title": "Kanton Solothurn",
+      "geometry": "POLYGON((2600000 1200000,2600000 1201000,2601000 1201000,2601000 1200000,2600000 1200000))",
+      "identifier": "ktso",
+      "lastPublishingDate": "2022-01-01T00:00:00",
+      "secondToLastPublishingDate": "2022-01-01T00:00:00"
+    }
+  ],
   "model": "SO_DUMMYMODEL",
   "owner": {
     "email": "email",
@@ -667,14 +682,33 @@
       "shortDescription": "In ArtPlus gefuerte Informationen zu einem Denkmal."
     }
   ],
+  "fileFormats": [
+    {
+      "name": "Shapefile",
+      "mimetype": "application/vnd.esri_shapefile",
+      "abbreviation": "shp"
+    },
+    {
+      "name": "Geopackage",
+      "mimetype": "application/geopackage+sqlite3",
+      "abbreviation": "gpkg"
+    },
+    {
+      "name": "INTERLIS2",
+      "mimetype": "application/vnd.ili2+xml",
+      "abbreviation": "xtf"
+    },
+    {
+      "name": "DXF (Autocad)",
+      "mimetype": "application/dxf+text",
+      "abbreviation": "dxf"
+    }
+  ],
   "keywordsList": [
-    "k1",
-    "k2"
+    "fuu",
+    "bar"
   ],
-  "synonymsList": [
-    "s1",
-    "s2"
-  ],
+  "synonymsList": null,
   "shortDescription": "Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
   "furtherInformation": "https://geo.so.ch/map",
   "lastPublishingDate": null,

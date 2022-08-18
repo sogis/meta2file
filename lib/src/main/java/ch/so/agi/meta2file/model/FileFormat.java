@@ -21,7 +21,7 @@ public class FileFormat {
      * Abkürzung des Formats.
      */
     @NotNull
-    private String abbrevation;
+    private String abbreviation;
     
     public String getName() {
         return name;
@@ -35,10 +35,10 @@ public class FileFormat {
     public void setMimetype(String mimetype) {
         this.mimetype = mimetype;
     }
-    public String getAbbrevation() {
-        return abbrevation;
+    public String getAbbreviation() {
+        return abbreviation;
     }
-    public void setAbbrevation(String abbrevation) {
-        this.abbrevation = abbrevation;
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 }

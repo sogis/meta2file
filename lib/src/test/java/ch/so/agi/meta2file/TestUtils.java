@@ -72,14 +72,14 @@ public class TestUtils {
             {
                 FileFormat fileFormat = new FileFormat();
                 fileFormat.setName("INTERLIS");
-                fileFormat.setAbbrevation("ili");
+                fileFormat.setAbbreviation("ili");
                 fileFormat.setMimetype("application/xml");
                 fileFormats.add(fileFormat);
             }
             {
                 FileFormat fileFormat = new FileFormat();
                 fileFormat.setName("GeoPackage");
-                fileFormat.setAbbrevation("gpkg");
+                fileFormat.setAbbreviation("gpkg");
                 fileFormat.setMimetype("application/geopackage+sqlite3 ");
                 fileFormats.add(fileFormat);
             }        
@@ -212,14 +212,14 @@ public class TestUtils {
             {
                 FileFormat fileFormat = new FileFormat();
                 fileFormat.setName("INTERLIS");
-                fileFormat.setAbbrevation("ili");
+                fileFormat.setAbbreviation("ili");
                 fileFormat.setMimetype("application/xml");
                 fileFormats.add(fileFormat);
             }
             {
                 FileFormat fileFormat = new FileFormat();
                 fileFormat.setName("GeoPackage");
-                fileFormat.setAbbrevation("gpkg");
+                fileFormat.setAbbreviation("gpkg");
                 fileFormat.setMimetype("application/geopackage+sqlite3 ");
                 fileFormats.add(fileFormat);
             }        

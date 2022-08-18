@@ -5,6 +5,7 @@ import ch.so.agi.meta2file.in.db.TpIterator;
 import ch.so.agi.meta2file.model.ThemePublication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import java.sql.Connection;
 import java.util.UUID;
@@ -14,7 +15,9 @@ public class Read {
     private static ObjectMapper mapper;
 
     static{
-        mapper = new ObjectMapper();
+        mapper = JsonMapper.builder()
+                .findAndAddModules()
+                .build();
     }
 
     public static ThemePublication fromJson(String json){
