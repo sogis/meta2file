@@ -280,30 +280,4 @@ public class TestUtils {
         }
         return themePublications;
     }
-
-    public static Path tempFile(String prefix, String suffix){
-        Path res = null;
-
-        try {
-            res = Files.createTempFile(prefix, suffix);
-        } catch (IOException e) {
-            throw new Meta2FileException(e);
-        }
-        return res;
-    }
-
-    public static void assertContains(String wholeString, String[] mandatoryParts) {
-        ArrayList<String> missing = new ArrayList();
-
-        for(String part : mandatoryParts){
-            if(!wholeString.contains(part)){
-                missing.add(part);
-            }
-        }
-
-        Assertions.assertEquals(
-                0,
-                missing.size(),
-                MessageFormat.format("Expected but missing string parts: {0}", missing));
-    }
 }
