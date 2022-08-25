@@ -5,8 +5,11 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import java.util.UUID;
+
 @JsonInclude(Include.NON_NULL)
 public class FileFormat {
+
     /**
      * Sprechender ("schöner") Name
      */
@@ -22,7 +25,7 @@ public class FileFormat {
      */
     @NotNull
     private String abbreviation;
-    
+
     public String getName() {
         return name;
     }

@@ -1,12 +1,13 @@
 package ch.so.agi.meta2file.model;
 
-import java.net.URI;
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
+import ch.so.agi.meta2file.except.Meta2FileException;
+import ch.so.agi.meta2file.libmain.BaseUrl;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import javax.validation.constraints.NotNull;
+import java.net.URI;
+import java.util.List;
 
 /**
  * Informationen zu einem Service, in welchem Daten
@@ -31,7 +32,20 @@ public class Service {
     @NotNull
     private ServiceType type;
     public URI getEndpoint() {
-        return endpoint;
+        URI res = null;
+
+        if(type == ServiceType.DATA)
+            res = BaseUrl.DATA_SERVICE.getBaseUrlAsUri();
+        else if(type == ServiceType.WFS)
+            res = BaseUrl.WFS.getBaseUrlAsUri();
+        else if(type == ServiceType.WGC)
+            res = BaseUrl.WGC.getBaseUrlAsUri();
+        else if(type == ServiceType.WMS)
+            res = BaseUrl.WMS.getBaseUrlAsUri();
+        else
+            throw new Meta2FileException("No base url defined for service type {0}", type);
+
+        return res;
     }
     public void setEndpoint(URI endpoint) {
         this.endpoint = endpoint;

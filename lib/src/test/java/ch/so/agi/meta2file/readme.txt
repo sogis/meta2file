@@ -1,0 +1,1 @@
+Da für Deployment und Aufteilung in Projekte einfacher sind die meisten Tests bezüglich der lib im Projekt "app" enthalten.

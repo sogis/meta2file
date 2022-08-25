@@ -1,22 +1,20 @@
 package ch.so.agi.meta2file.appmain;
 
 
+import ch.so.agi.meta2file.except.Meta2FileException;
+import ch.so.agi.meta2file.in.db.TpIterator;
+import ch.so.agi.meta2file.out.MetaBean2FileConverter;
+import ch.so.agi.meta2file.out.geocat.Geocat;
+import org.apache.commons.cli.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import ch.so.agi.meta2file.except.Meta2FileException;
-import ch.so.agi.meta2file.in.db.TpIterator;
-import ch.so.agi.meta2file.out.MetaBean2FileConverter;
-import org.apache.commons.cli.*;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class Meta2File {
-
     private static final Character C_CONNECTION = 'c';
     private static final Character U_USER = 'u';
     private static final Character P_PASSWORD = 'p';
@@ -77,9 +75,8 @@ public class Meta2File {
     }
 
     private static Options initOptions(){
-
-
         Options os = new Options();
+
         os.addRequiredOption(C_CONNECTION.toString(), "connection", true, "Connection string as jdbc url (with schema)");
         os.addRequiredOption(U_USER.toString(), "user", true, "database user for connect");
         os.addRequiredOption(P_PASSWORD.toString(), "pass", true, "database password for connect");
@@ -112,6 +109,7 @@ public class Meta2File {
         if(!xmlFolder.isDirectory())
             throw new Meta2FileException("\"{0}\" is no folder path", xmlFolder);
 
-
+        TpIterator iter = new TpIterator(con);
+        Geocat.beans2Files(xmlFolder.toPath(), iter);
     }
 }

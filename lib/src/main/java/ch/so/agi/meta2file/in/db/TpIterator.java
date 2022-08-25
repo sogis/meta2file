@@ -3,7 +3,6 @@ package ch.so.agi.meta2file.in.db;
 import ch.so.agi.meta2file.db.TpQuery;
 import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.in.Read;
-import ch.so.agi.meta2file.in.json.Deserializer;
 import ch.so.agi.meta2file.model.ThemePublication;
 
 import java.sql.*;

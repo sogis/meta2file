@@ -1,4 +1,11 @@
 {
+  "title": "$themePub.title$",
+  "identifier": "$themePub.identifier$",
+  "model": "$themePub.iliModelName$",
+  "shortDescription": "$themePub.shortDescription$ Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
+  "furtherInformation": "https://geo.so.ch/map",
+  "lastPublishingDate": "2022-01-01T00:00:00",
+  "secondToLastPublishingDate": "2022-01-01T00:00:00",
   "items": [
     {
       "bbox": {
@@ -7,14 +14,13 @@
         "right": 2601000,
         "bottom": 1200000
       },
-      "title": "Kanton Solothurn",
+      "title": "$item1.title$",
       "geometry": "POLYGON((2600000 1200000,2600000 1201000,2601000 1201000,2601000 1200000,2600000 1200000))",
       "identifier": "ktso",
       "lastPublishingDate": "2022-01-01T00:00:00",
       "secondToLastPublishingDate": "2022-01-01T00:00:00"
     }
   ],
-  "model": "$themePub.iliModelName$",
   "owner": {
     "email": "owner@so.ch",
     "phone": "032 111 11 11",
@@ -23,9 +29,6 @@
     "officeAtWeb": "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-denkmalpflege-und-archaeologie/",
     "abbreviation": "ada"
   },
-  "title": "$themePub.title$",
-  "baseUrl": "https://data.geo.so.ch",
-  "licence": "https://geo.so.ch/licence",
   "servicer": {
     "email": "servicer@so.ch",
     "phone": "032 999 99 99",
@@ -36,6 +39,7 @@
   },
   "services": [
     {
+      "type": "WMS",
       "endpoint": "https://geo.so.ch/api/wms",
       "layerIdentifiers": [
         "$service.wmsLayer1$",
@@ -43,7 +47,6 @@
       ]
     }
   ],
-  "identifier": "$themePub.identifier$",
   "tablesInfo": [
     {
       "title": "$table1.title$",
@@ -92,12 +95,12 @@
   ],
   "fileFormats": [
     {
-      "name": "$fileFormat1$",
+      "name": "$fileFormat1$ - xtf",
       "mimetype": "application/vnd.esri_shapefile",
-      "abbreviation": "shp"
+      "abbreviation": "xtf"
     },
     {
-      "name": "$fileFormat2$",
+      "name": "$fileFormat2$ - gpkg",
       "mimetype": "application/geopackage+sqlite3",
       "abbreviation": "gpkg"
     }
@@ -109,9 +112,5 @@
   "synonymsList": [
     "$syno1$",
     "$syno2$"
-  ],
-  "shortDescription": "$themePub.shortDescription$ Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
-  "furtherInformation": "https://geo.so.ch/map",
-  "lastPublishingDate": "2022-01-01T00:00:00",
-  "secondToLastPublishingDate": "2022-01-01T00:00:00"
+  ]
 }

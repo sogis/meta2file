@@ -1,6 +1,7 @@
 package ch.so.agi.meta2file.test;
 
 import ch.so.agi.meta2file.except.Meta2FileException;
+import ch.so.agi.meta2file.in.Read;
 import ch.so.agi.meta2file.model.ThemePublication;
 import org.junit.jupiter.api.Assertions;
 
@@ -10,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Util {
@@ -26,6 +26,10 @@ public class Util {
         return res;
     }
 
+    public static void assertContains(String wholeString, String mandatoryPart) {
+        assertContains(wholeString, List.of(mandatoryPart));
+    }
+
     public static void assertContains(String wholeString, List<String> mandatoryParts) {
         ArrayList<String> missing = new ArrayList();
 
@@ -38,17 +42,17 @@ public class Util {
         Assertions.assertEquals(
                 0,
                 missing.size(),
-                MessageFormat.format("Expected but missing string parts: {0}", missing));
+                MessageFormat.format("Expected no missing string parts. Missing: {0}", missing));
     }
 
-    public static Iterator<ThemePublication> iterFromBean(ThemePublication tp, int numRecords){
+    public static List<ThemePublication> listFromBean(ThemePublication tp, int numRecords){
         List<ThemePublication> list = new ArrayList<>(numRecords);
 
         for(int i=0; i<numRecords; i++){
             list.add(tp);
         }
 
-        return list.iterator();
+        return list;
     }
 
     public static String getTextFileContent(Path filePath){
@@ -60,6 +64,25 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return res;
+    }
+
+    public static List<ThemePublication> createTwoElemListFromJson(InputType inType) {
+        String json = getFileContent(inType);
+
+        ThemePublication tp = Read.fromJson(json);
+        List<ThemePublication> beanList = Util.listFromBean(tp, 2);
+
+        return beanList;
+    }
+
+    public static String getFileContent(InputType fileKey){
+
+        String res = null;
+
+        Path file = Path.of("src/test/resources/json", fileKey.deferJsonFileName()).toAbsolutePath();
+        res = Util.getTextFileContent(file);
 
         return res;
     }

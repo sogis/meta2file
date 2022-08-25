@@ -1,16 +1,18 @@
 package ch.so.agi.meta2file.appmain;
 
 import ch.so.agi.meta2file.except.Meta2FileException;
-import ch.so.agi.meta2file.in.json.Deserializer;
-import ch.so.agi.meta2file.libmain.Meta2Html;
 import ch.so.agi.meta2file.model.ThemePublication;
 import ch.so.agi.meta2file.out.MetaBean2FileConverter;
-import ch.so.agi.meta2file.test.JsonFileUtil;
+import ch.so.agi.meta2file.out.geocat.Geocat;
+import ch.so.agi.meta2file.test.InputType;
+import ch.so.agi.meta2file.test.OutputType;
 import ch.so.agi.meta2file.test.Util;
 import ch.so.agi.meta2file.test.ValueOccurence;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -18,12 +20,19 @@ import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+/*
+Veränderungen an json
+- Keine Base-URL mehr
+- Service-Typ ergänzt
+ */
 
 class Meta2FileTest {
+
+    private static Logger log = LoggerFactory.getLogger(Meta2FileTest.class);
 
     private static Connection con;
 
@@ -43,23 +52,60 @@ class Meta2FileTest {
         ;
     }
 
-    @Test
-    public void exportAppFile_withSunnyJson_OK() throws Exception {
-        String json = JsonFileUtil.getFileContent(JsonFileUtil.FileKeys.VEC_SUNNY);
+    //@Test
+    public void app_vecAll_OK() throws Exception {
+        appJsonTest(InputType.VEC_ALL);
+    }
 
-        ThemePublication tp = Deserializer.fromString(json);
-        Iterator<ThemePublication> iter = Util.iterFromBean(tp, 2);
+    private static String appJsonTest(InputType inType) throws Exception {
+        List<ThemePublication> beanList = Util.createTwoElemListFromJson(inType);
 
-        Path dir = Files.createTempDirectory("app_sunny");
+        Path dir = Files.createTempDirectory("app_" + inType.deferPathPartName());
         Path file = dir.resolve("conf.xml");
 
-        MetaBean2FileConverter.runBeans2Xml(file, iter);
+        MetaBean2FileConverter.runBeans2Xml(file, beanList.iterator());
 
         String xml = Util.getTextFileContent(file);
-        List<String> keys = ValueOccurence.appAllKeys();
+        List<String> keys = ValueOccurence.keysForTest(inType, OutputType.APP);
 
         Util.assertContains(xml, keys);
+
+        return xml;
     }
+
+    @Test
+    public void geocat_vecAll_OK() throws Exception {
+        String resXml = catJsonTest(InputType.VEC_ALL);
+
+        //additional Tests
+        Util.assertContains(resXml, "geo.so.ch/map?l=$themePub.identifier$");
+    }
+
+    @Test
+    public void geocat_vecMandatory_OK() throws Exception {
+        catJsonTest(InputType.VEC_MANDATORY);
+    }
+
+    private static String catJsonTest(InputType inType) throws Exception {
+        List<ThemePublication> beanList = Util.createTwoElemListFromJson(inType);
+
+        String outBaseName = "geocat_" + inType.deferPathPartName() + "_";
+        Path dir = Files.createTempDirectory(outBaseName);
+
+        Geocat.beans2Files(dir, beanList.iterator());
+
+        Path file = dir.resolve(beanList.get(0).getIdentifier() + ".xml");
+
+        log.info("Tested iso-ch file: {}", file);
+
+        String xml = Util.getTextFileContent(file);
+        List<String> keys = ValueOccurence.keysForTest(inType, OutputType.GEOCAT);
+
+        Util.assertContains(xml, keys);
+
+        return xml;
+    }
+
 
     @BeforeAll
     static void beforeAll() {

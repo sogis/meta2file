@@ -1,11 +1,12 @@
 package ch.so.agi.meta2file.test;
 
-import ch.so.agi.meta2file.model.ThemePublication;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static ch.so.agi.meta2file.test.InputType.VEC_ALL;
+import static ch.so.agi.meta2file.test.InputType.VEC_MANDATORY;
+import static ch.so.agi.meta2file.test.OutputType.*;
 
 public class ValueOccurence {
 
@@ -13,146 +14,154 @@ public class ValueOccurence {
 
     static {
         ValueOccurence[] arr = new ValueOccurence[]{
-                mandatory("$themePub.identifier$", true, false, true),
-                mandatory("$themePub.title$", true, true, true),
-                mandatory("$themePub.iliModelName$", true, true, true),
-                mandatory("$themePub.shortDescription$", true, true, true),
+                create("$themePub.identifier$",
+                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new OutputType[]{APP, GEOCAT}),
+                create("$themePub.title$",
+                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new OutputType[]{APP, SHEET, GEOCAT}),
+                create("$themePub.iliModelName$",
+                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new OutputType[]{APP, SHEET}),
+                create("$themePub.shortDescription$",
+                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new OutputType[]{APP, SHEET, GEOCAT}),
 
-                optional("$owner.division$", true, true, true),
-                mandatory("$owner.agency$", true, true, true),
+                create("$owner.division$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, SHEET, GEOCAT}),
+                create("$owner.agency$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET, GEOCAT}),
 
-                optional("$service.wmsLayer1$", true, true, true),
-                optional("$service.wmsLayer2$", true, true, true),
+                create("$service.wmsLayer1$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, SHEET}),
+                create("$service.wmsLayer2$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, SHEET}),
 
-                mandatory("$table1.title$", true, false, true),
-                mandatory("$table1.sqlName$", true, true, true),
-                mandatory("$table1.attr1.name$", true, true, true),
-                optional("$table1.attr1.alias$", true, false, true),
-                mandatory("$table1.attr2.name$", true, true, true),
-                optional("$table1.attr2.alias$", true, false, true),
-                mandatory("$table1.shortDescription$", true, true, true),
+                create("$table1.title$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP}),
+                create("$table1.sqlName$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$table1.attr1.name$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$table1.attr1.alias$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP}),
+                create("$table1.attr2.name$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$table1.attr2.alias$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP}),
 
-                mandatory("$table2.title$", true, false, true),
-                mandatory("$table2.sqlName$", true, true, true),
-                mandatory("$table2.attr1.name$", true, true, true),
-                optional("$table2.attr1.alias$", true, false, true),
-                mandatory("$table2.attr2.name$", true, true, true),
-                optional("$table2.attr2.alias$", true, false, true),
-                mandatory("$table2.shortDescription$", true, true, true),
+                create("$table2.title$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP}),
+                create("$table2.sqlName$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$table2.attr1.name$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$table2.attr1.alias$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP}),
+                create("$table2.attr2.name$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$table2.attr2.alias$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP}),
 
-                optional("$key1$", true, false, true),
-                optional("$key2$", true, false, true),
-                optional("$syno1$", true, false, true),
-                optional("$syno2$", true, false, true),
+                create("$key1$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, GEOCAT}),
+                create("$key2$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, GEOCAT}),
+                create("$syno1$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, GEOCAT}),
+                create("$syno2$",
+                        new InputType[]{VEC_MANDATORY},
+                        new OutputType[]{APP, GEOCAT}),
 
-                mandatory("$fileFormat1$", true, false, true),
-                mandatory("$fileFormat2$", true, false, true),
+                create("$fileFormat1$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, GEOCAT}),
+                create("$fileFormat2$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP, GEOCAT}),
 
-                mandatory("$item.identifier$", true, false, false),
-                mandatory("$item.title$", true, false, false),
+                create("$item.identifier$",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP}),
+                create("$item.title",
+                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new OutputType[]{APP}),
         };
 
         all = Arrays.asList(arr);
     }
 
     private String value;
+
+    private OutputType[] outputFlags; //Array of Outtype-Keys for all outputs that must contain the value
+    private InputType[] inputFlags; //Array of FileKey-Keys for all inputs that contain the value
+
     private boolean mandatory;
     private boolean inApp;
     private boolean inDescription;
     private boolean inGeocat;
 
-    public boolean isMandatory() {
-        return mandatory;
+    private ValueOccurence(String value, InputType[] inputFlags, OutputType[] outputFlags){
+        this.value = value;
+        this.inputFlags = inputFlags;
+        this.outputFlags = outputFlags;
     }
 
-    public void setMandatory(boolean mandatory) {
-        this.mandatory = mandatory;
+    private static ValueOccurence create(String value, InputType[] inputFlags, OutputType[] outputFlags){
+        return new ValueOccurence(value, inputFlags, outputFlags);
     }
 
-    public String getValue() {
+    private boolean isFlaggedForInput(InputType input){
+        boolean res = false;
+
+        for(InputType flag : inputFlags){
+            if(flag == input){
+                res = true;
+                break;
+            }
+        }
+        return res;
+    }
+
+    private boolean isFlaggedForOutput(OutputType output){
+        boolean res = false;
+
+        for(OutputType flag : outputFlags){
+            if(flag == output){
+                res = true;
+                break;
+            }
+        }
+        return res;
+    }
+
+    private String getValue(){
         return value;
     }
 
-    public boolean isInApp() {
-        return inApp;
-    }
-
-    public boolean isInDescription() {
-        return inDescription;
-    }
-
-    public boolean isInGeocat() {
-        return inGeocat;
-    }
-
-    public static void setAll(List<ValueOccurence> all) {
-        ValueOccurence.all = all;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public void setInApp(boolean inApp) {
-        this.inApp = inApp;
-    }
-
-    public void setInDescription(boolean inDescription) {
-        this.inDescription = inDescription;
-    }
-
-    public void setInGeocat(boolean inGeocat) {
-        this.inGeocat = inGeocat;
-    }
-
-    private static ValueOccurence optional(String value, boolean inApp, boolean inDescription, boolean inGeocat){
-        ValueOccurence res = new ValueOccurence();
-
-        res.setMandatory(false);
-
-        res.setValue(value);
-        res.setInApp(inApp);
-        res.setInDescription(inDescription);
-        res.setInGeocat(inGeocat);
-
-        return res;
-    }
-
-    private static ValueOccurence mandatory(String value, boolean inApp, boolean inDescription, boolean inGeocat){
-        ValueOccurence res = new ValueOccurence();
-
-        res.setMandatory(true);
-
-        res.setValue(value);
-        res.setInApp(inApp);
-        res.setInDescription(inDescription);
-        res.setInGeocat(inGeocat);
-
-        return res;
-    }
-
-    public static List<String> descriptionMandatoryKeys(){
+    public static List<String> keysForTest(InputType inType, OutputType outType){
         List<String> keys = all.stream()
-                .filter(val -> val.isInDescription())
-                .filter(val -> val.isMandatory())
-                .map(ValueOccurence::getValue)
-                .collect(Collectors.toList());
-
-        return keys;
-    }
-
-    public static List<String> descriptionAllKeys(){
-        List<String> keys = all.stream()
-                .filter(val -> val.isInDescription())
-                .map(ValueOccurence::getValue)
-                .collect(Collectors.toList());
-
-        return keys;
-    }
-
-    public static List<String> appAllKeys(){
-        List<String> keys = all.stream()
-                .filter(val -> val.isInApp())
+                .filter(val -> val.isFlaggedForInput(inType))
+                .filter(val -> val.isFlaggedForOutput(outType))
                 .map(ValueOccurence::getValue)
                 .collect(Collectors.toList());
 

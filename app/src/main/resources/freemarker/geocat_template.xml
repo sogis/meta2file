@@ -1,5 +1,16 @@
+<#ftl output_format="XML">
 <?xml version="1.0" encoding="UTF-8"?>
-<che:CHE_MD_Metadata xmlns:che="http://www.geocat.ch/2008/che" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gmi="http://www.isotc211.org/2005/gmi" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gco:isoType="gmd:MD_Metadata" xsi:schemaLocation="http://www.geocat.ch/2008/che https://www.geocat.ch/geonetwork/xml/schemas/iso19139.che/schema/che/che.xsd">
+<che:CHE_MD_Metadata xmlns:che="http://www.geocat.ch/2008/che"
+  xmlns:gco="http://www.isotc211.org/2005/gco"
+  xmlns:gmd="http://www.isotc211.org/2005/gmd"
+  xmlns:srv="http://www.isotc211.org/2005/srv"
+  xmlns:gmx="http://www.isotc211.org/2005/gmx"
+  xmlns:gts="http://www.isotc211.org/2005/gts"
+  xmlns:gsr="http://www.isotc211.org/2005/gsr"
+  xmlns:gmi="http://www.isotc211.org/2005/gmi"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gco:isoType="gmd:MD_Metadata" xsi:schemaLocation="http://www.geocat.ch/2008/che https://www.geocat.ch/geonetwork/xml/schemas/iso19139.che/schema/che/che.xsd">
   <gmd:fileIdentifier>
     <gco:CharacterString>403faf37-fe22-484c-8aaa-17ee0c18e5a0</gco:CharacterString>
   </gmd:fileIdentifier>
@@ -12,22 +23,14 @@
   <gmd:hierarchyLevel xmlns:geonet="http://www.fao.org/geonetwork">
     <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" />
   </gmd:hierarchyLevel>
+  <!-- tech. Kontakt-->
   <gmd:contact xmlns:geonet="http://www.fao.org/geonetwork" uuidref="96326295-81c9-44d8-bc25-986cbdfb662e">
     <che:CHE_CI_ResponsibleParty gco:isoType="gmd:CI_ResponsibleParty">
       <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
-        <gco:CharacterString>Amt für Geoinformation (Kt. SO)</gco:CharacterString>
+        <gco:CharacterString>${serviceOrg.name}</gco:CharacterString>
         <gmd:PT_FreeText>
           <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#DE">Amt für Geoinformation (Kt. SO)</gmd:LocalisedCharacterString>
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#FR" />
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#IT" />
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#EN" />
+            <gmd:LocalisedCharacterString locale="#DE">${serviceOrg.name}</gmd:LocalisedCharacterString>
           </gmd:textGroup>
         </gmd:PT_FreeText>
       </gmd:organisationName>
@@ -37,15 +40,6 @@
           <gmd:textGroup>
             <gmd:LocalisedCharacterString locale="#DE">Info</gmd:LocalisedCharacterString>
           </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#FR" />
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#IT" />
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#EN" />
-          </gmd:textGroup>
         </gmd:PT_FreeText>
       </gmd:positionName>
       <gmd:contactInfo>
@@ -53,23 +47,23 @@
           <gmd:phone>
             <che:CHE_CI_Telephone gco:isoType="gmd:CI_Telephone">
               <gmd:voice>
-                <gco:CharacterString>032 627 75 92</gco:CharacterString>
+                <gco:CharacterString>${serviceOrg.phone}</gco:CharacterString>
               </gmd:voice>
             </che:CHE_CI_Telephone>
           </gmd:phone>
           <gmd:address>
             <che:CHE_CI_Address gco:isoType="gmd:CI_Address">
               <gmd:city>
-                <gco:CharacterString>Solothurn</gco:CharacterString>
+                <gco:CharacterString />
               </gmd:city>
               <gmd:postalCode>
-                <gco:CharacterString>4500</gco:CharacterString>
+                <gco:CharacterString />
               </gmd:postalCode>
               <gmd:country>
-                <gco:CharacterString>CH</gco:CharacterString>
+                <gco:CharacterString />
               </gmd:country>
               <gmd:electronicMailAddress>
-                <gco:CharacterString>mailto:agi@so.ch</gco:CharacterString>
+                <gco:CharacterString>${serviceOrg.email}</gco:CharacterString>
               </gmd:electronicMailAddress>
               <che:streetName>
                 <gco:CharacterString />
@@ -82,19 +76,10 @@
           <gmd:onlineResource>
             <gmd:CI_OnlineResource>
               <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-geoinformation/</gmd:URL>
+                <gmd:URL>${serviceOrg.url}</gmd:URL>
                 <che:PT_FreeURL>
                   <che:URLGroup>
-                    <che:LocalisedURL locale="#DE">https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-geoinformation/</che:LocalisedURL>
-                  </che:URLGroup>
-                  <che:URLGroup>
-                    <che:LocalisedURL locale="#FR" />
-                  </che:URLGroup>
-                  <che:URLGroup>
-                    <che:LocalisedURL locale="#IT" />
-                  </che:URLGroup>
-                  <che:URLGroup>
-                    <che:LocalisedURL locale="#EN" />
+                    <che:LocalisedURL locale="#DE">${serviceOrg.url}</che:LocalisedURL>
                   </che:URLGroup>
                 </che:PT_FreeURL>
               </gmd:linkage>
@@ -115,24 +100,103 @@
         <gco:CharacterString />
       </che:individualLastName>
       <che:organisationAcronym xsi:type="gmd:PT_FreeText_PropertyType">
-        <gco:CharacterString>AGI</gco:CharacterString>
+        <gco:CharacterString>${serviceOrg.abbreviation}</gco:CharacterString>
         <gmd:PT_FreeText>
           <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#DE">AGI</gmd:LocalisedCharacterString>
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#FR" />
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#IT" />
-          </gmd:textGroup>
-          <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#EN" />
+            <gmd:LocalisedCharacterString locale="#DE">${serviceOrg.abbreviation}</gmd:LocalisedCharacterString>
           </gmd:textGroup>
         </gmd:PT_FreeText>
       </che:organisationAcronym>
     </che:CHE_CI_ResponsibleParty>
   </gmd:contact>
+  <!-- Ende tech. Kontakt-->
+  <!-- Kontakt Datenherr -->
+  <gmd:contact xmlns:geonet="http://www.fao.org/geonetwork" uuidref="786576ac-dd84-4f30-8c1c-350cf182f3f1">
+    <che:CHE_CI_ResponsibleParty gco:isoType="gmd:CI_ResponsibleParty">
+      <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+        <gco:CharacterString>${ownerOrg.name}</gco:CharacterString>
+        <gmd:PT_FreeText>
+          <gmd:textGroup>
+            <gmd:LocalisedCharacterString locale="#DE">${ownerOrg.name}</gmd:LocalisedCharacterString>
+          </gmd:textGroup>
+        </gmd:PT_FreeText>
+      </gmd:organisationName>
+      <gmd:positionName xsi:type="gmd:PT_FreeText_PropertyType">
+        <gco:CharacterString>Info</gco:CharacterString>
+        <gmd:PT_FreeText>
+          <gmd:textGroup>
+            <gmd:LocalisedCharacterString locale="#DE">Info</gmd:LocalisedCharacterString>
+          </gmd:textGroup>
+        </gmd:PT_FreeText>
+      </gmd:positionName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:phone>
+            <che:CHE_CI_Telephone gco:isoType="gmd:CI_Telephone">
+              <gmd:voice>
+                <gco:CharacterString>${ownerOrg.phone}</gco:CharacterString>
+              </gmd:voice>
+            </che:CHE_CI_Telephone>
+          </gmd:phone>
+          <gmd:address>
+            <che:CHE_CI_Address gco:isoType="gmd:CI_Address">
+              <gmd:city>
+                <gco:CharacterString />
+              </gmd:city>
+              <gmd:postalCode>
+                <gco:CharacterString />
+              </gmd:postalCode>
+              <gmd:country>
+                <gco:CharacterString />
+              </gmd:country>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>${ownerOrg.email}</gco:CharacterString>
+              </gmd:electronicMailAddress>
+              <che:streetName>
+                <gco:CharacterString />
+              </che:streetName>
+              <che:streetNumber>
+                <gco:CharacterString />
+              </che:streetNumber>
+            </che:CHE_CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
+                <gmd:URL>${ownerOrg.url}</gmd:URL>
+                <che:PT_FreeURL>
+                  <che:URLGroup>
+                    <che:LocalisedURL locale="#DE">${ownerOrg.url}</che:LocalisedURL>
+                  </che:URLGroup>
+                </che:PT_FreeURL>
+              </gmd:linkage>
+              <gmd:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </gmd:protocol>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="pointOfContact" />
+      </gmd:role>
+      <che:individualFirstName>
+        <gco:CharacterString />
+      </che:individualFirstName>
+      <che:individualLastName>
+        <gco:CharacterString />
+      </che:individualLastName>
+      <che:organisationAcronym xsi:type="gmd:PT_FreeText_PropertyType">
+        <gco:CharacterString>${ownerOrg.abbreviation}</gco:CharacterString>
+        <gmd:PT_FreeText>
+          <gmd:textGroup>
+            <gmd:LocalisedCharacterString locale="#DE">${ownerOrg.abbreviation}</gmd:LocalisedCharacterString>
+          </gmd:textGroup>
+        </gmd:PT_FreeText>
+      </che:organisationAcronym>
+    </che:CHE_CI_ResponsibleParty>
+  </gmd:contact>
+  <!-- End Kontakt Datenherr -->
   <gmd:dateStamp xmlns:geonet="http://www.fao.org/geonetwork">
     <gco:DateTime>2022-06-30T07:03:24</gco:DateTime>
   </gmd:dateStamp>
@@ -217,17 +281,17 @@
       <gmd:citation>
         <gmd:CI_Citation>
           <gmd:title xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>Beispiel "sotemplate cit.title $$theme.title"</gco:CharacterString>
+            <gco:CharacterString>${title}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">Beispiel "sotemplate cit.title $$theme.title"</gmd:LocalisedCharacterString>
+                <gmd:LocalisedCharacterString locale="#DE">${title}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:title>
           <gmd:date>
             <gmd:CI_Date>
               <gmd:date>
-                <gco:Date>2011-11-11</gco:Date>
+                <gco:Date>${lastPublished}</gco:Date>
               </gmd:date>
               <gmd:dateType>
                 <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision" />
@@ -235,59 +299,41 @@
             </gmd:CI_Date>
           </gmd:date>
           <gmd:collectiveTitle xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>sotemplate cit.coll_title $$theme.title</gco:CharacterString>
+            <gco:CharacterString>${title}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">sotemplate cit.coll_title $$theme.title</gmd:LocalisedCharacterString>
+                <gmd:LocalisedCharacterString locale="#DE">${title}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:collectiveTitle>
         </gmd:CI_Citation>
       </gmd:citation>
       <gmd:abstract xsi:type="gmd:PT_FreeText_PropertyType">
-        <gco:CharacterString>$$theme.description</gco:CharacterString>
+        <gco:CharacterString>${description}</gco:CharacterString>
         <gmd:PT_FreeText>
           <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#DE">$$theme.description</gmd:LocalisedCharacterString>
+            <gmd:LocalisedCharacterString locale="#DE">${description}</gmd:LocalisedCharacterString>
           </gmd:textGroup>
         </gmd:PT_FreeText>
       </gmd:abstract>
       <gmd:status>
         <gmd:MD_ProgressCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ProgressCode" codeListValue="onGoing" />
       </gmd:status>
+      <!--Kontakt Owner-->
       <gmd:pointOfContact uuidref="786576ac-dd84-4f30-8c1c-350cf182f3f1">
         <che:CHE_CI_ResponsibleParty gco:isoType="gmd:CI_ResponsibleParty">
           <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>Amt für Umwelt (Kt. SO)</gco:CharacterString>
+            <gco:CharacterString>${ownerOrg.name}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">Amt für Umwelt (Kt. SO)</gmd:LocalisedCharacterString>
+                <gmd:LocalisedCharacterString locale="#DE">${ownerOrg.name}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN" />
-              </gmd:textGroup>
-            </gmd:PT_FreeText>
           </gmd:organisationName>
           <gmd:positionName xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>Abteilung Boden</gco:CharacterString>
+            <gco:CharacterString>${ownerOrg.name}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">Abteilung Boden</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN" />
+                <gmd:LocalisedCharacterString locale="#DE">${ownerOrg.name}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:positionName>
@@ -296,23 +342,23 @@
               <gmd:phone>
                 <che:CHE_CI_Telephone gco:isoType="gmd:CI_Telephone">
                   <gmd:voice>
-                    <gco:CharacterString>032 627 75 92</gco:CharacterString>
+                    <gco:CharacterString>${ownerOrg.phone}</gco:CharacterString>
                   </gmd:voice>
                 </che:CHE_CI_Telephone>
               </gmd:phone>
               <gmd:address>
                 <che:CHE_CI_Address gco:isoType="gmd:CI_Address">
                   <gmd:city>
-                    <gco:CharacterString>Solothurn</gco:CharacterString>
+                    <gco:CharacterString/>
                   </gmd:city>
                   <gmd:postalCode>
-                    <gco:CharacterString>4500</gco:CharacterString>
+                    <gco:CharacterString/>
                   </gmd:postalCode>
                   <gmd:country>
-                    <gco:CharacterString>CH</gco:CharacterString>
+                    <gco:CharacterString/>
                   </gmd:country>
                   <gmd:electronicMailAddress>
-                    <gco:CharacterString>mailto:afu@so.ch</gco:CharacterString>
+                    <gco:CharacterString>${ownerOrg.email}</gco:CharacterString>
                   </gmd:electronicMailAddress>
                   <che:streetName>
                     <gco:CharacterString />
@@ -325,19 +371,10 @@
               <gmd:onlineResource>
                 <gmd:CI_OnlineResource>
                   <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                    <gmd:URL>https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-umwelt/</gmd:URL>
+                    <gmd:URL>${ownerOrg.url}</gmd:URL>
                     <che:PT_FreeURL>
                       <che:URLGroup>
-                        <che:LocalisedURL locale="#DE">https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-umwelt/</che:LocalisedURL>
-                      </che:URLGroup>
-                      <che:URLGroup>
-                        <che:LocalisedURL locale="#FR" />
-                      </che:URLGroup>
-                      <che:URLGroup>
-                        <che:LocalisedURL locale="#IT" />
-                      </che:URLGroup>
-                      <che:URLGroup>
-                        <che:LocalisedURL locale="#EN" />
+                        <che:LocalisedURL locale="#DE">${ownerOrg.url}</che:LocalisedURL>
                       </che:URLGroup>
                     </che:PT_FreeURL>
                   </gmd:linkage>
@@ -358,40 +395,24 @@
             <gco:CharacterString />
           </che:individualLastName>
           <che:organisationAcronym xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>AfU</gco:CharacterString>
+            <gco:CharacterString>${ownerOrg.abbreviation}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">AfU</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN" />
+                <gmd:LocalisedCharacterString locale="#DE">${ownerOrg.abbreviation}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </che:organisationAcronym>
         </che:CHE_CI_ResponsibleParty>
       </gmd:pointOfContact>
+      <!--End Kontakt Owner-->
+      <!--Kontakt Service-->
       <gmd:pointOfContact uuidref="96326295-81c9-44d8-bc25-986cbdfb662e">
         <che:CHE_CI_ResponsibleParty gco:isoType="gmd:CI_ResponsibleParty">
           <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>Amt für Geoinformation (Kt. SO)</gco:CharacterString>
+            <gco:CharacterString>${serviceOrg.name}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">Amt für Geoinformation (Kt. SO)</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN" />
+                <gmd:LocalisedCharacterString locale="#DE">${serviceOrg.name}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:organisationName>
@@ -401,39 +422,29 @@
               <gmd:textGroup>
                 <gmd:LocalisedCharacterString locale="#DE">Info</gmd:LocalisedCharacterString>
               </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN" />
-              </gmd:textGroup>
-            </gmd:PT_FreeText>
           </gmd:positionName>
           <gmd:contactInfo>
             <gmd:CI_Contact>
               <gmd:phone>
                 <che:CHE_CI_Telephone gco:isoType="gmd:CI_Telephone">
                   <gmd:voice>
-                    <gco:CharacterString>032 627 75 92</gco:CharacterString>
+                    <gco:CharacterString>${serviceOrg.phone}</gco:CharacterString>
                   </gmd:voice>
                 </che:CHE_CI_Telephone>
               </gmd:phone>
               <gmd:address>
                 <che:CHE_CI_Address gco:isoType="gmd:CI_Address">
                   <gmd:city>
-                    <gco:CharacterString>Solothurn</gco:CharacterString>
+                    <gco:CharacterString/>
                   </gmd:city>
                   <gmd:postalCode>
-                    <gco:CharacterString>4500</gco:CharacterString>
+                    <gco:CharacterString/>
                   </gmd:postalCode>
                   <gmd:country>
-                    <gco:CharacterString>CH</gco:CharacterString>
+                    <gco:CharacterString/>
                   </gmd:country>
                   <gmd:electronicMailAddress>
-                    <gco:CharacterString>mailto:agi@so.ch</gco:CharacterString>
+                    <gco:CharacterString>${serviceOrg.email}</gco:CharacterString>
                   </gmd:electronicMailAddress>
                   <che:streetName>
                     <gco:CharacterString />
@@ -446,19 +457,10 @@
               <gmd:onlineResource>
                 <gmd:CI_OnlineResource>
                   <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                    <gmd:URL>https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-geoinformation/</gmd:URL>
+                    <gmd:URL>${serviceOrg.url}</gmd:URL>
                     <che:PT_FreeURL>
                       <che:URLGroup>
-                        <che:LocalisedURL locale="#DE">https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-geoinformation/</che:LocalisedURL>
-                      </che:URLGroup>
-                      <che:URLGroup>
-                        <che:LocalisedURL locale="#FR" />
-                      </che:URLGroup>
-                      <che:URLGroup>
-                        <che:LocalisedURL locale="#IT" />
-                      </che:URLGroup>
-                      <che:URLGroup>
-                        <che:LocalisedURL locale="#EN" />
+                        <che:LocalisedURL locale="#DE">${serviceOrg.url}</che:LocalisedURL>
                       </che:URLGroup>
                     </che:PT_FreeURL>
                   </gmd:linkage>
@@ -479,24 +481,16 @@
             <gco:CharacterString />
           </che:individualLastName>
           <che:organisationAcronym xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>AGI</gco:CharacterString>
+            <gco:CharacterString>${serviceOrg.abbreviation}</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">AGI</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT" />
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN" />
+                <gmd:LocalisedCharacterString locale="#DE">${serviceOrg.abbreviation}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </che:organisationAcronym>
         </che:CHE_CI_ResponsibleParty>
       </gmd:pointOfContact>
+      <!--End Kontakt Service-->
       <gmd:resourceMaintenance>
         <che:CHE_MD_MaintenanceInformation gco:isoType="gmd:MD_MaintenanceInformation">
           <gmd:maintenanceAndUpdateFrequency>
@@ -507,17 +501,17 @@
       <gmd:graphicOverview>
         <gmd:MD_BrowseGraphic>
           <gmd:fileName>
-            <gco:CharacterString>-- URL der Dateiablage --</gco:CharacterString>
+            <gco:CharacterString/>
           </gmd:fileName>
         </gmd:MD_BrowseGraphic>
       </gmd:graphicOverview>
       <gmd:resourceFormat uuidref="0160d385-d452-4bf6-9818-bbdd2dff9513">
         <gmd:MD_Format>
           <gmd:name>
-            <gco:CharacterString>INTERLIS</gco:CharacterString>
+            <gco:CharacterString>zip</gco:CharacterString>
           </gmd:name>
           <gmd:version>
-            <gco:CharacterString>2</gco:CharacterString>
+            <gco:CharacterString>-</gco:CharacterString>
           </gmd:version>
         </gmd:MD_Format>
       </gmd:resourceFormat>
@@ -529,17 +523,18 @@
               <gmd:textGroup>
                 <gmd:LocalisedCharacterString locale="#DE">opendata.swiss</gmd:LocalisedCharacterString>
               </gmd:textGroup>
+            </gmd:PT_FreeText>
+          </gmd:keyword>
+          <#list keysAndSynos as therm>
+          <gmd:keyword xsi:type="gmd:PT_FreeText_PropertyType">
+            <gco:CharacterString>${therm}</gco:CharacterString>
+            <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR">opendata.swiss</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT">opendata.swiss</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN">opendata.swiss</gmd:LocalisedCharacterString>
+                <gmd:LocalisedCharacterString locale="#DE">${therm}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:keyword>
+          </#list>
           <gmd:type>
             <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
           </gmd:type>
@@ -572,10 +567,10 @@
       <gmd:resourceConstraints>
         <gmd:MD_Constraints>
           <gmd:useLimitation xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>$$A: öffentlich zugängliche Geodaten</gco:CharacterString>
+            <gco:CharacterString>A: öffentlich zugängliche Geodaten</gco:CharacterString>
             <gmd:PT_FreeText>
               <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">$$A: öffentlich zugängliche Geodaten</gmd:LocalisedCharacterString>
+                <gmd:LocalisedCharacterString locale="#DE">A: öffentlich zugängliche Geodaten</gmd:LocalisedCharacterString>
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:useLimitation>
@@ -715,99 +710,40 @@
         </gmd:EX_Extent>
       </gmd:extent>
       <gmd:supplementalInformation xsi:type="gmd:PT_FreeText_PropertyType">
-        <gco:CharacterString>Projekt:</gco:CharacterString>
+        <gco:CharacterString>-</gco:CharacterString>
         <gmd:PT_FreeText>
           <gmd:textGroup>
-            <gmd:LocalisedCharacterString locale="#DE">Projekt:</gmd:LocalisedCharacterString>
+            <gmd:LocalisedCharacterString locale="#DE">-</gmd:LocalisedCharacterString>
           </gmd:textGroup>
         </gmd:PT_FreeText>
       </gmd:supplementalInformation>
     </che:CHE_MD_DataIdentification>
   </gmd:identificationInfo>
-  <gmd:distributionInfo xmlns:java="java:org.fao.geonet.util.XslUtil" xmlns:geonet="http://www.fao.org/geonetwork">
+  <gmd:distributionInfo xmlns:java="java:org.fao.geonet.util.XslUtil"
+    xmlns:geonet="http://www.fao.org/geonetwork">
     <gmd:MD_Distribution>
-      <gmd:distributionFormat uuidref="0160d385-d452-4bf6-9818-bbdd2dff9513">
+      <#list fileFormats as ff>
+      <gmd:distributionFormat uuidref="${ff.idString}">
         <gmd:MD_Format>
           <gmd:name>
-            <gco:CharacterString>INTERLIS</gco:CharacterString>
+            <gco:CharacterString>${ff.name}</gco:CharacterString>
           </gmd:name>
           <gmd:version>
-            <gco:CharacterString>2</gco:CharacterString>
+            <gco:CharacterString>${ff.version}</gco:CharacterString>
           </gmd:version>
         </gmd:MD_Format>
       </gmd:distributionFormat>
-      <gmd:distributionFormat uuidref="aaa0c6ab-6005-44d8-bb09-aa75da2ccae3">
-        <gmd:MD_Format>
-          <gmd:name>
-            <gco:CharacterString>Geopackage (ogc)</gco:CharacterString>
-          </gmd:name>
-          <gmd:version>
-            <gco:CharacterString>-</gco:CharacterString>
-          </gmd:version>
-          <gmd:formatDistributor />
-        </gmd:MD_Format>
-      </gmd:distributionFormat>
+      </#list>
       <gmd:transferOptions>
         <gmd:MD_DigitalTransferOptions>
+          <!--Landing-Page-->
           <gmd:onLine>
             <gmd:CI_OnlineResource>
               <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>-- URL zum Download --</gmd:URL>
+                <gmd:URL>${dataAppPageUrl}</gmd:URL>
                 <che:PT_FreeURL>
                   <che:URLGroup>
-                    <che:LocalisedURL locale="#DE">-- URL zum Download --</che:LocalisedURL>
-                  </che:URLGroup>
-                </che:PT_FreeURL>
-              </gmd:linkage>
-              <gmd:protocol>
-                <gco:CharacterString>WWW:DOWNLOAD:Geopackage (ogc)</gco:CharacterString>
-              </gmd:protocol>
-              <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>Geopackage (in Zip) $$const.files["gpkg"].name</gco:CharacterString>
-                <gmd:PT_FreeText>
-                  <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">Geopackage (in Zip) $$const.files["gpkg"].name</gmd:LocalisedCharacterString>
-                  </gmd:textGroup>
-                </gmd:PT_FreeText>
-              </gmd:name>
-              <gmd:function>
-                <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" />
-              </gmd:function>
-            </gmd:CI_OnlineResource>
-          </gmd:onLine>
-          <gmd:onLine>
-            <gmd:CI_OnlineResource>
-              <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>-- URL zum Download --</gmd:URL>
-                <che:PT_FreeURL>
-                  <che:URLGroup>
-                    <che:LocalisedURL locale="#DE">-- URL zum Download --</che:LocalisedURL>
-                  </che:URLGroup>
-                </che:PT_FreeURL>
-              </gmd:linkage>
-              <gmd:protocol>
-                <gco:CharacterString>WWW:DOWNLOAD:INTERLIS</gco:CharacterString>
-              </gmd:protocol>
-              <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>INTERLIS2-Transferdatei (in Zip) $$const.files["xtf"].name</gco:CharacterString>
-                <gmd:PT_FreeText>
-                  <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">INTERLIS2-Transferdatei (in Zip) $$const.files["xtf"].name</gmd:LocalisedCharacterString>
-                  </gmd:textGroup>
-                </gmd:PT_FreeText>
-              </gmd:name>
-              <gmd:function>
-                <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" />
-              </gmd:function>
-            </gmd:CI_OnlineResource>
-          </gmd:onLine>
-          <gmd:onLine>
-            <gmd:CI_OnlineResource>
-              <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>-- URL zur Information --</gmd:URL>
-                <che:PT_FreeURL>
-                  <che:URLGroup>
-                    <che:LocalisedURL locale="#DE">-- URL zur Information --</che:LocalisedURL>
+                    <che:LocalisedURL locale="#DE">${dataAppPageUrl}</che:LocalisedURL>
                   </che:URLGroup>
                 </che:PT_FreeURL>
               </gmd:linkage>
@@ -815,55 +751,99 @@
                 <gco:CharacterString>WWW:LINK</gco:CharacterString>
               </gmd:protocol>
               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>$$Link auf Thema im Geoportal des Kt. Solothurn</gco:CharacterString>
+                <gco:CharacterString>Download-Seite</gco:CharacterString>
                 <gmd:PT_FreeText>
                   <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">$$Link auf Thema im Geoportal des Kt. Solothurn</gmd:LocalisedCharacterString>
+                    <gmd:LocalisedCharacterString locale="#DE">Download-Seite</gmd:LocalisedCharacterString>
                   </gmd:textGroup>
                 </gmd:PT_FreeText>
               </gmd:name>
+              <gmd:description xsi:type="gmd:PT_FreeText_PropertyType">
+                <gco:CharacterString>Daten-Download auf Geoportal des Kanton Solothurn</gco:CharacterString>
+                <gmd:PT_FreeText>
+                  <gmd:textGroup>
+                    <gmd:LocalisedCharacterString locale="#DE">Daten-Download auf Geoportal des Kanton Solothurn</gmd:LocalisedCharacterString>
+                  </gmd:textGroup>
+                </gmd:PT_FreeText>
+              </gmd:description>
               <gmd:function>
                 <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information" />
               </gmd:function>
             </gmd:CI_OnlineResource>
           </gmd:onLine>
+          <!--End Landing-Page-->
+          <!-- Vorschau Web GIS -->
+          <#if hasSinglePreviewProduct>
+          <gmd:CI_OnlineResource>
+            <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
+              <gmd:URL>${previewUrl}</gmd:URL>
+              <che:PT_FreeURL>
+                <che:URLGroup>
+                  <che:LocalisedURL locale="#DE">${previewUrl}</che:LocalisedURL>
+                </che:URLGroup>
+              </che:PT_FreeURL>
+            </gmd:linkage>
+            <gmd:protocol>
+              <gco:CharacterString>MAP:Preview</gco:CharacterString>
+            </gmd:protocol>
+            <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+              <gco:CharacterString>Web GIS</gco:CharacterString>
+              <gmd:PT_FreeText>
+                <gmd:textGroup>
+                  <gmd:LocalisedCharacterString locale="#DE">Web GIS</gmd:LocalisedCharacterString>
+                </gmd:textGroup>
+              </gmd:PT_FreeText>
+            </gmd:name>
+            <gmd:description xsi:type="gmd:PT_FreeText_PropertyType">
+              <gco:CharacterString>Web GIS Client des Kanton Solothurn</gco:CharacterString>
+              <gmd:PT_FreeText>
+                <gmd:textGroup>
+                  <gmd:LocalisedCharacterString locale="#DE">Web GIS Client des Kanton Solothurn</gmd:LocalisedCharacterString>
+                </gmd:textGroup>
+              </gmd:PT_FreeText>
+            </gmd:description>
+            <gmd:function>
+              <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information" />
+            </gmd:function>
+          </gmd:CI_OnlineResource>
+          </#if>
+          <!-- End Vorschau Web GIS -->
+          <!--Download-Formate-->
+          <#if hasDirectPortalDownloads>
+          <#list fileFormats as ff>
           <gmd:onLine>
             <gmd:CI_OnlineResource>
               <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>-- URL zum wms --</gmd:URL>
+                <gmd:URL>${ff.url}</gmd:URL>
                 <che:PT_FreeURL>
                   <che:URLGroup>
-                    <che:LocalisedURL locale="#DE">-- URL zum wms --</che:LocalisedURL>
+                    <che:LocalisedURL locale="#DE">${ff.url}</che:LocalisedURL>
                   </che:URLGroup>
                 </che:PT_FreeURL>
               </gmd:linkage>
               <gmd:protocol>
-                <gco:CharacterString>OGC:WMS</gco:CharacterString>
+                <gco:CharacterString>${ff.protocol}</gco:CharacterString>
               </gmd:protocol>
               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>WMS-Dienst des Kt. Solothurn</gco:CharacterString>
+                <gco:CharacterString>${ff.name}</gco:CharacterString>
                 <gmd:PT_FreeText>
                   <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">WMS-Dienst des Kt. Solothurn</gmd:LocalisedCharacterString>
+                    <gmd:LocalisedCharacterString locale="#DE">${ff.name}</gmd:LocalisedCharacterString>
                   </gmd:textGroup>
                 </gmd:PT_FreeText>
               </gmd:name>
-              <gmd:description xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>Folgende Layer stehen zur Verfügung: $$themepublication.wmslayers</gco:CharacterString>
-                <gmd:PT_FreeText>
-                  <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">Folgende Layer stehen zur Verfügung: $$themepublication.wmslayers</gmd:LocalisedCharacterString>
-                  </gmd:textGroup>
-                </gmd:PT_FreeText>
-              </gmd:description>
               <gmd:function>
                 <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" />
               </gmd:function>
             </gmd:CI_OnlineResource>
           </gmd:onLine>
+          </#list>
+          </#if>
         </gmd:MD_DigitalTransferOptions>
       </gmd:transferOptions>
     </gmd:MD_Distribution>
   </gmd:distributionInfo>
 </che:CHE_MD_Metadata>
+
+
 

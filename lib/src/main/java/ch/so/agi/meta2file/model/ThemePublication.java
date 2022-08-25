@@ -1,17 +1,16 @@
 package ch.so.agi.meta2file.model;
 
-import java.net.URI;
-import java.time.LocalDate;
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import javax.validation.constraints.NotNull;
+import java.net.URI;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  *  Eine Themenpubliaktion entspricht einer Zeile in der Datensuche 
@@ -84,13 +83,7 @@ public class ThemePublication {
      */
     @NotNull
     private URI licence;
-    /**
-     * Basis-Url der Datenablage, z.B. https://data.geo.so.ch/
-     * Die komplette Url der Themenpublikation ergibt sich
-     * automatisch aus dem Identifier.
-     */
-    @NotNull
-    private URI baseUrl;
+
     /**
      * Angebotene Datenformate
      */
@@ -194,7 +187,6 @@ public class ThemePublication {
         this.keywordsList = keywordsList;
     }
 
-
     public Office getOwner() {
         return owner;
     }
@@ -219,12 +211,7 @@ public class ThemePublication {
     public void setLicence(URI licence) {
         this.licence = licence;
     }
-    public URI getBaseUrl() {
-        return baseUrl;
-    }
-    public void setBaseUrl(URI baseUrl) {
-        this.baseUrl = baseUrl;
-    }
+
     public List<FileFormat> getFileFormats() {
         return fileFormats;
     }
