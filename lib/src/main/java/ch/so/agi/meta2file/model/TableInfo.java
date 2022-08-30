@@ -1,14 +1,13 @@
 package ch.so.agi.meta2file.model;
 
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Informationen zu einer einzelnen Tabelle
@@ -27,7 +26,7 @@ public class TableInfo {
     private String title;
 
     /**
-     * Typ der (Geo-Tabelle)
+     * Typ der (Geo-)Tabelle
      */
     @NotNull
     private String tableType;

@@ -9,7 +9,6 @@ import ch.so.agi.meta2file.test.OutputType;
 import ch.so.agi.meta2file.test.Util;
 import ch.so.agi.meta2file.test.ValueOccurence;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,7 +106,7 @@ class Meta2FileTest {
     }
 
 
-    @BeforeAll
+    //@BeforeAll
     static void beforeAll() {
         try {
             con = DriverManager.getConnection(
