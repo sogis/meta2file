@@ -15,7 +15,9 @@ import ch.so.agi.meta2file.model.ThemePublication;
 
 class MetaBean2FileConverterTest {
     
-    //@Test Grund: Muss nach Modellerweiterung angepasst werden.
+    // FIXME Failen wieder nach Ergänzung Modell mit PreviewUrl.
+    
+    @Test 
     public void beans2xml_Ok() throws Exception {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
         var list = new ArrayList<ThemePublication>(themePublications.values());
