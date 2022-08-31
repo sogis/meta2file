@@ -42,7 +42,7 @@ public class Util {
         Assertions.assertEquals(
                 0,
                 missing.size(),
-                MessageFormat.format("Expected no missing string parts. Missing: {0}", missing));
+                MessageFormat.format("Missing string parts: {0}", missing));
     }
 
     public static List<ThemePublication> listFromBean(ThemePublication tp, int numRecords){

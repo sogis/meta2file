@@ -525,6 +525,7 @@
               </gmd:textGroup>
             </gmd:PT_FreeText>
           </gmd:keyword>
+          <#if keysAndSynos??>
           <#list keysAndSynos as therm>
           <gmd:keyword xsi:type="gmd:PT_FreeText_PropertyType">
             <gco:CharacterString>${therm}</gco:CharacterString>
@@ -535,6 +536,7 @@
             </gmd:PT_FreeText>
           </gmd:keyword>
           </#list>
+          </#if>
           <gmd:type>
             <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
           </gmd:type>
@@ -773,7 +775,7 @@
           </gmd:onLine>
           <!--End Landing-Page-->
           <!-- Vorschau Web GIS -->
-          <#if hasSinglePreviewProduct>
+          <#if previewUrl??>
           <gmd:CI_OnlineResource>
             <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
               <gmd:URL>${previewUrl}</gmd:URL>

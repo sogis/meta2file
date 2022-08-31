@@ -8,9 +8,8 @@ package ch.so.agi.meta2file.test;
  */
 public enum InputType {
 
-    VEC_ALL, // Complete but small-sized example json containing two classes
-    VEC_ALL_ITEM, // SAME as VEC_ALL, but with multiple items
-    VEC_MANDATORY, // One class with geometry missing all optional values
+    VEC_ALL, // Complete but small-sized example json containing two tables and two items
+    VEC_MANDATORY, // One table with geometry (and bbox) but missing all optional values
     TAB_ALL, // One class without geometry, with complete attribute description
     TAB_MANDATORY, // One class without geometry, with complete attribute description
     OTHER_ALL,

@@ -51,9 +51,27 @@ class Meta2FileTest {
         ;
     }
 
-    //@Test
+    @Test
     public void app_vecAll_OK() throws Exception {
         appJsonTest(InputType.VEC_ALL);
+    }
+
+    @Test
+    public void app_vecMandatory_OK() throws Exception {
+        appJsonTest(InputType.VEC_MANDATORY);
+    }
+
+    @Test
+    public void geocat_vecAll_OK() throws Exception {
+        String resXml = catJsonTest(InputType.VEC_ALL);
+
+        //additional Test: Preview-URL
+        Util.assertContains(resXml, "geo.so.ch/map?l=$themePub.identifier$");
+    }
+
+    @Test
+    public void geocat_vecMandatory_OK() throws Exception {
+        catJsonTest(InputType.VEC_MANDATORY);
     }
 
     private static String appJsonTest(InputType inType) throws Exception {
@@ -70,19 +88,6 @@ class Meta2FileTest {
         Util.assertContains(xml, keys);
 
         return xml;
-    }
-
-    @Test
-    public void geocat_vecAll_OK() throws Exception {
-        String resXml = catJsonTest(InputType.VEC_ALL);
-
-        //additional Tests
-        Util.assertContains(resXml, "geo.so.ch/map?l=$themePub.identifier$");
-    }
-
-    @Test
-    public void geocat_vecMandatory_OK() throws Exception {
-        catJsonTest(InputType.VEC_MANDATORY);
     }
 
     private static String catJsonTest(InputType inType) throws Exception {

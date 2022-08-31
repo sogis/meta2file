@@ -6,6 +6,12 @@
   "furtherInformation": "https://geo.so.ch/map",
   "lastPublishingDate": "2022-01-01T00:00:00",
   "secondToLastPublishingDate": "2022-01-01T00:00:00",
+  "bbox": {
+    "top": 1201000,
+    "left": 2600000,
+    "right": 2601000,
+    "bottom": 1200000
+  },
   "items": [
     {
       "bbox": {
@@ -16,7 +22,20 @@
       },
       "title": "$item1.title$",
       "geometry": "POLYGON((2600000 1200000,2600000 1201000,2601000 1201000,2601000 1200000,2600000 1200000))",
-      "identifier": "ktso",
+      "identifier": "$item1.identifier$",
+      "lastPublishingDate": "2022-01-01T00:00:00",
+      "secondToLastPublishingDate": "2022-01-01T00:00:00"
+    },
+    {
+      "bbox": {
+        "top": 1201000,
+        "left": 2600000,
+        "right": 2601000,
+        "bottom": 1200000
+      },
+      "title": "$item2.title$",
+      "geometry": "POLYGON((2600000 1200000,2600000 1201000,2601000 1201000,2601000 1200000,2600000 1200000))",
+      "identifier": "$item2.identifier$",
       "lastPublishingDate": "2022-01-01T00:00:00",
       "secondToLastPublishingDate": "2022-01-01T00:00:00"
     }

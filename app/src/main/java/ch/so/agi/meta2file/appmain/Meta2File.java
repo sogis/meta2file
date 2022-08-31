@@ -113,3 +113,9 @@ public class Meta2File {
         Geocat.beans2Files(xmlFolder.toPath(), iter);
     }
 }
+
+/*
+Fragen
+- model.TableInfo: Attribut-Liste absichtlich optional?
+- SHEET: Geometrie-Spalte wird dann einfach irgendwo in den Attributen einsortiert. Auch das ist bewusst so gewollt?
+ */

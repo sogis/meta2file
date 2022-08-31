@@ -70,9 +70,20 @@ public class ThemePublicationGC {
     }
 
     public List<String> getKeysAndSynos(){
+        boolean noKeys = inner.getKeywordsList() == null || inner.getKeywordsList().size() == 0;
+        boolean noSynos = inner.getSynonymsList() == null || inner.getSynonymsList().size() == 0;
+
+        if(noKeys && noSynos)
+            return null;
+
         ArrayList<String> res = new ArrayList<>();
-        res.addAll(inner.getKeywordsList());
-        res.addAll(inner.getSynonymsList());
+
+        if(!noKeys)
+            res.addAll(inner.getKeywordsList());
+
+        if(!noSynos)
+            res.addAll(inner.getSynonymsList());
+
         return res;
     }
 
@@ -81,6 +92,8 @@ public class ThemePublicationGC {
     }
 
     public String getPreviewUrl(){
+        if(inner.getServices() == null || inner.getServices().size() == 0)
+            return null;
 
         String res = null;
         Service wgc = null;
@@ -104,9 +117,5 @@ public class ThemePublicationGC {
         }
 
         return res;
-    }
-
-    public boolean getHasSinglePreviewProduct(){
-        return getPreviewUrl() != null;
     }
 }
