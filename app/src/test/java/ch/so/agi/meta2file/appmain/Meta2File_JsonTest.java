@@ -23,9 +23,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class Meta2FileTest {
+/**
+ *
+ */
+class Meta2File_JsonTest {
 
-    private static Logger log = LoggerFactory.getLogger(Meta2FileTest.class);
+    private static Logger log = LoggerFactory.getLogger(Meta2File_JsonTest.class);
 
     private static Connection con;
 
