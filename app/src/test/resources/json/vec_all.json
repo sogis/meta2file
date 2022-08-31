@@ -78,7 +78,6 @@
     {
       "title": "$table1.title$",
       "sqlName": "$table1.sqlName$",
-      "tableType": "MULTIPOLYGON",
       "attributesInfo": [
         {
           "name": "$table1.attr1.name$",
@@ -100,7 +99,6 @@
     {
       "title": "$table2.title$",
       "sqlName": "$table2.sqlName$",
-      "tableType": "MULTIPOLYGON",
       "attributesInfo": [
         {
           "name": "$table2.attr1.name$",

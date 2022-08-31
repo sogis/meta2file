@@ -92,30 +92,6 @@ public class ThemePublicationGC {
     }
 
     public String getPreviewUrl(){
-        if(inner.getServices() == null || inner.getServices().size() == 0)
-            return null;
-
-        String res = null;
-        Service wgc = null;
-
-        for(Service s : inner.getServices()){
-            if(s.getType() == ServiceType.WGC){
-                wgc = s;
-                break;
-            }
-        }
-
-        if(wgc == null)
-            return null;
-
-        for(String layerIdent : wgc.getLayerIdentifiers()){
-            if(inner.getIdentifier().equals(layerIdent)){
-                URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + layerIdent);
-                res = full.toString();
-                break;
-            }
-        }
-
-        return res;
+        return inner.getPreviewUrl();
     }
 }

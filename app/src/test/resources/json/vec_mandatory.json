@@ -44,7 +44,6 @@
     {
       "title": "$table1.title$",
       "sqlName": "$table1.sqlName$",
-      "tableType": "MULTIPOLYGON",
       "attributesInfo": [
         {
           "name": "$table1.attr1.name$",

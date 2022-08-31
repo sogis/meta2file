@@ -1,5 +1,6 @@
 package ch.so.agi.meta2file.model;
 
+import ch.so.agi.meta2file.libmain.BaseUrl;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
@@ -123,6 +124,34 @@ public class ThemePublication {
      * Boundingbox der Themenpublikation
      */
     private BoundingBox bbox;
+
+    public String getPreviewUrl(){
+        if(services == null || services.size() == 0)
+            return null;
+
+        String res = null;
+        Service wgc = null;
+
+        for(Service s : services){
+            if(s.getType() == ServiceType.WGC){
+                wgc = s;
+                break;
+            }
+        }
+
+        if(wgc == null)
+            return null;
+
+        for(String layerIdent : wgc.getLayerIdentifiers()){
+            if(identifier.equals(layerIdent)){
+                URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + layerIdent);
+                res = full.toString();
+                break;
+            }
+        }
+
+        return res;
+    }
     
     public String getIdentifier() {
         return identifier;

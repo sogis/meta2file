@@ -26,12 +26,6 @@ public class TableInfo {
     private String title;
 
     /**
-     * Typ der (Geo-)Tabelle
-     */
-    @NotNull
-    private String tableType;
-
-    /**
      * Kurze thematische Beschreibung. 
      * 
      * Der Text wird in einem CDATA-Abschnitt serialisiert, darf aber 
@@ -70,12 +64,5 @@ public class TableInfo {
     }
     public void setAttributesInfo(List<AttributeInfo> attributesInfo) {
         this.attributesInfo = attributesInfo;
-    }
-    public String getTableType() {
-        return tableType;
-    }
-
-    public void setTableType(String tableType) {
-        this.tableType = tableType;
     }
 }
