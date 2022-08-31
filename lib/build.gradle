@@ -91,6 +91,10 @@ publishing {
                         id = "edigonzales"
                         name = "Stefan Ziegler"
                     }
+                    developer {
+                        id = "ojeker"
+                        name = "Oliver Jeker"
+                    }
                 }
             }
         }

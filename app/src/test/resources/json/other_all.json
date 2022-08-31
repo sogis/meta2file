@@ -1,7 +1,6 @@
 {
   "title": "$themePub.title$",
   "identifier": "$themePub.identifier$",
-  "model": "$themePub.iliModelName$",
   "shortDescription": "$themePub.shortDescription$ Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
   "furtherInformation": "https://geo.so.ch/map",
   "lastPublishingDate": "2022-01-01T00:00:00",
@@ -72,69 +71,13 @@
         "$service.wmsLayer1$",
         "$themePub.identifier$"
       ]
-    },
-    {
-      "type": "DATA",
-      "endpoint": "https://geo.so.ch/api/data/v1/api",
-      "layerIdentifiers": [
-        "$service.dataLayer1$"
-      ]
-    }
-  ],
-  "tablesInfo": [
-    {
-      "title": "$table1.title$",
-      "sqlName": "$table1.sqlName$",
-      "attributesInfo": [
-        {
-          "name": "$table1.attr1.name$",
-          "alias": "$table1.attr1.alias$",
-          "datatype": "varchar(4000)",
-          "mandatory": false,
-          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
-        },
-        {
-          "name": "$table1.attr2.name$",
-          "alias": "$table1.attr2.alias$",
-          "datatype": "varchar(4000)",
-          "mandatory": false,
-          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
-        }
-      ],
-      "shortDescription": "$table1.shortDescription$"
-    },
-    {
-      "title": "$table2.title$",
-      "sqlName": "$table2.sqlName$",
-      "attributesInfo": [
-        {
-          "name": "$table2.attr1.name$",
-          "alias": "$table2.attr1.alias$",
-          "datatype": "varchar(4000)",
-          "mandatory": false,
-          "shortDescription": "Adresse: Strassenname\n\nArtPlusAttribut: Objekte.Strasse"
-        },
-        {
-          "name": "$table2.attr2.name$",
-          "alias": "$table2.attr2.alias$",
-          "datatype": "varchar(4000)",
-          "mandatory": false,
-          "shortDescription": "Adresse: Hausnummer und Suffix\n\nArtPlusAttribut: Objekte.Hausnummer"
-        }
-      ],
-      "shortDescription": "$table2.shortDescription$"
     }
   ],
   "fileFormats": [
     {
-      "name": "$fileFormat1$ - xtf",
-      "mimetype": "application/vnd.esri_shapefile",
-      "abbreviation": "xtf"
-    },
-    {
-      "name": "$fileFormat2$ - gpkg",
-      "mimetype": "application/geopackage+sqlite3",
-      "abbreviation": "gpkg"
+      "name": "$fileFormat1$ - tif",
+      "mimetype": "application/x-geotiff",
+      "abbreviation": "tif"
     }
   ],
   "keywordsList": [

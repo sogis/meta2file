@@ -23,12 +23,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/*
-Veränderungen an json
-- Keine Base-URL mehr
-- Service-Typ ergänzt
- */
-
 class Meta2FileTest {
 
     private static Logger log = LoggerFactory.getLogger(Meta2FileTest.class);
@@ -62,6 +56,16 @@ class Meta2FileTest {
     }
 
     @Test
+    public void app_otherAll_OK() throws Exception {
+        appJsonTest(InputType.OTHER_ALL);
+    }
+
+    @Test
+    public void app_otherMandatory_OK() throws Exception {
+        appJsonTest(InputType.OTHER_MANDATORY);
+    }
+
+    @Test
     public void geocat_vecAll_OK() throws Exception {
         String resXml = catJsonTest(InputType.VEC_ALL);
 
@@ -70,8 +74,18 @@ class Meta2FileTest {
     }
 
     @Test
+    public void geocat_otherAll_OK() throws Exception {
+        String resXml = catJsonTest(InputType.OTHER_ALL);
+    }
+
+    @Test
     public void geocat_vecMandatory_OK() throws Exception {
         catJsonTest(InputType.VEC_MANDATORY);
+    }
+
+    @Test
+    public void geocat_otherMandatory_OK() throws Exception {
+        catJsonTest(InputType.OTHER_MANDATORY);
     }
 
     private static String appJsonTest(InputType inType) throws Exception {

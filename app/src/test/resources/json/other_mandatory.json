@@ -1,0 +1,49 @@
+{
+  "title": "$themePub.title$",
+  "identifier": "$themePub.identifier$",
+  "shortDescription": "$themePub.shortDescription$ Pseudo-Thema für die Organisation Amt für Denkmalschutz und Archäologie",
+  "lastPublishingDate": "2022-01-01T00:00:00",
+  "secondToLastPublishingDate": "2022-01-01T00:00:00",
+  "bbox": {
+    "top": 1201000,
+    "left": 2600000,
+    "right": 2601000,
+    "bottom": 1200000
+  },
+  "items": [
+    {
+      "bbox": {
+        "top": 1201000,
+        "left": 2600000,
+        "right": 2601000,
+        "bottom": 1200000
+      },
+      "title": "$item1.title$",
+      "geometry": "POLYGON((2600000 1200000,2600000 1201000,2601000 1201000,2601000 1200000,2600000 1200000))",
+      "identifier": "$item1.identifier$",
+      "lastPublishingDate": "2022-01-01T00:00:00",
+      "secondToLastPublishingDate": "2022-01-01T00:00:00"
+    }
+  ],
+  "owner": {
+    "email": "owner@so.ch",
+    "phone": "032 111 11 11",
+    "agencyName": "$owner.agency$",
+    "officeAtWeb": "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-denkmalpflege-und-archaeologie/",
+    "abbreviation": "ada"
+  },
+  "servicer": {
+    "email": "servicer@so.ch",
+    "phone": "032 999 99 99",
+    "agencyName": "Amt für Geoinformation",
+    "officeAtWeb": "https://so.ch/verwaltung/bau-und-justizdepartement/amt-fuer-geoinformation/",
+    "abbreviation": "agi"
+  },
+  "fileFormats": [
+    {
+      "name": "$fileFormat1$ - tif",
+      "mimetype": "application/x-geotiff",
+      "abbreviation": "tif"
+    }
+  ]
+}

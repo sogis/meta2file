@@ -20,6 +20,16 @@ class Meta2HtmlTest {
         testWithInput(InputType.VEC_MANDATORY);
     }
 
+    @Test
+    public void sheet_otherAll_OK(){
+        testWithInput(InputType.OTHER_ALL);
+    }
+
+    @Test
+    public void sheet_otherMandatory_OK(){
+        testWithInput(InputType.OTHER_MANDATORY);
+    }
+
     private static void testWithInput(InputType inType){
         String json = Util.getFileContent(inType);
 

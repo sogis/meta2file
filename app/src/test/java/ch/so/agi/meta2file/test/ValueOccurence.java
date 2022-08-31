@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ch.so.agi.meta2file.test.InputType.VEC_ALL;
-import static ch.so.agi.meta2file.test.InputType.VEC_MANDATORY;
+import static ch.so.agi.meta2file.test.InputType.*;
 import static ch.so.agi.meta2file.test.OutputType.*;
 
 public class ValueOccurence {
@@ -15,30 +14,30 @@ public class ValueOccurence {
     static {
         ValueOccurence[] arr = new ValueOccurence[]{
                 create("$themePub.identifier$",
-                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new InputType[]{VEC_ALL, VEC_MANDATORY, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP, GEOCAT}),
                 create("$themePub.title$",
-                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new InputType[]{VEC_ALL, VEC_MANDATORY, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP, SHEET, GEOCAT}),
                 create("$themePub.iliModelName$",
                         new InputType[]{VEC_ALL, VEC_MANDATORY},
                         new OutputType[]{APP, SHEET}),
                 create("$themePub.shortDescription$",
-                        new InputType[]{VEC_ALL, VEC_MANDATORY},
+                        new InputType[]{VEC_ALL, VEC_MANDATORY, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP, SHEET, GEOCAT}),
 
-                create("$owner.division$",
-                        new InputType[]{VEC_ALL},
-                        new OutputType[]{APP, SHEET, GEOCAT}),
                 create("$owner.agency$",
-                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new InputType[]{VEC_MANDATORY, VEC_ALL, OTHER_ALL, OTHER_MANDATORY},
+                        new OutputType[]{APP, SHEET, GEOCAT}),
+                create("$owner.division$",
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, SHEET, GEOCAT}),
 
                 create("$service.wmsLayer1$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, SHEET}),
                 create("$service.wmsLayer2$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, SHEET}),
 
                 create("$table1.title$",
@@ -80,37 +79,37 @@ public class ValueOccurence {
                         new OutputType[]{APP}),
 
                 create("$key1$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, GEOCAT}),
                 create("$key2$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, GEOCAT}),
                 create("$syno1$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, GEOCAT}),
                 create("$syno2$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, GEOCAT}),
 
                 create("$fileFormat1$",
-                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new InputType[]{VEC_MANDATORY, VEC_ALL, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP, GEOCAT}),
                 create("$fileFormat2$",
                         new InputType[]{VEC_ALL},
                         new OutputType[]{APP, GEOCAT}),
 
                 create("$item1.identifier$",
-                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new InputType[]{VEC_MANDATORY, VEC_ALL, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP}),
                 create("$item1.title$",
-                        new InputType[]{VEC_MANDATORY, VEC_ALL},
+                        new InputType[]{VEC_MANDATORY, VEC_ALL, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP}),
 
                 create("$item2.identifier$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP}),
                 create("$item2.title$",
-                        new InputType[]{VEC_ALL},
+                        new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP})
         };
 
