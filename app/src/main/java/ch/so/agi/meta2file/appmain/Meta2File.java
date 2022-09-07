@@ -23,19 +23,32 @@ public class Meta2File {
 
     private static Logger log = LoggerFactory.getLogger(Meta2File.class);
 
-    public static void main(String[] args) throws SQLException, ParseException {
-        Options opt = initOptions();
+    public static void main(String[] args) throws Exception {
 
-        if(args == null || args.length == 0){
-            HelpFormatter f = new HelpFormatter();
-            f.printHelp(
-                    "java -jar meta2file.jar [options]",
-                    "[options]:",
-                    opt,
-                    "Version: " + Meta2File.class.getPackage().getImplementationVersion());
-            return;
+        try{
+            Options opt = initOptions();
+
+            if(args == null || args.length == 0){
+                HelpFormatter f = new HelpFormatter();
+                f.printHelp(
+                        "java -jar meta2file.jar [options]",
+                        "[options]:",
+                        opt,
+                        "Version: " + Meta2File.class.getPackage().getImplementationVersion());
+                return;
+            }
+
+            mainWithArgs(args, opt);
         }
+        catch(Exception ex){
+            System.out.println("Encountered error. exiting...");
+            System.out.println("");
 
+            throw ex;
+        }
+    }
+
+    private static void mainWithArgs(String[] args, Options opt) throws ParseException, SQLException {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(opt, args);
 
@@ -59,12 +72,10 @@ public class Meta2File {
         }
         else {
             System.out.println("Please define option -d or -g for the export destination");
-            System.exit(-1);
         }
     }
 
     private static Connection createCon(CommandLine cmd) throws SQLException {
-
         String conUrl = cmd.getOptionValue(C_CONNECTION);
         String user = cmd.getOptionValue(U_USER);
         String pass = cmd.getOptionValue(P_PASSWORD);

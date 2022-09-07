@@ -15,6 +15,9 @@ import java.util.UUID;
  */
 public class TpIterator implements Iterator<ThemePublication> {
 
+    public static final String ID_COL_NAME = "tp_id";
+    public static final String JSON_COL_NAME = "tp_json";
+
     private static final int FETCH_SIZE = 10;
 
     private Connection con;
@@ -52,9 +55,15 @@ public class TpIterator implements Iterator<ThemePublication> {
 
     private void initResultSet() {
         try {
-            Statement s = con.createStatement();
+            String sql = null;
+            if(themePubUid == null)
+                sql = TpQuery.singleton().queryForAllThemePubs();
+            else
+                sql = TpQuery.singleton().queryForOneThemePub(themePubUid);
+
+            PreparedStatement s = con.prepareStatement(sql);
             s.setFetchSize(FETCH_SIZE);
-            this.rs = s.executeQuery(TpQuery.queryForAllThemePubs());
+            this.rs = s.executeQuery();
         } catch (SQLException se) {
             throw new Meta2FileException(se);
         }
@@ -62,6 +71,9 @@ public class TpIterator implements Iterator<ThemePublication> {
 
     @Override
     public ThemePublication next() {
+
+        ThemePublication res = null;
+
         if(rs == null)
             initResultSet();
 
@@ -70,12 +82,12 @@ public class TpIterator implements Iterator<ThemePublication> {
             if(!couldIterate)
                 throw new Meta2FileException("Resultset is exhausted. Use hasNext() to break your iteration.");
 
-            String jsonString = rs.getString(1);
-            ThemePublication tp = Read.fromJson(jsonString);
+            String jsonString = rs.getString(JSON_COL_NAME);
+            res = Read.fromJson(jsonString);
         } catch (SQLException throwables) {
             throw new Meta2FileException(throwables);
         }
 
-        return null;
+        return res;
     }
 }
