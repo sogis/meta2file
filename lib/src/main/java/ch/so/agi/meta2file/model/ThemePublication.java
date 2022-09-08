@@ -142,9 +142,9 @@ public class ThemePublication {
         if(wgc == null)
             return null;
 
-        for(String layerIdent : wgc.getLayerIdentifiers()){
-            if(identifier.equals(layerIdent)){
-                URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + layerIdent);
+        for(Layer l : wgc.getLayers()){
+            if(identifier.equals(l.getIdentifier())){
+                URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + l.getIdentifier());
                 res = full.toString();
                 break;
             }
