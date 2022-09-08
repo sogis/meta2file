@@ -1,6 +1,6 @@
 package ch.so.agi.meta2file.test;
 
-import ch.so.agi.meta2file.db.TpQuery;
+import ch.so.agi.meta2file.in.db.TpQuery;
 
 import java.nio.file.Path;
 import java.sql.Connection;

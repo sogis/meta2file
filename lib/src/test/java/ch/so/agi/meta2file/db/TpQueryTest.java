@@ -1,6 +1,7 @@
 package ch.so.agi.meta2file.db;
 
 import ch.so.agi.meta2file.in.db.TpIterator;
+import ch.so.agi.meta2file.in.db.TpQuery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

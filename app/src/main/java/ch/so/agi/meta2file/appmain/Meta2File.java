@@ -20,6 +20,7 @@ public class Meta2File {
     private static final Character P_PASSWORD = 'p';
     private static final Character D_DATA_DOWNLOAD_APP = 'd';
     private static final Character G_GEOCAT_FOLDER = 'g';
+    private static final Character H_HELP = 'h';
 
     private static Logger log = LoggerFactory.getLogger(Meta2File.class);
 
@@ -29,12 +30,7 @@ public class Meta2File {
             Options opt = initOptions();
 
             if(args == null || args.length == 0){
-                HelpFormatter f = new HelpFormatter();
-                f.printHelp(
-                        "java -jar meta2file.jar [options]",
-                        "[options]:",
-                        opt,
-                        "Version: " + Meta2File.class.getPackage().getImplementationVersion());
+                printHelp(opt);
                 return;
             }
 
@@ -44,16 +40,29 @@ public class Meta2File {
             System.out.println(mex.getMessage());
         }
         catch(Exception ex){
-            System.out.println("Encountered error. exiting...");
-            System.out.println("");
+            log.error("Encountered error. exiting...\n\n");
 
             throw ex;
         }
     }
 
+    private static void printHelp(Options opt){
+        HelpFormatter f = new HelpFormatter();
+        f.printHelp(
+                "java -jar meta2file.jar [options]",
+                "[options]:",
+                opt,
+                "Version: " + Meta2File.class.getPackage().getImplementationVersion());
+    }
+
     private static void mainWithArgs(String[] args, Options opt) throws ParseException, SQLException {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(opt, args);
+
+        if(cmd.hasOption(H_HELP)){
+            printHelp(opt);
+            return;
+        }
 
         if(cmd.hasOption(D_DATA_DOWNLOAD_APP)){
             File destFile = new File(cmd.getOptionValue(D_DATA_DOWNLOAD_APP));
@@ -83,7 +92,7 @@ public class Meta2File {
         String user = cmd.getOptionValue(U_USER);
         String pass = cmd.getOptionValue(P_PASSWORD);
 
-        log.info("Connecting to url {} with user {} and pass {}", conUrl, user, pass.replaceAll(".*", "*"));
+        log.info("Connecting to url {} with user {}", conUrl, user, pass.replaceAll(".*", "*"));
 
         return DriverManager.getConnection(conUrl, user, pass);
     }
@@ -96,6 +105,7 @@ public class Meta2File {
         os.addRequiredOption(P_PASSWORD.toString(), "pass", true, "database password for connect");
         os.addOption(D_DATA_DOWNLOAD_APP.toString(), "dataAppConf", true, "File path destination for the resulting xml conf file");
         os.addOption(G_GEOCAT_FOLDER.toString(), "geocatExport", true, "Destination folder for all iso-ch geocat xml files");
+        os.addOption(H_HELP.toString(), "help", false, "Print out this help message");
 
         return os;
     }

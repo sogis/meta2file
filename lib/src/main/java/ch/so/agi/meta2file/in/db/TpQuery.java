@@ -1,6 +1,4 @@
-package ch.so.agi.meta2file.db;
-
-import ch.so.agi.meta2file.in.db.TpIterator;
+package ch.so.agi.meta2file.in.db;
 
 import java.text.MessageFormat;
 import java.util.UUID;

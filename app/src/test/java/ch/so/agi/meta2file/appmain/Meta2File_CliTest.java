@@ -1,5 +1,6 @@
 package ch.so.agi.meta2file.appmain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -27,8 +28,9 @@ public class Meta2File_CliTest {
     public void main_InvalidConn_DoesNotThrow() throws Exception{
         String[] args = Arrays.copyOf(PARA_TEMPLATE, PARA_TEMPLATE.length);
 
-        Meta2File.main(args);
+        Assertions.assertThrows(
+                Exception.class,
+                () -> Meta2File.main(args)
+        );
     }
 }
-
-//logging noch überlegen und ergänzen

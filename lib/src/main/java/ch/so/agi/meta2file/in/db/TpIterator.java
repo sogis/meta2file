@@ -1,9 +1,10 @@
 package ch.so.agi.meta2file.in.db;
 
-import ch.so.agi.meta2file.db.TpQuery;
 import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.in.Read;
 import ch.so.agi.meta2file.model.ThemePublication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.Iterator;
@@ -14,6 +15,8 @@ import java.util.UUID;
  * returns a ThemePublication bean to the consumer.
  */
 public class TpIterator implements Iterator<ThemePublication> {
+
+    private static final Logger log = LoggerFactory.getLogger(TpIterator.class);
 
     public static final String ID_COL_NAME = "tp_id";
     public static final String JSON_COL_NAME = "tp_json";
@@ -84,6 +87,8 @@ public class TpIterator implements Iterator<ThemePublication> {
 
             String jsonString = rs.getString(JSON_COL_NAME);
             res = Read.fromJson(jsonString);
+
+            log.info("Processing {}", res.getIdentifier());
         } catch (SQLException throwables) {
             throw new Meta2FileException(throwables);
         }
