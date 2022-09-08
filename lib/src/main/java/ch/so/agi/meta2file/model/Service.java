@@ -8,6 +8,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Informationen zu einem Service, in welchem Daten
@@ -20,12 +21,10 @@ public class Service {
     @NotNull
     private URI endpoint;
     /**
-     * Layernamen in welchen Daten dieses Themas publiziert sind.
+     * Layer in welchen Daten dieses Themas publiziert sind.
      */
-    @JacksonXmlElementWrapper(localName = "layerNames")
-    @JacksonXmlProperty(localName = "layerName")
     @NotNull
-    private List<String> layerIdentifiers;
+    private List<Layer> layers;
     /**
      * Service-Typ
      */
@@ -50,16 +49,27 @@ public class Service {
     public void setEndpoint(URI endpoint) {
         this.endpoint = endpoint;
     }
-    public List<String> getLayerIdentifiers() {
-        return layerIdentifiers;
-    }
-    public void setLayerIdentifiers(List<String> layerIdentifiers) {
-        this.layerIdentifiers = layerIdentifiers;
-    }
     public ServiceType getType() {
         return type;
     }
     public void setType(ServiceType type) {
         this.type = type;
+    }
+
+    @JacksonXmlElementWrapper(localName = "layerNames")
+    @JacksonXmlProperty(localName = "layerName")
+    public List<String> getLayerIdentifiers(){
+        if(layers == null)
+            return null;
+
+        return layers.stream().map(layer -> layer.getIdentifier()).collect(Collectors.toList());
+    }
+
+    public List<Layer> getLayers() {
+        return layers;
+    }
+
+    public void setLayers(List<Layer> layers) {
+        this.layers = layers;
     }
 }

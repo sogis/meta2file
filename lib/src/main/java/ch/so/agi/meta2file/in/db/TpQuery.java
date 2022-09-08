@@ -5,6 +5,9 @@ import java.util.UUID;
 
 public class TpQuery {
 
+    private static final String QUERY =
+            MessageFormat.format("select {0}, {1} from simi.meta_themepub_v;", TpIterator.JSON_COL_NAME, TpIterator.ID_COL_NAME);
+
     private static TpQuery singleton = new TpQuery();
 
     public static TpQuery singleton(){
@@ -14,7 +17,7 @@ public class TpQuery {
     private String baseQuery = null;
 
     private TpQuery(){
-        this.baseQuery = MessageFormat.format("select {0}, {1} from simi.meta_themepub_v;", TpIterator.JSON_COL_NAME, TpIterator.ID_COL_NAME);
+        setToDefaultQuery();
     }
 
     public String queryForAllThemePubs(){
@@ -37,5 +40,9 @@ public class TpQuery {
 
     public void overrideQuery(String newQuery){
         baseQuery = newQuery;
+    }
+
+    public void setToDefaultQuery(){
+        this.baseQuery = QUERY;
     }
 }

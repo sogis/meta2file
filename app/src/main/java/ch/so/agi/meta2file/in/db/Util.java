@@ -1,4 +1,4 @@
-package ch.so.agi.meta2file.db;
+package ch.so.agi.meta2file.in.db;
 
 import java.sql.Connection;
 

@@ -1,24 +1,12 @@
 package ch.so.agi.meta2file;
 
-import java.io.IOException;
+import ch.so.agi.meta2file.model.*;
+
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.time.LocalDate;
-
-import ch.so.agi.meta2file.except.Meta2FileException;
-import ch.so.agi.meta2file.model.AttributeInfo;
-import ch.so.agi.meta2file.model.ThemePublication;
-import ch.so.agi.meta2file.model.FileFormat;
-import ch.so.agi.meta2file.model.Office;
-import ch.so.agi.meta2file.model.Service;
-import ch.so.agi.meta2file.model.ServiceType;
-import ch.so.agi.meta2file.model.TableInfo;
-import org.junit.jupiter.api.Assertions;
+import java.util.*;
 
 public class TestUtils {
     public static HashMap<String,ThemePublication> getDatasets() {
@@ -129,10 +117,20 @@ public class TestUtils {
                     e.printStackTrace();
                 }
                 service.setType(ServiceType.WMS);
-                var layers = new ArrayList<String>();
-                layers.add("ch.so.awjf.forstreviere.forstkreis");
-                layers.add("ch.so.awjf.forstreviere.forstreviere");
-                service.setLayerIdentifiers(layers);
+
+                Layer l1 = new Layer();
+                l1.setIdentifier("ch.so.awjf.forstreviere.forstkreis");
+                l1.setTitle("Forstkreis");
+
+                Layer l2 = new Layer();
+                l2.setIdentifier("ch.so.awjf.forstreviere.forstreviere");
+                l2.setTitle("Forstreviere");
+
+                var layers = new ArrayList<Layer>();
+                layers.add(l1);
+                layers.add(l2);
+                service.setLayers(layers);
+
                 services.add(service);
             }
             {
@@ -143,9 +141,20 @@ public class TestUtils {
                     e.printStackTrace();
                 }
                 service.setType(ServiceType.WFS);
-                var layers = new ArrayList<String>();
-                layers.add("ch.so.awjf.forstreviere.forstkreis");
-                service.setLayerIdentifiers(layers);
+
+                Layer l1 = new Layer();
+                l1.setIdentifier("ch.so.awjf.forstreviere.forstkreis");
+                l1.setTitle("Forstkreis");
+
+                Layer l2 = new Layer();
+                l2.setIdentifier("ch.so.awjf.forstreviere.forstreviere");
+                l2.setTitle("Forstreviere");
+
+                var layers = new ArrayList<Layer>();
+                layers.add(l1);
+                layers.add(l2);
+                service.setLayers(layers);
+
                 services.add(service);
             }
             {
@@ -156,11 +165,25 @@ public class TestUtils {
                     e.printStackTrace();
                 }
                 service.setType(ServiceType.DATA);
-                var layers = new ArrayList<String>();
-                layers.add("ch.so.awjf.forstreviere.forstkreis.data");
-                layers.add("ch.so.awjf.forstreviere.forstreviere");
-                layers.add("ch.so.awjf.forstreviere.fubar");
-                service.setLayerIdentifiers(layers);
+
+                Layer l1 = new Layer();
+                l1.setIdentifier("ch.so.awjf.forstreviere.forstkreis.data");
+                l1.setTitle("Forstkreis");
+
+                Layer l2 = new Layer();
+                l2.setIdentifier("ch.so.awjf.forstreviere.forstreviere");
+                l2.setTitle("Forstreviere");
+
+                Layer l3 = new Layer();
+                l3.setIdentifier("ch.so.awjf.forstreviere.fuubar");
+                l3.setTitle("Forstreviere fuubar");
+
+                var layers = new ArrayList<Layer>();
+                layers.add(l1);
+                layers.add(l2);
+                layers.add(l3);
+                service.setLayers(layers);
+
                 services.add(service);
             }
             themePublication.setServices(services);
@@ -269,10 +292,20 @@ public class TestUtils {
                     e.printStackTrace();
                 }
                 service.setType(ServiceType.WMS);
-                var layers = new ArrayList<String>();
-                layers.add("ch.so.awjf.forstreviere.forstkreis");
-                layers.add("ch.so.awjf.forstreviere.forstreviere");
-                service.setLayerIdentifiers(layers);
+
+                Layer l1 = new Layer();
+                l1.setIdentifier("ch.so.awjf.forstreviere.forstkreis");
+                l1.setTitle("Forstkreis");
+
+                Layer l2 = new Layer();
+                l2.setIdentifier("ch.so.awjf.forstreviere.forstreviere");
+                l2.setTitle("Forstreviere");
+
+                var layers = new ArrayList<Layer>();
+                layers.add(l1);
+                layers.add(l2);
+                service.setLayers(layers);
+
                 services.add(service);
             }
             themePublication.setServices(services);

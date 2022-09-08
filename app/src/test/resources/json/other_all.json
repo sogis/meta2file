@@ -59,17 +59,39 @@
     {
       "type": "WMS",
       "endpoint": "https://geo.so.ch/api/wms",
-      "layerIdentifiers": [
-        "$service.wmsLayer1$",
-        "$service.wmsLayer2$"
+      "layers": [
+        {
+          "identifier": "$service.wmsLayer1.identifier$",
+          "title": "$service.wmsLayer1.title$"
+        },
+        {
+          "identifier": "$service.wmsLayer2.identifier$",
+          "title": "$service.wmsLayer2.title$"
+        }
       ]
     },
     {
       "type": "WGC",
       "endpoint": "https://geo.so.ch/$service.wgc$",
-      "layerIdentifiers": [
-        "$service.wmsLayer1$",
-        "$themePub.identifier$"
+      "layers": [
+        {
+          "identifier": "$service.wgcLayer1.identifier$",
+          "title": "$service.wgcLayer1.title"
+        },
+        {
+          "identifier": "$themePub.identifier$",
+          "title": "$service.themePubLayer.title$"
+        }
+      ]
+    },
+    {
+      "type": "DATA",
+      "endpoint": "https://geo.so.ch/api/data/v1/api",
+      "layers": [
+        {
+          "identifier": "$service.dataLayer1.identifier$",
+          "title": "$service.dataLayer1.title$"
+        }
       ]
     }
   ],

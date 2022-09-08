@@ -37,10 +37,16 @@ public class ValueOccurence {
                         new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, SHEET, GEOCAT}),
 
-                create("$service.wmsLayer1$",
+                create("$service.wmsLayer1.identifier$",
                         new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, SHEET}),
-                create("$service.wmsLayer2$",
+                create("$service.wmsLayer2.identifier$",
+                        new InputType[]{VEC_ALL, OTHER_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$service.wgcLayer1.identifier$",
+                        new InputType[]{VEC_ALL, OTHER_ALL},
+                        new OutputType[]{APP, SHEET}),
+                create("$service.dataLayer1.identifier$",
                         new InputType[]{VEC_ALL, OTHER_ALL},
                         new OutputType[]{APP, SHEET}),
 
