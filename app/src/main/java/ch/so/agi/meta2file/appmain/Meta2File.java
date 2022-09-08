@@ -13,6 +13,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class Meta2File {
     private static final Character C_CONNECTION = 'c';
@@ -21,6 +22,7 @@ public class Meta2File {
     private static final Character D_DATA_DOWNLOAD_APP = 'd';
     private static final Character G_GEOCAT_FOLDER = 'g';
     private static final Character H_HELP = 'h';
+    private static final String H_HELP_LONG = "help";
 
     private static Logger log = LoggerFactory.getLogger(Meta2File.class);
 
@@ -29,7 +31,7 @@ public class Meta2File {
         try{
             Options opt = initOptions();
 
-            if(args == null || args.length == 0){
+            if(args == null || args.length == 0 || helpOptionPresent(args)){
                 printHelp(opt);
                 return;
             }
@@ -46,23 +48,27 @@ public class Meta2File {
         }
     }
 
+    private static boolean helpOptionPresent(String[] args){
+        String single = "-" + H_HELP;
+        String doubled = "--" + H_HELP_LONG;
+
+        boolean present = Arrays.stream(args).anyMatch(arg -> single.equals(arg) || doubled.equals(arg));
+
+        return present;
+    }
+
     private static void printHelp(Options opt){
         HelpFormatter f = new HelpFormatter();
         f.printHelp(
                 "java -jar meta2file.jar [options]",
                 "[options]:",
                 opt,
-                "Version: " + Meta2File.class.getPackage().getImplementationVersion());
+                null);
     }
 
     private static void mainWithArgs(String[] args, Options opt) throws ParseException, SQLException {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(opt, args);
-
-        if(cmd.hasOption(H_HELP)){
-            printHelp(opt);
-            return;
-        }
 
         if(cmd.hasOption(D_DATA_DOWNLOAD_APP)){
             File destFile = new File(cmd.getOptionValue(D_DATA_DOWNLOAD_APP));
@@ -105,7 +111,7 @@ public class Meta2File {
         os.addRequiredOption(P_PASSWORD.toString(), "pass", true, "database password for connect");
         os.addOption(D_DATA_DOWNLOAD_APP.toString(), "dataAppConf", true, "File path destination for the resulting xml conf file");
         os.addOption(G_GEOCAT_FOLDER.toString(), "geocatExport", true, "Destination folder for all iso-ch geocat xml files");
-        os.addOption(H_HELP.toString(), "help", false, "Print out this help message");
+        os.addOption(H_HELP.toString(), H_HELP_LONG, false, "Print out this help message");
 
         return os;
     }

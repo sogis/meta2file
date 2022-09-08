@@ -33,7 +33,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'ch.so.agi.metabean2file.cli.Meta2File'
+    mainClass = 'ch.so.agi.meta2file.appmain.Meta2File'
 }
 
 distributions {
