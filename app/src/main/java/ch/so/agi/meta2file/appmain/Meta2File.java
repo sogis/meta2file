@@ -40,6 +40,9 @@ public class Meta2File {
 
             mainWithArgs(args, opt);
         }
+        catch(MissingArgumentException mex){
+            System.out.println(mex.getMessage());
+        }
         catch(Exception ex){
             System.out.println("Encountered error. exiting...");
             System.out.println("");

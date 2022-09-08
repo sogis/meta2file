@@ -70,10 +70,7 @@ class Meta2File_JsonTest {
 
     @Test
     public void geocat_vecAll_OK() throws Exception {
-        String resXml = catJsonTest(InputType.VEC_ALL);
-
-        //additional Test: Preview-URL
-        Util.assertContains(resXml, "geo.so.ch/map?l=$themePub.identifier$");
+        catJsonTest(InputType.VEC_ALL);
     }
 
     @Test

@@ -4,6 +4,7 @@ import ch.so.agi.meta2file.libmain.Meta2Html;
 import ch.so.agi.meta2file.test.*;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
 public class Meta2File_DbTest {
 
     @Test
-    public void appmain_vecAll_OK() throws Exception {
+    public void appmain_AppExport_OK() throws Exception {
 
-        Path res = Util.tempFile("main_vecAll", "xml");
+        Path res = Util.tempFile("main_AppExport", "xml");
 
         String[] args = new String[]{
                 "-c", DbUtil.TSTDB_URL,
@@ -35,6 +36,25 @@ public class Meta2File_DbTest {
         List<String> keys = ValueOccurence.keysForTest(InputType.VEC_ALL, OutputType.APP);
 
         Util.assertContains(xml, keys);
+    }
+
+    @Test
+    public void appmain_GeocatExport_OK() throws Exception {
+
+        Path res = Files.createTempDirectory("main_GeocatExport");
+
+        String[] args = new String[]{
+                "-c", DbUtil.TSTDB_URL,
+                "-u", DbUtil.TSTDB_USER,
+                "-p", DbUtil.TSTDB_PASS,
+                "-g", res.toAbsolutePath().toString()
+        };
+
+        DbUtil.overrideWithTestQuery();
+
+        Meta2File.main(args);
+
+        //No need to test generated xml files. This is covered by lower level tests
     }
 
     @Test
