@@ -20,16 +20,21 @@ public class Service {
      */
     @NotNull
     private URI endpoint;
+    
     /**
-     * Layer in welchen Daten dieses Themas publiziert sind.
+     * Publizierte Layer, die Daten dieses Themas enthalten.
      */
+    @JacksonXmlElementWrapper(localName = "layers")
+    @JacksonXmlProperty(localName = "layer")
     @NotNull
     private List<Layer> layers;
+    
     /**
      * Service-Typ
      */
     @NotNull
     private ServiceType type;
+    
     public URI getEndpoint() {
         URI res = null;
 
@@ -46,25 +51,19 @@ public class Service {
 
         return res;
     }
+    
     public void setEndpoint(URI endpoint) {
         this.endpoint = endpoint;
     }
+    
     public ServiceType getType() {
         return type;
     }
+    
     public void setType(ServiceType type) {
         this.type = type;
     }
-
-    @JacksonXmlElementWrapper(localName = "layerNames")
-    @JacksonXmlProperty(localName = "layerName")
-    public List<String> getLayerIdentifiers(){
-        if(layers == null)
-            return null;
-
-        return layers.stream().map(layer -> layer.getIdentifier()).collect(Collectors.toList());
-    }
-
+    
     public List<Layer> getLayers() {
         return layers;
     }
