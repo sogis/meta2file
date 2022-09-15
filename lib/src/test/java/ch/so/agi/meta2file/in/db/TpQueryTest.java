@@ -14,7 +14,7 @@ class TpQueryTest {
 
         String sql = q.queryForAllThemePubs();
 
-        Assertions.assertTrue(sql.contains(TpIterator.JSON_COL_NAME), "Loaded base query must return the json col");
+        Assertions.assertTrue(sql.contains(TpQuery.JSON_COL_NAME), "Loaded base query must return the json col");
     }
 
     @Test
@@ -26,7 +26,7 @@ class TpQueryTest {
 
         String sql = q.queryForOneThemePub(testUid);
 
-        Assertions.assertTrue(sql.contains(TpIterator.ID_COL_NAME), "Loaded base query must contain filter on tp id");
+        Assertions.assertTrue(sql.contains(TpQuery.ID_COL_NAME), "Loaded base query must contain filter on tp id");
     }
 
     @Test

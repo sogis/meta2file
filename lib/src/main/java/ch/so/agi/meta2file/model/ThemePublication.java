@@ -125,6 +125,12 @@ public class ThemePublication {
      */
     private BoundingBox bbox;
 
+    /**
+     * Preview-Layer for the whole themepublication. Can be null.
+     */
+    private Layer wgcPreviewLayer;
+
+    @Deprecated
     public String getPreviewUrl(){
         if(services == null || services.size() == 0)
             return null;
@@ -255,5 +261,11 @@ public class ThemePublication {
     }
     public void setBbox(BoundingBox bbox) {
         this.bbox = bbox;
+    }
+    public Layer getWgcPreviewLayer() {
+        return wgcPreviewLayer;
+    }
+    public void setWgcPreviewLayer(Layer wgcPreviewLayer) {
+        this.wgcPreviewLayer = wgcPreviewLayer;
     }
 }

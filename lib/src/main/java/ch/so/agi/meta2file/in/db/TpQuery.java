@@ -5,8 +5,11 @@ import java.util.UUID;
 
 public class TpQuery {
 
+    public static final String ID_COL_NAME = "tp_id";
+    public static final String JSON_COL_NAME = "tp_json";
+
     private static final String QUERY =
-            MessageFormat.format("select {0}, {1} from simi.meta_themepub_v;", TpIterator.JSON_COL_NAME, TpIterator.ID_COL_NAME);
+            MessageFormat.format("select {0}, {1} from simi.app_themepub_v;", JSON_COL_NAME, ID_COL_NAME);
 
     private static TpQuery singleton = new TpQuery();
 
@@ -33,7 +36,7 @@ public class TpQuery {
         int endStatementIdx = baseQuery.lastIndexOf(";");
 
         String queryTemplate = baseQuery.substring(0,endStatementIdx);
-        String where = MessageFormat.format("where {0} = ''{1}'';", TpIterator.ID_COL_NAME, themePubUid);
+        String where = MessageFormat.format("where {0} = ''{1}'';", ID_COL_NAME, themePubUid);
 
         return queryTemplate + " " + where;
     }

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,6 +41,8 @@ public class Meta2File {
         }
         catch(MissingArgumentException mex){
             System.out.println(mex.getMessage());
+            System.out.println(mex.getMessage());
+            mex.printStackTrace();
         }
         catch(Exception ex){
             log.error("Encountered error. exiting...\n\n");
@@ -66,7 +69,7 @@ public class Meta2File {
                 null);
     }
 
-    private static void mainWithArgs(String[] args, Options opt) throws ParseException, SQLException {
+    private static void mainWithArgs(String[] args, Options opt) throws Exception {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(opt, args);
 
@@ -103,10 +106,10 @@ public class Meta2File {
         return DriverManager.getConnection(conUrl, user, pass);
     }
 
-    private static Options initOptions(){
+    private static Options initOptions(){   
         Options os = new Options();
 
-        os.addRequiredOption(C_CONNECTION.toString(), "connection", true, "Connection string as jdbc url (with schema)");
+        os.addRequiredOption(C_CONNECTION.toString(), "connection", true, "Connection string as jdbc url");
         os.addRequiredOption(U_USER.toString(), "user", true, "database user for connect");
         os.addRequiredOption(P_PASSWORD.toString(), "pass", true, "database password for connect");
         os.addOption(D_DATA_DOWNLOAD_APP.toString(), "dataAppConf", true, "File path destination for the resulting xml conf file");
@@ -121,9 +124,13 @@ public class Meta2File {
      * @param con Connection to meta db.
      * @param xmlFile Destination path for the xml file.
      */
-    static void exportAppFile(Connection con, File xmlFile){
-        if(!xmlFile.isFile())
-            throw new Meta2FileException("\"{0}\" is no file path", xmlFile);
+    static void exportAppFile(Connection con, File xmlFile) throws IOException {
+        if(!xmlFile.exists()){
+            xmlFile.createNewFile();
+
+            if(!xmlFile.isFile())
+                throw new Meta2FileException("\"{0}\" is no file path", xmlFile);
+        }
 
         TpIterator iter = new TpIterator(con);
         MetaBean2FileConverter.runBeans2Xml(xmlFile.toPath(), iter);
@@ -135,9 +142,9 @@ public class Meta2File {
      * @param con Connection to meta db.
      * @param xmlFolder Filesys folder to export the xml files into.
      */
-    static void exportGeocatFiles(Connection con, File xmlFolder){
+    static void exportGeocatFiles(Connection con, File xmlFolder) throws IOException {
         if(!xmlFolder.isDirectory())
-            throw new Meta2FileException("\"{0}\" is no folder path", xmlFolder);
+          throw new Meta2FileException("\"{0}\" is no folder path", xmlFolder);
 
         TpIterator iter = new TpIterator(con);
         Geocat.beans2Files(xmlFolder.toPath(), iter);

@@ -25,9 +25,6 @@ public class ValueOccurence {
                 create("$themePub.shortDescription$",
                         new InputType[]{VEC_ALL, VEC_MANDATORY, OTHER_ALL, OTHER_MANDATORY},
                         new OutputType[]{APP, SHEET, GEOCAT}),
-                create("geo.so.ch/map?l=$themePub.identifier$",
-                        new InputType[]{VEC_ALL, OTHER_ALL},
-                        new OutputType[]{APP, GEOCAT}),
 
 
                 create("$owner.agency$",

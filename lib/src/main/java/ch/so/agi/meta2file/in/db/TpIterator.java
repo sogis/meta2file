@@ -18,9 +18,6 @@ public class TpIterator implements Iterator<ThemePublication> {
 
     private static final Logger log = LoggerFactory.getLogger(TpIterator.class);
 
-    public static final String ID_COL_NAME = "tp_id";
-    public static final String JSON_COL_NAME = "tp_json";
-
     private static final int FETCH_SIZE = 10;
 
     private Connection con;
@@ -85,7 +82,7 @@ public class TpIterator implements Iterator<ThemePublication> {
             if(!couldIterate)
                 throw new Meta2FileException("Resultset is exhausted. Use hasNext() to break your iteration.");
 
-            String jsonString = rs.getString(JSON_COL_NAME);
+            String jsonString = rs.getString(TpQuery.JSON_COL_NAME);
             res = Read.fromJson(jsonString);
 
             log.info("Processing {}", res.getIdentifier());

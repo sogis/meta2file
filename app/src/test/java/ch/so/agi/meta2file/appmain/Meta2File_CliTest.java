@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 public class Meta2File_CliTest {
-    // fehlende para
-    // connection error
-    // help output
 
     private static final String[] PARA_TEMPLATE = new String[]{
             "-g", "dummy",

@@ -50,7 +50,8 @@ class Meta2File_JsonTest {
 
     @Test
     public void app_vecAll_OK() throws Exception {
-        appJsonTest(InputType.VEC_ALL);
+        String xml = appJsonTest(InputType.VEC_ALL);
+        Util.assertContains(xml, "wgcPreviewLayer");
     }
 
     @Test
@@ -60,7 +61,8 @@ class Meta2File_JsonTest {
 
     @Test
     public void app_otherAll_OK() throws Exception {
-        appJsonTest(InputType.OTHER_ALL);
+        String xml = appJsonTest(InputType.OTHER_ALL);
+        Util.assertContains(xml, "wgcPreviewLayer");
     }
 
     @Test
@@ -75,7 +77,7 @@ class Meta2File_JsonTest {
 
     @Test
     public void geocat_otherAll_OK() throws Exception {
-        String resXml = catJsonTest(InputType.OTHER_ALL);
+        catJsonTest(InputType.OTHER_ALL);
     }
 
     @Test
@@ -86,6 +88,31 @@ class Meta2File_JsonTest {
     @Test
     public void geocat_otherMandatory_OK() throws Exception {
         catJsonTest(InputType.OTHER_MANDATORY);
+    }
+
+    @Test
+    public void vecRealdata_singleregion_OK() throws Exception {
+        realDataTest(InputType.VEC_REALDATA_SINGLEREGION);
+    }
+
+    @Test
+    public void vecRealdata_multiregion_OK() throws Exception {
+        realDataTest(InputType.VEC_REALDATA_MULTIREGION);
+    }
+
+    private static void realDataTest(InputType inputType) throws Exception {
+        List<ThemePublication> beanList = Util.createTwoElemListFromJson(inputType);
+
+        Path dir = Files.createTempDirectory(inputType.deferPathPartName());
+        Path file = dir.resolve("conf.xml");
+
+        MetaBean2FileConverter.runBeans2Xml(file, beanList.iterator());
+        MetaBean2FileConverter.runBean2Html(beanList.get(0));
+
+        String outBaseName = "geocat_" + inputType.deferPathPartName() + "_";
+        Path catDir = Files.createTempDirectory(outBaseName);
+
+        Geocat.beans2Files(catDir, beanList.iterator());
     }
 
     private static String appJsonTest(InputType inType) throws Exception {
