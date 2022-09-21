@@ -11,10 +11,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Meta2File {
     private static final Character C_CONNECTION = 'c';
@@ -29,26 +32,75 @@ public class Meta2File {
 
     public static void main(String[] args) throws Exception {
 
+        int res = mainWithExitCode(args);
+        if(res != 0)
+            System.exit(res);
+    }
+
+    static int mainWithExitCode(String[] args){
+        int res = 0;
+
         try{
             Options opt = initOptions();
 
             if(args == null || args.length == 0 || helpOptionPresent(args)){
                 printHelp(opt);
-                return;
+                return 0;
             }
 
-            mainWithArgs(args, opt);
-        }
-        catch(MissingArgumentException mex){
-            System.out.println(mex.getMessage());
-            System.out.println(mex.getMessage());
-            mex.printStackTrace();
+            CommandLineParser parser = new DefaultParser();
+            CommandLine cmd = parser.parse(opt, args);
+
+            if(cmd.hasOption(D_DATA_DOWNLOAD_APP)){
+                File destFile = new File(cmd.getOptionValue(D_DATA_DOWNLOAD_APP));
+                createFile(destFile);
+
+                try(Connection con = createCon(cmd)){
+                    exportAppFile(con, destFile);
+                }
+
+                log.info("Finished exporting to file {}.", destFile);
+            }
+            else if (cmd.hasOption(G_GEOCAT_FOLDER)){
+                File destFolder = new File(cmd.getOptionValue(G_GEOCAT_FOLDER));
+                createFolder(destFolder);
+
+                try(Connection con = createCon(cmd)){
+                    exportGeocatFiles(con, destFolder);
+                }
+
+                log.info("Finished exporting into folder {}.", destFolder);
+            }
+            else {
+                System.out.println("Please define option -d or -g for the export destination");
+            }
         }
         catch(Exception ex){
-            log.error("Encountered error. exiting...\n\n");
-
-            throw ex;
+            log.error("Export interrupted due to error: [{}]", ex.getMessage());
+            ex.printStackTrace();
+            res = -1;
         }
+        return res;
+    }
+
+    private static void createFile(File path) throws IOException{
+        boolean created = path.createNewFile();
+        if(!created)
+            log.info("Export file already exists - overwriting...");
+    }
+
+    private static void createFolder(File path) throws IOException{
+        boolean dirExists = path.exists();
+        if(dirExists){
+            log.info("Output dir already exists - replacing...");
+
+            Files.walk(path.toPath()) //delete the whole file tree of the dir with all contents
+                .sorted(Comparator.reverseOrder())
+                .map(Path::toFile)
+                .forEach(File::delete);
+        }
+
+        path.mkdir();
     }
 
     private static boolean helpOptionPresent(String[] args){
