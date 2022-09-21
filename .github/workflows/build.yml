@@ -1,4 +1,4 @@
-name: metabean2file CI
+name: meta2file CI
 
 on: 
   push:

@@ -1,4 +1,4 @@
-rootProject.name = 'metabean2file'
+rootProject.name = 'meta2file'
 include('lib')
 include('app')
 

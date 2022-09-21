@@ -7,7 +7,7 @@ plugins {
 apply plugin: 'maven-publish'
 
 group = 'io.github.sogis'
-def myArtifactId = "metabean2file"
+def myArtifactId = "meta2file"
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -72,18 +72,18 @@ publishing {
             artifactId = myArtifactId
 
             pom {
-                name = "metabean2file"
-                url = "https://github.com/sogis/metabean2file"
+                name = "meta2file"
+                url = "https://github.com/sogis/meta2file"
                 description = myArtifactId
                 scm {
-                    connection = "scm:git:https@github.com/sogis/metabean2file"
-                    developerConnection = "scm:git:https@github.com/sogis/metabean2file"
-                    url = "https://github.com/sogis/metabean2file"
+                    connection = "scm:git:https@github.com/sogis/meta2file"
+                    developerConnection = "scm:git:https@github.com/sogis/meta2file"
+                    url = "https://github.com/sogis/meta2file"
                 }
                 licenses {
                     license {
                         name = "MIT"
-                        url = "https://github.com/sogis/metabean2file/blob/master/LICENSE"
+                        url = "https://github.com/sogis/meta2file/blob/master/LICENSE"
                     }
                 }
                 developers {

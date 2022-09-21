@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ch.so.agi'
-def myArtifactId = "metabean2file-cli"
+def myArtifactId = "meta2file-cli"
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -66,7 +66,7 @@ jreleaser {
         website = 'https://agi.so.ch'
         authors = ['edigonzales', 'ojeker']
         license = 'MIT'
-        docsUrl = 'https://github.com/sogis/metabean2file'
+        docsUrl = 'https://github.com/sogis/meta2file'
     }
     release {
         github {
@@ -79,7 +79,7 @@ jreleaser {
         app {
             distributionType = 'SINGLE_JAR'
             artifact {
-                path = "build/libs/metabean2file-cli-${version}-all.jar"
+                path = "build/libs/meta2file-cli-${version}-all.jar"
             }
             java {
                 groupId = 'ch.so.agi'
