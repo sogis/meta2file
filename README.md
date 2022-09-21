@@ -4,7 +4,7 @@
 
 ### Kommandozeilen-Tool
 
-Dieses ist direkt via Releases im Repo als "Fat-Jar" verfügbar und umfasst alle notwendigen Drittbibliotheken. Das aktuellste jar ist via [latest Release](releases/latest) unter dem Namen meta2file-cli-\[Version\]-all.jar verfügbar.
+Dieses ist direkt via Releases im Repo als "Fat-Jar" verfügbar und umfasst alle notwendigen Drittbibliotheken. Das aktuellste jar ist via [latest Release](https://github.com/sogis/meta2file/releases/latest) unter dem Namen meta2file-cli-\[Version\]-all.jar verfügbar.
 
 ### Lib
 
