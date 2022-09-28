@@ -6,22 +6,30 @@ import ch.so.agi.meta2file.model.geocat.ThemePublicationGC;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
+import net.sf.saxon.om.CopyOptions;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Iterator;
 
 public class Geocat {
 
+    private static final String TEMPLATE_FILENAME = "geocat_template.xml";
     private static Configuration cfg;
 
     static {
         cfg = new Configuration(Configuration.VERSION_2_3_31);
 
-        Path tplDir = Path.of("src/main/resources/freemarker").toAbsolutePath();
+        Path templatePath = copyTemplateToTmpDir();
         try {
-            cfg.setDirectoryForTemplateLoading(tplDir.toFile());
+            cfg.setDirectoryForTemplateLoading(templatePath.getParent().toFile());
         } catch (IOException e) {
             throw new Meta2FileException(e);
         }
@@ -39,7 +47,7 @@ public class Geocat {
 
     public static void beans2Files(Path baseDirPath, Iterator<ThemePublication> themePublicationsIterator) {
         try {
-            Template tpl = cfg.getTemplate("geocat_template.xml");
+            Template tpl = cfg.getTemplate(TEMPLATE_FILENAME);
 
             while(themePublicationsIterator.hasNext()){
                 ThemePublication tp = themePublicationsIterator.next();
@@ -53,6 +61,20 @@ public class Geocat {
         } catch (Exception e) {
             throw new Meta2FileException(e);
         }
+    }
+
+    private static Path copyTemplateToTmpDir(){
+
+        Path exportedTemplate = null;
+        try {
+            InputStream is = Geocat.class.getClassLoader().getResourceAsStream("freemarker/" + TEMPLATE_FILENAME);
+            Path exportDir = Files.createTempDirectory("freemarker");
+            exportedTemplate = exportDir.resolve(TEMPLATE_FILENAME);
+            Files.copy(is, exportedTemplate, StandardCopyOption.REPLACE_EXISTING);
+        } catch (Exception e) {
+            throw new Meta2FileException(e);
+        }
+        return exportedTemplate;
     }
 
 }
