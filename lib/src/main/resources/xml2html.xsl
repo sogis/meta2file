@@ -183,15 +183,23 @@
                 }
 
                 tr:first-child {
-                border-bottom: 1px solid #eee;;
+                    border-bottom: 1px solid #eee;
                 }
 
                 tr:nth-child(even) {
-                    background-color: rgba(237, 237, 237, 0.4);;
+                    background-color: rgba(237, 237, 237, 0.4);
+                }
+
+                tr:hover {
+                    background-color: #e8e8e8;
                 }
 
                 td {
                     vertical-align: top;
+                    padding-left: 5px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+                    padding-right: 10px;
                 }
 
                 @media print {
@@ -241,6 +249,11 @@
                 </div>
 
                 <div id="breadcrumb">
+                    <span style="line-height:40px; vertical-align:middle;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                        </svg>
+                    </span>
                     <i style="line-height:40px; vertical-align:middle;" ></i>
                     <ul class="breadcrumb">
                         <li><a href="https://geo.so.ch">Home</a></li>
@@ -330,9 +343,10 @@
                             <thead>
                                 <tr>
                                     <th>Karten-/Datenlayer</th>
-                                    <th><a href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0" target="_blank">WMS</a></th>
-                                    <th><a href="https://geo.so.ch/api/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetCapabilities" target="_blank">WFS</a></th>
-                                    <th><a href="https://geo.so.ch/api/data/v1/api/" target="_blank">Dataservice</a></th>
+                                    <th style="text-align:center;"><a href="https://geo.so.ch/map" target="_blank">WGC</a></th>
+                                    <th style="text-align:center;"><a href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0" target="_blank">WMS</a></th>
+                                    <th style="text-align:center;"><a href="https://geo.so.ch/api/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetCapabilities" target="_blank">WFS</a></th>
+                                    <th style="text-align:center;"><a href="https://geo.so.ch/api/data/v1/api/" target="_blank">Dataservice</a></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -343,9 +357,9 @@
                                         <td><xsl:value-of select="current-grouping-key()"/></td>
 
                                         <xsl:comment>https://icons.getbootstrap.com/</xsl:comment>
-                                        <td>
+                                        <td style="text-align:center;">
                                             <xsl:choose>
-                                                <xsl:when test="current-group()[type='WMS']">
+                                                <xsl:when test="current-group()[type='WGC']">
                                                     <xsl:variable name="wgcUrl">https://geo.so.ch/map?l=<xsl:value-of select="current-grouping-key()"/></xsl:variable> 
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
                                                         <a class="black-link" href="{$wgcUrl}" target="_blank">
@@ -362,7 +376,22 @@
                                                 </xsl:otherwise>
                                             </xsl:choose>
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
+                                            <xsl:choose>
+                                                <xsl:when test="current-group()[type='WMS']">
+                                                    <xsl:variable name="wgcUrl">https://geo.so.ch/map?l=<xsl:value-of select="current-grouping-key()"/></xsl:variable> 
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                                    </svg>
+                                                </xsl:when>
+                                                <xsl:otherwise>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                    </svg>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                        </td>
+                                        <td style="text-align:center;">
                                             <xsl:choose>
                                                 <xsl:when test="current-group()[type='WFS']">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
@@ -376,7 +405,7 @@
                                                 </xsl:otherwise>
                                             </xsl:choose>
                                         </td>
-                                        <td>
+                                        <td style="text-align:center;">
                                             <xsl:choose>
                                                 <xsl:when test="current-group()[type='Dataservice']">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
@@ -415,6 +444,13 @@
         <p class="datenebene"><xsl:value-of disable-output-escaping="yes" select="shortDescription"/></p>
 
             <table>
+                <colgroup>
+                    <col span="1" style="width: 25%;"/>
+                    <col span="1" style="width: 50%;"/>
+                    <col span="1" style="width: 13%;"/>
+                    <col span="1" style="width: 12%;"/>
+                </colgroup>
+
                 <tr style="border-bottom: 1px solid #eee;">
                     <th>
                         Name
@@ -431,6 +467,7 @@
                 </tr>
 
                 <xsl:for-each select="attributesInfo/attributeInfo">
+                    <xsl:sort select="name"/>
                     <tr>
                         <td>
                             <xsl:value-of select="name"/>

@@ -103,13 +103,6 @@
         </attributeInfo>
         <attributeInfo>
           <name>uferbreitelinks</name>
-          <alias>rbreite links [m]</alias>
-          <shortDescription>MittMittlere Breite Uferbereich links [m].</shortDescription>
-          <datatype>Integer</datatype>
-          <mandatory>false</mandatory>
-        </attributeInfo>
-        <attributeInfo>
-          <name>minimaleruferbereich</name>
           <alias>Uferbreite links [m]</alias>
           <shortDescription>Mittlere Breite Uferbereich links [m].</shortDescription>
           <datatype>Integer</datatype>
@@ -117,8 +110,15 @@
         </attributeInfo>
         <attributeInfo>
           <name>minimaleruferbereich</name>
+          <alias>Uferbreite links [m]</alias>
+          <shortDescription>Mittlere Breite Uferbereich links [m]. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</shortDescription>
+          <datatype>Integer</datatype>
+          <mandatory>false</mandatory>
+        </attributeInfo>
+        <attributeInfo>
+          <name>minimaleruferbereich</name>
           <alias>Minimaler Uferbereich [m]</alias>
-          <shortDescription>Minimaler Uferbereich</shortDescription>
+          <shortDescription>Minimaler Uferbereich. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</shortDescription>
           <datatype>Integer</datatype>
           <mandatory>false</mandatory>
         </attributeInfo>
