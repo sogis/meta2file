@@ -345,7 +345,7 @@
                     </xsl:element>
                 </p>
 
-                <h2>Dienste</h2>
+                <h2>Dienste / Web GIS Client</h2>
                 <p class="datenebene">
                     <xsl:if test="services">
                         <xsl:if test="wgcPreviewLayer">
@@ -353,6 +353,8 @@
                             Ich brauche noch ein gutes Sätzli für die Themenvorschau im <a href="{$wgcPreviewLayerUrl}" target="_blank">Web GIS Client</a>.
                         </xsl:if>
 
+                        <br/>
+                        <br/>
                         Tabellen dieses Themas sind in folgenden Diensten als Karten- oder Datenlayer publiziert:
 
                         <table>
