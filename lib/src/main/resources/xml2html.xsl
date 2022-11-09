@@ -350,7 +350,7 @@
                     <xsl:if test="services">
                         <xsl:if test="wgcPreviewLayer">
                             <xsl:variable name="wgcPreviewLayerUrl">https://geo.so.ch/map?l=<xsl:value-of select="wgcPreviewLayer/identifier"/></xsl:variable> 
-                            Ich brauche noch ein gutes Sätzli für die Themenvorschau im <a href="{$wgcPreviewLayerUrl}" target="_blank">Web GIS Client</a>.
+                            Themenvorschau im <a href="{$wgcPreviewLayerUrl}" target="_blank">Web GIS Client</a>.
                         </xsl:if>
 
                         <br/>

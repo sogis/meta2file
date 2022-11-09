@@ -13,18 +13,16 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MetaBean2FileConverterTest {
-    
-    // FIXME Failen wieder nach Ergänzung Modell mit PreviewUrl.
-    
-    //@Test
+
+    @Test
     public void beans2xml_Ok() throws Exception {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
         var list = new ArrayList<ThemePublication>(themePublications.values());
 
         var it = list.iterator();
         
-        var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        //var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         var xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
 
         MetaBean2FileConverter.runBeans2Xml(xmlFilePath, it);
@@ -36,8 +34,7 @@ class MetaBean2FileConverterTest {
         assertEquals(controlContent, xmlContent);
     }
     
-    // FIXME Disabled während Abfüllen des POJO
-    //@Test
+    @Test
     public void bean2html_Ok() throws Exception {
         var themePublicationName = "ch.so.agi.av_gb_administrative_einteilung";
         

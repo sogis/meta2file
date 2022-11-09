@@ -179,15 +179,23 @@
                 }
 
                 tr:first-child {
-                border-bottom: 1px solid #eee;;
+                    border-bottom: 1px solid #eee;
                 }
 
                 tr:nth-child(even) {
-                    background-color: rgba(237, 237, 237, 0.4);;
+                    background-color: rgba(237, 237, 237, 0.4);
+                }
+
+                tr:hover {
+                    background-color: #e8e8e8;
                 }
 
                 td {
                     vertical-align: top;
+                    padding-left: 5px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+                    padding-right: 10px;
                 }
 
                 @media print {
@@ -232,7 +240,8 @@
          <div class="logo">
             <div><img id="logo" src="data:image/png;base64,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" alt="Logo Kanton Solothurn"></div>
          </div>
-         <div id="breadcrumb"><i style="line-height:40px; vertical-align:middle;"></i><ul class="breadcrumb">
+         <div id="breadcrumb"><span style="line-height:40px; vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/></svg></span><i style="line-height:40px; vertical-align:middle;"></i><ul class="breadcrumb">
                <li><a href="https://geo.so.ch">Home</a></li>
                <li><a href="https://sogis-sodata-kfjfk.ondigitalocean.app/">Datenbezug</a></li>
                <li class="active">Datenbeschreibung</li>
@@ -247,69 +256,88 @@
          <p>05. April 2022</p>
          <h2>Datenmodell</h2>
          <p><a target="_blank" href="https://geo.so.ch/modelfinder/?expanded=true&amp;query=SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822">SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822</a></p>
+         <h2>Lizenz</h2>
+         <p><a target="_blank" href="https://www.gl.ch/public/upload/assets/5053/ktgl-ogd-geo-20180601.pdf?fp=1">https://www.gl.ch/public/upload/assets/5053/ktgl-ogd-geo-20180601.pdf?fp=1</a></p>
          <h2>Kontakt (fachlich)</h2>
          <p>Amt für Umwelt<br>Ich bin die Abteilung<br>
             Telefon 032 627 12 34<br><a href="mailto:afu@bd.so.ch">afu@bd.so.ch</a><br><a target="_blank" href="https://afu.so.ch">afu.so.ch</a></p>
          <h2>Kontakt (technisch)</h2>
          <p>Amt für Geoinformation<br>
             Telefon 032 627 75 96<br><a href="mailto:agi@bd.so.ch">agi@bd.so.ch</a><br><a target="_blank" href="https://agi.so.ch">agi.so.ch</a></p>
-         <h2>Dienste</h2>
-         <p class="datenebene">
+         <h2>Dienste / Web GIS Client</h2>
+         <p class="datenebene"> 
+            Themenvorschau im <a href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere" target="_blank">Web GIS Client</a>.
+            <br><br>
             Tabellen dieses Themas sind in folgenden Diensten als Karten- oder Datenlayer publiziert:
             
             
             <table>
+               <colgroup>
+                  <col span="1" style="width: 70%;">
+                  <col span="1" style="width: 10%;">
+                  <col span="1" style="width: 10%;">
+                  <col span="1" style="width: 10%;">
+               </colgroup>
                <thead>
                   <tr>
                      <th>Karten-/Datenlayer</th>
-                     <th><a href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0" target="_blank">WMS</a></th>
-                     <th><a href="https://geo.so.ch/api/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetCapabilities" target="_blank">WFS</a></th>
-                     <th><a href="https://geo.so.ch/api/data/v1/api/" target="_blank">Dataservice</a></th>
+                     <th style="text-align:center;"><a href="https://geo.so.ch/map" target="_blank">WGC</a></th>
+                     <th style="text-align:center;"><a href="https://geo.so.ch/api/wms?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;VERSION=1.3.0" target="_blank">WMS</a></th>
+                     <th style="text-align:center;"><a href="https://geo.so.ch/api/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetCapabilities" target="_blank">WFS</a></th>
+                     <th style="text-align:center;"><a href="https://geo.so.ch/api/data/v1/api/" target="_blank">Dataservice</a></th>
                   </tr>
                </thead>
                <tbody>
                   <tr>
                      <td>ch.so.awjf.forstreviere.forstkreis</td>
                      <!--https://icons.getbootstrap.com/-->
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><a class="black-link" href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere.forstkreis" target="_blank">
-                              <rect width="16" height="16" style="fill:white;stroke:none"/>
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><a class="black-link" href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere.forstkreis" target="_blank">
+                              <rect width="16" height="16" style="fill:#FFFFFF00;stroke:none"/>
                               <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
                               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></a></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                           <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></td>
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
                   </tr>
                   <tr>
                      <td>ch.so.awjf.forstreviere.forstkreis.data</td>
                      <!--https://icons.getbootstrap.com/-->
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
                   </tr>
                   <tr>
                      <td>ch.so.awjf.forstreviere.forstreviere</td>
                      <!--https://icons.getbootstrap.com/-->
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><a class="black-link" href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere.forstreviere" target="_blank">
-                              <rect width="16" height="16" style="fill:white;stroke:none"/>
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16"><a class="black-link" href="https://geo.so.ch/map?l=ch.so.awjf.forstreviere.forstreviere" target="_blank">
+                              <rect width="16" height="16" style="fill:#FFFFFF00;stroke:none"/>
                               <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
                               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></a></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                           <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></td>
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
                   </tr>
                   <tr>
                      <td>ch.so.awjf.forstreviere.fuubar</td>
                      <!--https://icons.getbootstrap.com/-->
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
-                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
+                     <td style="text-align:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></td>
                   </tr>
                </tbody>
@@ -321,6 +349,12 @@
          <h3>grundbuchkreise_grundbuchkreis</h3>
          <p class="datenebene">Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise</p>
          <table>
+            <colgroup>
+               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 50%;">
+               <col span="1" style="width: 13%;">
+               <col span="1" style="width: 12%;">
+            </colgroup>
             <tr style="border-bottom: 1px solid #eee;">
                <th>
                   Name
@@ -336,12 +370,6 @@
                   </th>
             </tr>
             <tr>
-               <td>t_id</td>
-               <td></td>
-               <td>int8</td>
-               <td>ja</td>
-            </tr>
-            <tr>
                <td>aname</td>
                <td>Name des Grundbuches</td>
                <td>text</td>
@@ -350,8 +378,122 @@
             <tr>
                <td>perimeter</td>
                <td>Perimeter des Grundbuchkreises</td>
-               <td>polygon</td>
+               <td>POLYGON</td>
                <td>ja</td>
+            </tr>
+            <tr>
+               <td>t_id</td>
+               <td></td>
+               <td>int8</td>
+               <td>ja</td>
+            </tr>
+         </table>
+         <h3>oekomorphologie</h3>
+         <p class="datenebene">Enthält die Fliessgewässer, unterteilt in kürzere Linien (Gewässerabschnitte) mit gleichen ökomorphologischen Eigenschaften.</p>
+         <table>
+            <colgroup>
+               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 50%;">
+               <col span="1" style="width: 13%;">
+               <col span="1" style="width: 12%;">
+            </colgroup>
+            <tr style="border-bottom: 1px solid #eee;">
+               <th>
+                  Name
+                  </th>
+               <th>
+                  Beschreibung
+                  </th>
+               <th>
+                  Datentyp
+                  </th>
+               <th>
+                  Pflichtattribut
+                  </th>
+            </tr>
+            <tr>
+               <td>algenbewuchs_txt</td>
+               <td></td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>beurteilungsuferbreiterechts_txt</td>
+               <td></td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>boeschungsfussverbaulinks_txt</td>
+               <td></td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>boeschungsfussverbaurechts_txt</td>
+               <td></td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>geometrie</td>
+               <td></td>
+               <td>LINESTRING</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>minimaleruferbereich</td>
+               <td>Mittlere Breite Uferbereich links [m].</td>
+               <td>Integer</td>
+               <td>nein</td>
+            </tr>
+            <tr>
+               <td>minimaleruferbereich</td>
+               <td>Minimaler Uferbereich</td>
+               <td>Integer</td>
+               <td>nein</td>
+            </tr>
+            <tr>
+               <td>nutzungumlandlinks_txt</td>
+               <td>Mittlere Sohlenbreite [m].</td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>raumbedarf</td>
+               <td>Raumbedarf des Gewässers (Gewässerraum)</td>
+               <td>Integer</td>
+               <td>nein</td>
+            </tr>
+            <tr>
+               <td>sohlenbreite</td>
+               <td>Mittlere Sohlenbreite [m].</td>
+               <td>Integer</td>
+               <td>nein</td>
+            </tr>
+            <tr>
+               <td>sohlenverbauung_txt</td>
+               <td></td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>ueberhvegetation_txt</td>
+               <td></td>
+               <td>Text</td>
+               <td>ja</td>
+            </tr>
+            <tr>
+               <td>uferbreitelinks</td>
+               <td>MittMittlere Breite Uferbereich links [m].</td>
+               <td>Integer</td>
+               <td>nein</td>
+            </tr>
+            <tr>
+               <td>uferbreiterechts</td>
+               <td>Mittlere Breite Uferbereich rechts [m].</td>
+               <td>Integer</td>
+               <td>nein</td>
             </tr>
          </table>
       </div>
