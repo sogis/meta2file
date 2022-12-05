@@ -42,7 +42,7 @@ dependencies {
 
     api 'net.sf.saxon:Saxon-HE:10.6'
     
-    api 'org.apache.commons:commons-text:1.9'
+    api 'org.apache.commons:commons-text:1.10.0'
 }
 
 tasks.named('test') {
