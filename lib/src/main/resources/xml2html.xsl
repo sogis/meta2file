@@ -288,16 +288,18 @@
                     <xsl:value-of select="format-date(lastPublishingDate,'[D01]. [MNn] [Y0001]')"/>
                 </p>
 
-                <h2>Datenmodell</h2>
-                <p>
-                    <xsl:element name="a">
-                        <xsl:attribute name="target">
-                            <xsl:text>_blank</xsl:text>
-                        </xsl:attribute>
-                        <xsl:attribute name="href">https://geo.so.ch/modelfinder/?expanded=true&amp;query=<xsl:value-of select="model"/></xsl:attribute>
-                        <xsl:value-of select="model"/>
-                    </xsl:element>
-                </p>
+                <xsl:if test="model">
+	                <h2>Datenmodell</h2>
+	                <p>
+	                    <xsl:element name="a">
+	                        <xsl:attribute name="target">
+	                            <xsl:text>_blank</xsl:text>
+	                        </xsl:attribute>
+	                        <xsl:attribute name="href">https://geo.so.ch/modelfinder/?expanded=true&amp;query=<xsl:value-of select="model"/></xsl:attribute>
+	                        <xsl:value-of select="model"/>
+	                    </xsl:element>
+	                </p>
+	            </xsl:if>
 
                 <h2>Lizenz</h2>
                 <p>

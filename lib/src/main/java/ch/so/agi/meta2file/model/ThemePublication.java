@@ -27,7 +27,6 @@ public class ThemePublication {
     /** 
      * INTERLIS-Datenmodell
      */
-    @NotNull
     private String model;
     /**
      * Zeitpunkt der letzten Publikation der Daten.
