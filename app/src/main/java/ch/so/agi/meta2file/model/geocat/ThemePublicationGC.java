@@ -48,7 +48,7 @@ public class ThemePublicationGC {
     }
 
     public String getDataAppPageUrl(){
-        URI full = BaseUrl.DATA_APP.getBaseUrlAsUri().resolve("?search=" + inner.getIdentifier());
+        URI full = BaseUrl.DATA_APP.getBaseUrlAsUri().resolve("?filter=" + inner.getIdentifier());
 
         return full.toString();
     }

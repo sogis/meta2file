@@ -328,6 +328,7 @@
               <gmd:textGroup>
                 <gmd:LocalisedCharacterString locale="#DE">${ownerOrg.name}</gmd:LocalisedCharacterString>
               </gmd:textGroup>
+            </gmd:PT_FreeText>
           </gmd:organisationName>
           <gmd:positionName xsi:type="gmd:PT_FreeText_PropertyType">
             <gco:CharacterString>${ownerOrg.name}</gco:CharacterString>
@@ -422,6 +423,7 @@
               <gmd:textGroup>
                 <gmd:LocalisedCharacterString locale="#DE">Info</gmd:LocalisedCharacterString>
               </gmd:textGroup>
+            </gmd:PT_FreeText>
           </gmd:positionName>
           <gmd:contactInfo>
             <gmd:CI_Contact>
@@ -567,48 +569,15 @@
         </gmd:MD_Keywords>
       </gmd:descriptiveKeywords>
       <gmd:resourceConstraints>
-        <gmd:MD_Constraints>
-          <gmd:useLimitation xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>A: öffentlich zugängliche Geodaten</gco:CharacterString>
-            <gmd:PT_FreeText>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">A: öffentlich zugängliche Geodaten</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-            </gmd:PT_FreeText>
-          </gmd:useLimitation>
-        </gmd:MD_Constraints>
-      </gmd:resourceConstraints>
-      <gmd:resourceConstraints>
-        <che:CHE_MD_LegalConstraints gco:isoType="gmd:MD_LegalConstraints">
+        <gmd:MD_LegalConstraints>
           <gmd:useConstraints>
-            <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode" codeListValue="license" />
+            <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" />
           </gmd:useConstraints>
+          <!--die Nutzungsbedingungen und Zugangsberechtigungsstufen angeben. Mehrfachnennungen möglich. Bei opendata.swiss ist die korrekte Bezeichnung entscheidend für das korrekte Mapping, siehe Beispiel unten -->
           <gmd:otherConstraints xsi:type="gmd:PT_FreeText_PropertyType">
-            <gmx:Anchor xlink:href="https://opendata.swiss/terms-of-use/#terms_by">Opendata BY: Freie Nutzung. Quellenangabe ist Pflicht.</gmx:Anchor>
-            <gmd:PT_FreeText>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">Opendata BY: Freie Nutzung. Quellenangabe ist Pflicht.</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#FR">Opendata BY: Utilisation libre. Obligation d’indiquer la source.</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#IT">Opendata BY: Libero utilizzo. Indicazione della fonte obbligatoria.</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#EN">Opendata BY: Open use. Must provide the source.</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-            </gmd:PT_FreeText>
+            <gmx:Anchor xlink:href="https://opendata.swiss/en/terms-of-use/#terms_open">Opendata: Freie Nutzung. Quellenangabe empfohlen.</gmx:Anchor>
           </gmd:otherConstraints>
-          <gmd:otherConstraints xsi:type="gmd:PT_FreeText_PropertyType">
-            <gco:CharacterString>$$const.opendata.disclaimer (Sie dürfen diesen Datensatz ohne jegliche Einschränkungen nutzen. Eine Quellenangabe wird empfohlen (Autor, Titel und Link zum Datensatz)</gco:CharacterString>
-            <gmd:PT_FreeText>
-              <gmd:textGroup>
-                <gmd:LocalisedCharacterString locale="#DE">$$const.opendata.disclaimer (Sie dürfen diesen Datensatz ohne jegliche Einschränkungen nutzen. Eine Quellenangabe wird empfohlen (Autor, Titel und Link zum Datensatz)</gmd:LocalisedCharacterString>
-              </gmd:textGroup>
-            </gmd:PT_FreeText>
-          </gmd:otherConstraints>
-        </che:CHE_MD_LegalConstraints>
+        </gmd:MD_LegalConstraints>
       </gmd:resourceConstraints>
       <gmd:language>
         <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="ger" />

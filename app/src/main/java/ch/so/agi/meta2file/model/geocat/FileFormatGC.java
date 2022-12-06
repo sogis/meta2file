@@ -5,6 +5,7 @@ import ch.so.agi.meta2file.model.FileFormat;
 import ch.so.agi.meta2file.model.ThemePublication;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -35,14 +36,27 @@ public class FileFormatGC {
                 "zip"
         };
 
+        if(!isVectorTheme())
+            nameParts = Arrays.copyOf(nameParts, nameParts.length-1);
+
         String name = String.join(".", nameParts);
 
-        URI full = BaseUrl.FILES.getBaseUrlAsUri().resolve(name);
-        return full.toString();
+        String url = BaseUrl.FILES.getBaseUrlAsUri().toString() + "/" + parent.getIdentifier() + "/aktuell/" + name;
+        return url;
+    }
+
+    private boolean isVectorTheme(){
+        boolean isVec = parent.getTablesInfo() == null || parent.getTablesInfo().size() == 0;
+        return isVec;
     }
 
     public String getName(){
-        return inner.getName() + " (in Zip)";
+        String name = inner.getName();
+
+        if(isVectorTheme())
+            name += " (in Zip)";
+
+        return name;
     }
 
     public String getVersion(){
