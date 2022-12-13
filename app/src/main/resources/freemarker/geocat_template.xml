@@ -12,7 +12,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gco:isoType="gmd:MD_Metadata" xsi:schemaLocation="http://www.geocat.ch/2008/che https://www.geocat.ch/geonetwork/xml/schemas/iso19139.che/schema/che/che.xsd">
   <gmd:fileIdentifier>
-    <gco:CharacterString>403faf37-fe22-484c-8aaa-17ee0c18e5a0</gco:CharacterString>
+    <gco:CharacterString>${randomUid}</gco:CharacterString>
   </gmd:fileIdentifier>
   <gmd:language xmlns:geonet="http://www.fao.org/geonetwork">
     <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="ger" />

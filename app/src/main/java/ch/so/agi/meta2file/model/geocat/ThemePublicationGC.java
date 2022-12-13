@@ -7,6 +7,7 @@ import java.net.URI;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Wrapper class to expose and transform the properties needed for geocat.
@@ -93,5 +94,9 @@ public class ThemePublicationGC {
 
     public String getPreviewUrl(){
         return inner.getPreviewUrl();
+    }
+
+    public String getRandomUid(){
+        return UUID.randomUUID().toString();
     }
 }
