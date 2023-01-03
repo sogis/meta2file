@@ -35,8 +35,13 @@ public class Read {
 
         deriveWgcPreview(res);
         setServiceEndpointUrls(res);
+        setLicense(res);
 
         return res;
+    }
+
+    private static void setLicense(ThemePublication res){
+        res.setLicence(BaseUrl.LICENCE.getBaseUrlAsUri());
     }
 
     private static void setServiceEndpointUrls(ThemePublication res){

@@ -93,7 +93,12 @@ public class ThemePublicationGC {
     }
 
     public String getPreviewUrl(){
-        return inner.getPreviewUrl();
+        if(inner.getWgcPreviewLayer() == null)
+            return null;
+
+        URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + inner.getWgcPreviewLayer().getIdentifier());
+
+        return full.toString();
     }
 
     public String getRandomUid(){

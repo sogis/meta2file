@@ -129,6 +129,7 @@ public class ThemePublication {
      */
     private Layer wgcPreviewLayer;
 
+    /*
     @Deprecated
     public String getPreviewUrl(){
         if(services == null || services.size() == 0)
@@ -157,6 +158,7 @@ public class ThemePublication {
 
         return res;
     }
+    */
     
     public String getIdentifier() {
         return identifier;

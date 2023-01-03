@@ -12,7 +12,7 @@ public enum BaseUrl {
     WMS("https://geo.so.ch/api/wms"),
     WFS("https://geo.so.ch/api/wfs"),
     FILES("https://files.geo.so.ch"),
-    LICENCE("https://geo.so.ch/licence"),
+    LICENCE("https://files.geo.so.ch/nutzungsbedingungen.html"),
     DATA_SERVICE("https://geo.so.ch/api/data/v1"),
     DATA_APP("https://data.geo.so.ch");
 
