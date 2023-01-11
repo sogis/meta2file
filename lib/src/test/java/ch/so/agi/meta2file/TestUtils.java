@@ -19,7 +19,7 @@ public class TestUtils {
             var themePublication = new ThemePublication();
             themePublication.setIdentifier("ch.so.agi.av_gb_administrative_einteilung");
             themePublication.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");
-            themePublication.setLastPublishingDate(LocalDate.parse("2022-04-05"));
+            themePublication.setLastPublishingDate(LocalDate.parse("2023-01-05"));
             themePublication.setSecondToLastPublishingDate(LocalDate.parse("2022-01-17"));
             themePublication.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
             themePublication.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
@@ -370,7 +370,7 @@ public class TestUtils {
             var themePublication = new ThemePublication();
             themePublication.setIdentifier("ch.so.arp.richtplan");
             themePublication.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");
-            themePublication.setLastPublishingDate(LocalDate.parse("2022-04-05"));
+            themePublication.setLastPublishingDate(LocalDate.parse("2023-01-05"));
             themePublication.setTitle("Administrative Einteilungen der amtlichen Vermessung und des Grundbuchs");
             themePublication.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
             themePublication.setKeywordsList(Arrays.asList(new String[]{"AGI","Grundbuch","AS","AV","Amtliche Vermessung","Vermessung","Einteilung"}));

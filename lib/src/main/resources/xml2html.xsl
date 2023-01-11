@@ -285,7 +285,7 @@
 
                 <h2>Datum der letzten Publikation</h2>
                 <p>
-                    <xsl:value-of select="format-date(lastPublishingDate,'[D01]. [MNn] [Y0001]')"/>
+                    <xsl:value-of select="format-date(lastPublishingDate,'[D01].[M01].[Y0001]')"/>
                 </p>
 
                 <xsl:if test="model">
