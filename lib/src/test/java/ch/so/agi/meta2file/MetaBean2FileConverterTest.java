@@ -21,8 +21,8 @@ class MetaBean2FileConverterTest {
 
         var it = list.iterator();
         
-        //var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         var xmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), "themepublications.xml");
 
         MetaBean2FileConverter.runBeans2Xml(xmlFilePath, it);

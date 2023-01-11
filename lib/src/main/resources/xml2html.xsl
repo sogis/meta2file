@@ -353,10 +353,10 @@
                         <xsl:if test="wgcPreviewLayer">
                             <xsl:variable name="wgcPreviewLayerUrl">https://geo.so.ch/map?l=<xsl:value-of select="wgcPreviewLayer/identifier"/></xsl:variable> 
                             Themenvorschau im <a href="{$wgcPreviewLayerUrl}" target="_blank">Web GIS Client</a>.
+                        <br/>
+                        <br/>
                         </xsl:if>
 
-                        <br/>
-                        <br/>
                         Tabellen dieses Themas sind in folgenden Diensten als Karten- oder Datenlayer publiziert:
 
                         <table>
