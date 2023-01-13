@@ -23,22 +23,23 @@ public class TpQuery {
         setToDefaultQuery();
     }
 
-    public String queryForAllThemePubs(){
-        return baseQuery;
+    public String queryForPortalPublishedThemePubs(){
+        return queryWithWhereClause("where portals_published is true");
     }
 
-    /**
-     * Sql select with whereclause on uuid param "tp_id"
-     * @return The query with whereclause
-     */
-    public String queryForOneThemePub(UUID themePubUid){
+    private String queryWithWhereClause(String whereClause){
 
         int endStatementIdx = baseQuery.lastIndexOf(";");
-
         String queryTemplate = baseQuery.substring(0,endStatementIdx);
-        String where = MessageFormat.format("where {0} = ''{1}'';", ID_COL_NAME, themePubUid);
 
-        return queryTemplate + " " + where;
+        return queryTemplate + " " + whereClause + ";";
+    }
+
+    public String queryForOneThemePub(UUID themePubUid){
+
+        String where = MessageFormat.format("where {0} = ''{1}''", ID_COL_NAME, themePubUid);
+
+        return queryWithWhereClause(where);
     }
 
     public void overrideQuery(String newQuery){

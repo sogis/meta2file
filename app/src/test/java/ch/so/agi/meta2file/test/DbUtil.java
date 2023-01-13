@@ -41,6 +41,8 @@ public class DbUtil {
                 else
                     ins.setString(2, UUID.randomUUID().toString());
 
+                ins.setBoolean(3, true);
+
                 ins.execute();
             }
         }

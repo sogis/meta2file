@@ -12,7 +12,7 @@ class TpQueryTest {
         TpQuery q = TpQuery.singleton();
         q.setToDefaultQuery();
 
-        String sql = q.queryForAllThemePubs();
+        String sql = q.queryForPortalPublishedThemePubs();
 
         Assertions.assertTrue(sql.contains(TpQuery.JSON_COL_NAME), "Loaded base query must return the json col");
     }
@@ -31,14 +31,14 @@ class TpQueryTest {
 
     @Test
     public void queryOverride_OK(){
-        String override = "select fuu from bar;";
+        String override_unclosed = "select fuu from bar";
 
         TpQuery q = TpQuery.singleton();
-        q.overrideQuery(override);
+        q.overrideQuery(override_unclosed + ";");
 
-        String sql = q.queryForAllThemePubs();
+        String sql = q.queryForPortalPublishedThemePubs();
 
-        Assertions.assertEquals(override, sql, "Override sql must be returned");
+        Assertions.assertTrue(sql.contains(override_unclosed), "Override sql must be returned");
     }
 
 }

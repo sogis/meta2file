@@ -57,7 +57,7 @@ public class TpIterator implements Iterator<ThemePublication> {
         try {
             String sql = null;
             if(themePubUid == null)
-                sql = TpQuery.singleton().queryForAllThemePubs();
+                sql = TpQuery.singleton().queryForPortalPublishedThemePubs();
             else
                 sql = TpQuery.singleton().queryForOneThemePub(themePubUid);
 
@@ -80,7 +80,7 @@ public class TpIterator implements Iterator<ThemePublication> {
         try {
             boolean couldIterate = rs.next();
             if(!couldIterate)
-                throw new Meta2FileException("Resultset is exhausted. Use hasNext() to break your iteration.");
+                throw new Meta2FileException("Resultset has no more rows. Use hasNext() to break your iteration properly.");
 
             String jsonString = rs.getString(TpQuery.JSON_COL_NAME);
             res = Read.fromJson(jsonString);
