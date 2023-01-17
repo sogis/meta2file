@@ -15,6 +15,87 @@ public class TestUtils {
 
         var themePublications = new HashMap<String,ThemePublication>();
 
+        // bean2html_no_services_and_content_Ok 
+        {
+            var themePublication = new ThemePublication();
+            themePublication.setIdentifier("ch.so.fantasy.island");
+            themePublication.setModel("SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822");
+            themePublication.setLastPublishingDate(LocalDate.parse("2023-01-05"));
+            themePublication.setSecondToLastPublishingDate(LocalDate.parse("2022-01-17"));
+            themePublication.setTitle("Fantasy Island");
+            themePublication.setShortDescription("Lorem <b>ipsum</b> dolor sit amet, <blink>consetetur sadipscing</blink> elitr, <a href ='https://de.wikipedia.org/wiki/Rumours'>Warum nur...</a> sed diam nonumy eirmod tempor invidunt ut <acronym title='Founded in 2006'>Twitter</acronym> labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
+            themePublication.setKeywordsList(Arrays.asList(new String[]{"AGI","Grundbuch","AS","AV","Amtliche Vermessung","Vermessung","Einteilung"}));
+            
+            Office owner = new Office();
+            owner.setAgencyName("Amt für Umwelt");
+            owner.setAbbreviation("AfU");
+            owner.setDivision("Ich bin die Abteilung");
+            try {
+                owner.setOfficeAtWeb(new URI("https://afu.so.ch"));
+                owner.setEmail(new URI("mailto:afu@bd.so.ch"));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            owner.setPhone("032 627 12 34");
+            themePublication.setOwner(owner);
+
+            Office servicer = new Office();
+            servicer.setAgencyName("Amt für Geoinformation");
+            servicer.setAbbreviation("AGI");
+            try {
+                servicer.setOfficeAtWeb(new URI("https://agi.so.ch"));
+                servicer.setEmail(new URI("mailto:agi@bd.so.ch"));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            servicer.setPhone("032 627 75 96");
+            themePublication.setServicer(servicer);
+            
+            try {
+                themePublication.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
+                themePublication.setLicence(new URI("https://www.gl.ch/public/upload/assets/5053/ktgl-ogd-geo-20180601.pdf?fp=1"));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            
+            List<FileFormat> fileFormats = new ArrayList<>();
+            {
+                FileFormat fileFormat = new FileFormat();
+                fileFormat.setName("DXF");
+                fileFormat.setAbbreviation("dxf");
+                fileFormat.setMimetype("application/dxf+text");
+                fileFormats.add(fileFormat);
+            }        
+            {
+                FileFormat fileFormat = new FileFormat();
+                fileFormat.setName("INTERLIS");
+                fileFormat.setAbbreviation("ili");
+                fileFormat.setMimetype("application/vnd.ili2+xml");
+                fileFormats.add(fileFormat);
+            }
+            {
+                FileFormat fileFormat = new FileFormat();
+                fileFormat.setName("GeoPackage");
+                fileFormat.setAbbreviation("gpkg");
+                fileFormat.setMimetype("application/geopackage+sqlite3");
+                fileFormats.add(fileFormat);
+            }
+            {
+                FileFormat fileFormat = new FileFormat();
+                fileFormat.setName("Shapefile");
+                fileFormat.setAbbreviation("shp");
+                fileFormat.setMimetype("application/vnd.esri_shapefile");
+                fileFormats.add(fileFormat);
+            }        
+            themePublication.setFileFormats(fileFormats);
+          
+            
+            themePublications.put(themePublication.getIdentifier(), themePublication);
+        }
+        
+        
+        
+        // bean2html_Ok
         {
             var themePublication = new ThemePublication();
             themePublication.setIdentifier("ch.so.agi.av_gb_administrative_einteilung");
@@ -92,6 +173,7 @@ public class TestUtils {
             {
                 var tableInfo = new TableInfo();
                 tableInfo.setSqlName("grundbuchkreise_grundbuchkreis");
+                tableInfo.setTitle("Grundbuchkreis");
                 tableInfo.setShortDescription("Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise");
                 
                 var attributesInfo = new ArrayList<AttributeInfo>();
@@ -127,6 +209,7 @@ public class TestUtils {
             {
                 var tableInfo = new TableInfo();
                 tableInfo.setSqlName("oekomorphologie");
+                tableInfo.setTitle("Ökomorphologie");
                 tableInfo.setShortDescription("Enthält die Fliessgewässer, unterteilt in kürzere Linien (Gewässerabschnitte) mit gleichen ökomorphologischen Eigenschaften.");
 
                 var attributesInfo = new ArrayList<AttributeInfo>();

@@ -347,9 +347,9 @@
                     </xsl:element>
                 </p>
 
+                <xsl:if test="services">
                 <h2>Dienste / Web GIS Client</h2>
-                <p class="datenebene">
-                    <xsl:if test="services">
+                    <p class="datenebene">
                         <xsl:if test="wgcPreviewLayer">
                             <xsl:variable name="wgcPreviewLayerUrl">https://geo.so.ch/map?l=<xsl:value-of select="wgcPreviewLayer/identifier"/></xsl:variable> 
                             Themenvorschau im <a href="{$wgcPreviewLayerUrl}" target="_blank">Web GIS Client</a>.
@@ -451,12 +451,16 @@
                         </table>
 
                         Geobasidaten nach Bundesrecht werden ebenfalls auf <a href="https://geodienste.ch">geodienste.ch</a> publiziert.
-                    </xsl:if>
-                </p>
+                    </p>
+                </xsl:if>
 
-                <h2>Inhalt</h2>
+                <xsl:if test="tablesInfo/tableInfo">
 
-                <xsl:apply-templates select="tablesInfo/tableInfo" /> 
+                    <h2>Inhalt</h2>
+
+                    <xsl:apply-templates select="tablesInfo/tableInfo" /> 
+
+                </xsl:if>
 
             </div>
         </body>
@@ -465,7 +469,7 @@
 
     <xsl:template match="tableInfo">
 
-        <h3><xsl:value-of select="sqlName"/></h3>
+        <h3><xsl:value-of select="sqlName"/> (<xsl:value-of select="title"/>)</h3>
 
         <p class="datenebene"><xsl:value-of disable-output-escaping="yes" select="shortDescription"/></p>
 

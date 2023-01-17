@@ -53,4 +53,25 @@ class MetaBean2FileConverterTest {
       
         assertEquals(controlContent, htmlContent);
     }
+    
+    @Test
+    public void bean2html_no_services_and_content_Ok() throws Exception {
+        var themePublicationName = "ch.so.fantasy.island";
+        
+        HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
+        var themePublication = themePublications.get(themePublicationName);
+
+        var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        var htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublication.getIdentifier()+".html");
+
+        MetaBean2FileConverter.runBean2Html(htmlFilePath, themePublication);
+        var htmlContent = new String(Files.readAllBytes(Paths.get(htmlFilePath.toFile().getAbsolutePath())));
+        
+        var controlFile = new File("src/test/data-expected/"+themePublicationName+".html");
+        var controlContent = new String(Files.readAllBytes(Paths.get(controlFile.getAbsolutePath())));
+      
+        assertEquals(controlContent, htmlContent);
+
+    }
 }
