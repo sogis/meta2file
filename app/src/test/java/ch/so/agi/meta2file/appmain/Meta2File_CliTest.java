@@ -20,7 +20,8 @@ public class Meta2File_CliTest {
             "-c", DbUtil.TSTDB_URL,
             "-u", DbUtil.TSTDB_USER,
             "-p", DbUtil.TSTDB_PASS,
-            "-g", "/tmp"
+            "-g", "/tmp",
+            "-e", "p"
     };
 
     private static final int PARA_P_KEY_IDX = 4;

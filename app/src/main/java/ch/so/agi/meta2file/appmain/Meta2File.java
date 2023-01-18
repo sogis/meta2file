@@ -27,6 +27,7 @@ public class Meta2File {
     private static final Character G_GEOCAT_FOLDER = 'g';
     private static final Character H_HELP = 'h';
     private static final String H_HELP_LONG = "help";
+    private static final Character E_ENV = 'e';
 
     private static Logger log = LoggerFactory.getLogger(Meta2File.class);
 
@@ -161,11 +162,12 @@ public class Meta2File {
     private static Options initOptions(){   
         Options os = new Options();
 
-        os.addRequiredOption(C_CONNECTION.toString(), "connection", true, "Connection string as jdbc url");
+        os.addRequiredOption(C_CONNECTION.toString(), "conn", true, "Connection string as jdbc url");
         os.addRequiredOption(U_USER.toString(), "user", true, "database user for connect");
         os.addRequiredOption(P_PASSWORD.toString(), "pass", true, "database password for connect");
-        os.addOption(D_DATA_DOWNLOAD_APP.toString(), "dataAppConf", true, "File path destination for the resulting xml conf file");
-        os.addOption(G_GEOCAT_FOLDER.toString(), "geocatExport", true, "Destination folder for all iso-ch geocat xml files");
+        os.addRequiredOption(E_ENV.toString(), "env", true, "Environment: String starting with p,i,t for prod,int,test");
+        os.addOption(D_DATA_DOWNLOAD_APP.toString(), "dataFile", true, "File path destination for the resulting xml conf file");
+        os.addOption(G_GEOCAT_FOLDER.toString(), "geocatFolder", true, "Destination folder for all iso-ch geocat xml files");
         os.addOption(H_HELP.toString(), H_HELP_LONG, false, "Print out this help message");
 
         return os;
