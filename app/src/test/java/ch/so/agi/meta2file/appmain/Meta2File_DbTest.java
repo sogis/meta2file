@@ -25,7 +25,8 @@ public class Meta2File_DbTest {
                 "-c", DbUtil.TSTDB_URL,
                 "-u", DbUtil.TSTDB_USER,
                 "-p", DbUtil.TSTDB_PASS,
-                "-d", res.toAbsolutePath().toString()
+                "-d", res.toAbsolutePath().toString(),
+                "-e", "p"
         };
 
         DbUtil.overrideWithTestQuery();
@@ -47,7 +48,8 @@ public class Meta2File_DbTest {
                 "-c", DbUtil.TSTDB_URL,
                 "-u", DbUtil.TSTDB_USER,
                 "-p", DbUtil.TSTDB_PASS,
-                "-g", res.toAbsolutePath().toString()
+                "-g", res.toAbsolutePath().toString(),
+                "-e", "p"
         };
 
         DbUtil.overrideWithTestQuery();
