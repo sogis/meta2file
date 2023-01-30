@@ -2,6 +2,7 @@ package ch.so.agi.meta2file.test;
 
 import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.in.Read;
+import ch.so.agi.meta2file.libmain.Environment;
 import ch.so.agi.meta2file.model.ThemePublication;
 import org.junit.jupiter.api.Assertions;
 
@@ -71,7 +72,7 @@ public class Util {
     public static List<ThemePublication> createTwoElemListFromJson(InputType inType) {
         String json = getFileContent(inType);
 
-        ThemePublication tp = Read.fromJson(json);
+        ThemePublication tp = Read.fromJson(json, Environment.PROD);
         List<ThemePublication> beanList = Util.listFromBean(tp, 2);
 
         return beanList;

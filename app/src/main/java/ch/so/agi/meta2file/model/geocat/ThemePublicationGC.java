@@ -1,5 +1,6 @@
 package ch.so.agi.meta2file.model.geocat;
 
+import ch.so.agi.meta2file.appmain.Meta2File;
 import ch.so.agi.meta2file.libmain.BaseUrl;
 import ch.so.agi.meta2file.model.*;
 
@@ -49,7 +50,7 @@ public class ThemePublicationGC {
     }
 
     public String getDataAppPageUrl(){
-        URI full = BaseUrl.DATA_APP.getBaseUrlAsUri().resolve("?filter=" + inner.getIdentifier());
+        URI full = BaseUrl.DATA_APP.getBaseUrlAsUri(Meta2File.environment).resolve("?filter=" + inner.getIdentifier());
 
         return full.toString();
     }
@@ -96,7 +97,7 @@ public class ThemePublicationGC {
         if(inner.getWgcPreviewLayer() == null)
             return null;
 
-        URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + inner.getWgcPreviewLayer().getIdentifier());
+        URI full = BaseUrl.WGC.getBaseUrlAsUri(Meta2File.environment).resolve("map?l=" + inner.getWgcPreviewLayer().getIdentifier());
 
         return full.toString();
     }

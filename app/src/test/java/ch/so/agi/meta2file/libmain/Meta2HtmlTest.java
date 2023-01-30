@@ -33,7 +33,7 @@ class Meta2HtmlTest {
     private static void testWithInput(InputType inType){
         String json = Util.getFileContent(inType);
 
-        String html = Meta2Html.renderDataSheet(json);
+        String html = Meta2Html.renderDataSheet(json, Environment.PROD);
         List<String> keys = ValueOccurence.keysForTest(inType, OutputType.SHEET);
 
         Util.assertContains(html, keys);

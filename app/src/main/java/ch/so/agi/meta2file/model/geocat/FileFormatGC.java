@@ -1,5 +1,6 @@
 package ch.so.agi.meta2file.model.geocat;
 
+import ch.so.agi.meta2file.appmain.Meta2File;
 import ch.so.agi.meta2file.libmain.BaseUrl;
 import ch.so.agi.meta2file.model.FileFormat;
 import ch.so.agi.meta2file.model.ThemePublication;
@@ -41,7 +42,7 @@ public class FileFormatGC {
 
         String name = String.join(".", nameParts);
 
-        String url = BaseUrl.FILES.getBaseUrlAsUri().toString() + "/" + parent.getIdentifier() + "/aktuell/" + name;
+        String url = BaseUrl.FILES.getBaseUrlAsUri(Meta2File.environment).toString() + "/" + parent.getIdentifier() + "/aktuell/" + name;
         return url;
     }
 

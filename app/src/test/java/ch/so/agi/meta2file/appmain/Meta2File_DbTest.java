@@ -1,5 +1,6 @@
 package ch.so.agi.meta2file.appmain;
 
+import ch.so.agi.meta2file.libmain.Environment;
 import ch.so.agi.meta2file.libmain.Meta2Html;
 import ch.so.agi.meta2file.test.*;
 import org.junit.jupiter.api.Test;
@@ -67,7 +68,7 @@ public class Meta2File_DbTest {
         try(Connection con = DbUtil.createTestDb()){
             DbUtil.overrideWithTestQuery();
 
-            html = Meta2Html.renderDataSheet(DbUtil.TSTTBL_TP_UID, con);
+            html = Meta2Html.renderDataSheet(DbUtil.TSTTBL_TP_UID, con, Environment.PROD);
         }
 
         List<String> keys = ValueOccurence.keysForTest(InputType.VEC_ALL, OutputType.SHEET);

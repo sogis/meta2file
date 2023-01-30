@@ -15,6 +15,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import ch.so.agi.meta2file.Util;
 import ch.so.agi.meta2file.except.Meta2FileException;
+import ch.so.agi.meta2file.libmain.Environment;
 import net.sf.saxon.s9api.Destination;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;

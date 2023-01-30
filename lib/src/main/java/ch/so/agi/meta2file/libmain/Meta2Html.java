@@ -13,8 +13,8 @@ public class Meta2Html {
      * @param themePubId Theme publication id in meta db.
      * @param con Connection to meta db.
      */
-    public static String renderDataSheet(UUID themePubId, Connection con){
-        ThemePublication tp = Read.fromMetaDb(con, themePubId);
+    public static String renderDataSheet(UUID themePubId, Connection con, Environment env){
+        ThemePublication tp = Read.fromMetaDb(con, themePubId, env);
         String html = MetaBean2FileConverter.runBean2Html(tp);
         return html;
     }
@@ -24,12 +24,10 @@ public class Meta2Html {
      * @param inJson The json data content to be rendered
      * @return The rendered HTML-Page content as String
      */
-    static String renderDataSheet(String inJson){
-        ThemePublication tp = Read.fromJson(inJson);
+    static String renderDataSheet(String inJson, Environment env){
+        ThemePublication tp = Read.fromJson(inJson, env);
         String html = MetaBean2FileConverter.runBean2Html(tp);
 
         return html;
     }
-
-
 }

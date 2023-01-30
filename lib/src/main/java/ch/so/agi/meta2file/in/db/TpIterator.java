@@ -2,6 +2,7 @@ package ch.so.agi.meta2file.in.db;
 
 import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.in.Read;
+import ch.so.agi.meta2file.libmain.Environment;
 import ch.so.agi.meta2file.model.ThemePublication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,17 +23,19 @@ public class TpIterator implements Iterator<ThemePublication> {
 
     private Connection con;
     private UUID themePubUid;
+    private Environment environment;
 
     private ResultSet rs;
 
     public TpIterator(Connection con){
-        this(con, null);
+        this(con, null, Environment.PROD);
     }
 
-    public TpIterator(Connection con, UUID themePubUid){
+    public TpIterator(Connection con, UUID themePubUid, Environment environment){
 
         this.con = con;
         this.themePubUid = themePubUid;
+        this.environment = environment;
     }
 
     @Override
@@ -83,7 +86,7 @@ public class TpIterator implements Iterator<ThemePublication> {
                 throw new Meta2FileException("Resultset has no more rows. Use hasNext() to break your iteration properly.");
 
             String jsonString = rs.getString(TpQuery.JSON_COL_NAME);
-            res = Read.fromJson(jsonString);
+            res = Read.fromJson(jsonString, environment);
 
             log.info("Processing {}", res.getIdentifier());
         } catch (SQLException throwables) {

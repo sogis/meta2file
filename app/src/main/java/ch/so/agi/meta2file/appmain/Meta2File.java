@@ -3,6 +3,7 @@ package ch.so.agi.meta2file.appmain;
 
 import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.in.db.TpIterator;
+import ch.so.agi.meta2file.libmain.Environment;
 import ch.so.agi.meta2file.out.MetaBean2FileConverter;
 import ch.so.agi.meta2file.out.geocat.Geocat;
 import org.apache.commons.cli.*;
@@ -31,6 +32,8 @@ public class Meta2File {
 
     private static Logger log = LoggerFactory.getLogger(Meta2File.class);
 
+    public static Environment environment;
+
     public static void main(String[] args) throws Exception {
 
         int res = mainWithExitCode(args);
@@ -51,6 +54,8 @@ public class Meta2File {
 
             CommandLineParser parser = new DefaultParser();
             CommandLine cmd = parser.parse(opt, args);
+
+            environment = Environment.forIdentifier(cmd.getOptionValue(E_ENV));
 
             if(cmd.hasOption(D_DATA_DOWNLOAD_APP)){
                 File destFile = new File(cmd.getOptionValue(D_DATA_DOWNLOAD_APP));

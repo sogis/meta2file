@@ -3,6 +3,7 @@ package ch.so.agi.meta2file.in;
 import ch.so.agi.meta2file.except.Meta2FileException;
 import ch.so.agi.meta2file.in.db.TpIterator;
 import ch.so.agi.meta2file.libmain.BaseUrl;
+import ch.so.agi.meta2file.libmain.Environment;
 import ch.so.agi.meta2file.model.Layer;
 import ch.so.agi.meta2file.model.Service;
 import ch.so.agi.meta2file.model.ServiceType;
@@ -24,7 +25,7 @@ public class Read {
                 .build();
     }
 
-    public static ThemePublication fromJson(String json){
+    public static ThemePublication fromJson(String json, Environment env){
         ThemePublication res = null;
 
         try {
@@ -34,30 +35,30 @@ public class Read {
         }
 
         deriveWgcPreview(res);
-        setServiceEndpointUrls(res);
-        setLicense(res);
+        setServiceEndpointUrls(res, env);
+        setLicense(res, env);
 
         return res;
     }
 
-    private static void setLicense(ThemePublication res){
-        res.setLicence(BaseUrl.LICENCE.getBaseUrlAsUri());
+    private static void setLicense(ThemePublication res, Environment env){
+        res.setLicence(BaseUrl.LICENCE.getBaseUrlAsUri(env));
     }
 
-    private static void setServiceEndpointUrls(ThemePublication res){
+    private static void setServiceEndpointUrls(ThemePublication res, Environment env){
 
         if(res.getServices() == null)
             return;
 
         for(Service s : res.getServices()){
             if(s.getType() == ServiceType.DATA)
-                s.setEndpoint(BaseUrl.DATA_SERVICE.getBaseUrlAsUri());
+                s.setEndpoint(BaseUrl.DATA_SERVICE.getBaseUrlAsUri(env));
             else if(s.getType() == ServiceType.WFS)
-                s.setEndpoint(BaseUrl.WFS.getBaseUrlAsUri());
+                s.setEndpoint(BaseUrl.WFS.getBaseUrlAsUri(env));
             else if(s.getType() == ServiceType.WGC)
-                s.setEndpoint(BaseUrl.WGC.getBaseUrlAsUri());
+                s.setEndpoint(BaseUrl.WGC.getBaseUrlAsUri(env));
             else if(s.getType() == ServiceType.WMS)
-                s.setEndpoint(BaseUrl.WMS.getBaseUrlAsUri());
+                s.setEndpoint(BaseUrl.WMS.getBaseUrlAsUri(env));
             else
                 throw new Meta2FileException("No base url defined for service type {0}", s.getType());
         }
@@ -87,8 +88,8 @@ public class Read {
         }
     }
 
-    public static ThemePublication fromMetaDb(Connection con, UUID themePubUid){
-        TpIterator iter = new TpIterator(con, themePubUid);
+    public static ThemePublication fromMetaDb(Connection con, UUID themePubUid, Environment env){
+        TpIterator iter = new TpIterator(con, themePubUid, env);
 
         if(!iter.hasNext())
             throw new Meta2FileException("No records returned for themepub {0}.", themePubUid);
