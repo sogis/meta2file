@@ -56,6 +56,7 @@ public class Meta2File {
             CommandLine cmd = parser.parse(opt, args);
 
             environment = Environment.forIdentifier(cmd.getOptionValue(E_ENV));
+            log.info("Set environment to " + environment);
 
             if(cmd.hasOption(D_DATA_DOWNLOAD_APP)){
                 File destFile = new File(cmd.getOptionValue(D_DATA_DOWNLOAD_APP));
@@ -191,7 +192,7 @@ public class Meta2File {
                 throw new Meta2FileException("\"{0}\" is no file path", xmlFile);
         }
 
-        TpIterator iter = new TpIterator(con);
+        TpIterator iter = new TpIterator(con, environment);
         MetaBean2FileConverter.runBeans2Xml(xmlFile.toPath(), iter);
     }
 
@@ -205,13 +206,7 @@ public class Meta2File {
         if(!xmlFolder.isDirectory())
           throw new Meta2FileException("\"{0}\" is no folder path", xmlFolder);
 
-        TpIterator iter = new TpIterator(con);
+        TpIterator iter = new TpIterator(con, environment);
         Geocat.beans2Files(xmlFolder.toPath(), iter);
     }
 }
-
-/*
-Fragen
-- model.TableInfo: Attribut-Liste absichtlich optional?
-- SHEET: Geometrie-Spalte wird dann einfach irgendwo in den Attributen einsortiert. Auch das ist bewusst so gewollt?
- */

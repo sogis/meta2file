@@ -27,8 +27,8 @@ public class TpIterator implements Iterator<ThemePublication> {
 
     private ResultSet rs;
 
-    public TpIterator(Connection con){
-        this(con, null, Environment.PROD);
+    public TpIterator(Connection con, Environment env){
+        this(con, null, env);
     }
 
     public TpIterator(Connection con, UUID themePubUid, Environment environment){
