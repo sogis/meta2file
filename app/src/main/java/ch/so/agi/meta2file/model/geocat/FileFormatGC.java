@@ -47,7 +47,7 @@ public class FileFormatGC {
     }
 
     private boolean isVectorTheme(){
-        boolean isVec = parent.getTablesInfo() == null || parent.getTablesInfo().size() == 0;
+        boolean isVec = parent.getTablesInfo() != null && parent.getTablesInfo().size() > 0;
         return isVec;
     }
 
