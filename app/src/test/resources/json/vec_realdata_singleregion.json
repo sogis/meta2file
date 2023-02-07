@@ -588,22 +588,22 @@
     {
       "name": "DXF (Autocad)",
       "mimetype": "application/dxf+text",
-      "abbreviation": "dxf"
+      "abbreviation": "dxf.zip"
     },
     {
       "name": "INTERLIS 2",
       "mimetype": "application/vnd.ili2+xml",
-      "abbreviation": "xtf"
+      "abbreviation": "xtf.zip"
     },
     {
       "name": "Geopackage",
       "mimetype": "application/geopackage+sqlite3",
-      "abbreviation": "gpkg"
+      "abbreviation": "gpkg.zip"
     },
     {
       "name": "Shapefile",
       "mimetype": "application/vnd.esri_shapefile",
-      "abbreviation": "shp"
+      "abbreviation": "shp.zip"
     }
   ],
   "keywordsList": null,

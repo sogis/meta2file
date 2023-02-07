@@ -58,7 +58,7 @@
     {
       "name": "$fileFormat1$ - xtf",
       "mimetype": "application/vnd.esri_shapefile",
-      "abbreviation": "xtf"
+      "abbreviation": "xtf.zip"
     }
   ]
 }
