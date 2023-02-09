@@ -28,6 +28,7 @@ public class FileFormatGC {
         protocols.put(GPKG_ABBREVIATION, "WWW:DOWNLOAD:Geopackage (ogc)");
         protocols.put(XTF_ABBREVIATION, "WWW:DOWNLOAD:INTERLIS");
         protocols.put(ITF_ABBREVIATION, "WWW:DOWNLOAD:INTERLIS");
+        protocols.put(SHP_ABBREVIATION, "WWW:DOWNLOAD:SHP");
     }
 
     public FileFormatGC(FileFormat inner, ThemePublication parent){
