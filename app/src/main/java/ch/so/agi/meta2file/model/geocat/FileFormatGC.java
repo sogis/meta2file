@@ -59,6 +59,8 @@ public class FileFormatGC {
         if(isVectorTheme())
             name += " (in Zip)";
 
+        name += ": " + parent.getTitle();
+
         return name;
     }
 
