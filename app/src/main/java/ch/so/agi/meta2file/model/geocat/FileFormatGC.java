@@ -12,6 +12,12 @@ import java.util.UUID;
 
 public class FileFormatGC {
 
+    private static final String XTF_ABBREVIATION = "xtf.zip";
+    private static final String ITF_ABBREVIATION = "itf.zip";
+    private static final String GPKG_ABBREVIATION = "gpkg.zip";
+    private static final String SHP_ABBREVIATION = "shp.zip";
+    private static final String DXF_ABBREVIATION = "dxf.zip";
+
     private ThemePublication parent;
     private FileFormat inner;
     private static HashMap<String, String> protocols;
@@ -19,9 +25,9 @@ public class FileFormatGC {
 
     static{
         protocols = new HashMap<>();
-        protocols.put("gpkg", "WWW:DOWNLOAD:Geopackage (ogc)");
-        protocols.put("xtf", "WWW:DOWNLOAD:INTERLIS");
-        protocols.put("itf", "WWW:DOWNLOAD:INTERLIS");
+        protocols.put(GPKG_ABBREVIATION, "WWW:DOWNLOAD:Geopackage (ogc)");
+        protocols.put(XTF_ABBREVIATION, "WWW:DOWNLOAD:INTERLIS");
+        protocols.put(ITF_ABBREVIATION, "WWW:DOWNLOAD:INTERLIS");
     }
 
     public FileFormatGC(FileFormat inner, ThemePublication parent){
@@ -34,11 +40,7 @@ public class FileFormatGC {
         String[] nameParts = new String[]{
                 parent.getIdentifier(),
                 inner.getAbbreviation(),
-                "zip"
         };
-
-        if(!isVectorTheme())
-            nameParts = Arrays.copyOf(nameParts, nameParts.length-1);
 
         String name = String.join(".", nameParts);
 
@@ -66,9 +68,9 @@ public class FileFormatGC {
 
         String res = "-";
 
-        if(inner.getAbbreviation().equals("xtf"))
+        if(inner.getAbbreviation().equals(XTF_ABBREVIATION))
             res = "2";
-        else if(inner.getAbbreviation().equals("itf"))
+        else if(inner.getAbbreviation().equals(ITF_ABBREVIATION))
             res = "1";
 
         return res;
