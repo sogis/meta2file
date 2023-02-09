@@ -24,8 +24,12 @@ public class OfficeGC {
 
     public String getPhone(){ return inner.getPhone(); }
 
-    public URI getEmail(){
-        return inner.getEmail();
+    public String getEmail(){
+        if(inner.getEmail() == null)
+            return null;
+
+        String mailAdress = inner.getEmail().getSchemeSpecificPart();
+        return mailAdress;
     }
 
     public String getAbbreviation(){
