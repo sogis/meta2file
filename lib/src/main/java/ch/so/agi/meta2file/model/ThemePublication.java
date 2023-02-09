@@ -128,37 +128,6 @@ public class ThemePublication {
      * Preview-Layer for the whole themepublication. Can be null.
      */
     private Layer wgcPreviewLayer;
-
-    /*
-    @Deprecated
-    public String getPreviewUrl(){
-        if(services == null || services.size() == 0)
-            return null;
-
-        String res = null;
-        Service wgc = null;
-
-        for(Service s : services){
-            if(s.getType() == ServiceType.WGC){
-                wgc = s;
-                break;
-            }
-        }
-
-        if(wgc == null)
-            return null;
-
-        for(Layer l : wgc.getLayers()){
-            if(identifier.equals(l.getIdentifier())){
-                URI full = BaseUrl.WGC.getBaseUrlAsUri().resolve("map?l=" + l.getIdentifier());
-                res = full.toString();
-                break;
-            }
-        }
-
-        return res;
-    }
-    */
     
     public String getIdentifier() {
         return identifier;
