@@ -796,10 +796,10 @@
                 <gco:CharacterString>${ff.protocol}</gco:CharacterString>
               </gmd:protocol>
               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>${ff.name}</gco:CharacterString>
+                <gco:CharacterString>${ff.nameWithTpTitle}</gco:CharacterString>
                 <gmd:PT_FreeText>
                   <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">${ff.name}</gmd:LocalisedCharacterString>
+                    <gmd:LocalisedCharacterString locale="#DE">${ff.nameWithTpTitle}</gmd:LocalisedCharacterString>
                   </gmd:textGroup>
                 </gmd:PT_FreeText>
               </gmd:name>

@@ -60,6 +60,10 @@ public class FileFormatGC {
     }
 
     public String getName(){
+        return inner.getName();
+    }
+
+    public String getNameWithTpTitle(){
         String name = inner.getName();
 
         if(isVectorTheme())
