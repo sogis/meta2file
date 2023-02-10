@@ -17,6 +17,8 @@ public class FileFormatGC {
     private static final String GPKG_ABBREVIATION = "gpkg.zip";
     private static final String SHP_ABBREVIATION = "shp.zip";
     private static final String DXF_ABBREVIATION = "dxf.zip";
+    private static final String GEOTIFF_ABBREVIATION = "tif";
+    private static final String LAZ_ABBREVIATION = "laz";
 
     private ThemePublication parent;
     private FileFormat inner;
@@ -29,6 +31,9 @@ public class FileFormatGC {
         protocols.put(XTF_ABBREVIATION, "WWW:DOWNLOAD:INTERLIS");
         protocols.put(ITF_ABBREVIATION, "WWW:DOWNLOAD:INTERLIS");
         protocols.put(SHP_ABBREVIATION, "WWW:DOWNLOAD:SHP");
+        protocols.put(DXF_ABBREVIATION, "WWW:DOWNLOAD:DXF");
+        protocols.put(GEOTIFF_ABBREVIATION, "WWW:DOWNLOAD:GeoTIFF");
+        protocols.put(LAZ_ABBREVIATION, "WWW:DOWNLOAD:LAZ");
     }
 
     public FileFormatGC(FileFormat inner, ThemePublication parent){

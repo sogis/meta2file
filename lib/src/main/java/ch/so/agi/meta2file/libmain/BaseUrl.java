@@ -16,7 +16,6 @@ public enum BaseUrl {
     DATA_SERVICE(new String[]{"https://geo.so.ch/api/data/v1","https://geo-i.so.ch/api/data/v1","https://geo-t.so.ch/api/data/v1"}),
     DATA_APP(new String[]{"https://data.geo.so.ch","https://data-i.geo.so.ch","https://data-t.geo.so.ch"});
 
-
     public static final int PROD_ENV = 0;
     public static final int INT_ENV = 1;
     public static final int TEST_ENV = 2;
@@ -26,19 +25,6 @@ public enum BaseUrl {
     private BaseUrl(String[] urlString) {
         this.urlString = urlString;
     }
-
-    /*
-    private URL getBaseUrl(){
-        URL res = null;
-
-        try {
-            res = new URL(urlString);
-        } catch (MalformedURLException e) {
-            throw new Meta2FileException(e);
-        }
-
-        return res;
-    }*/
 
     public URI getBaseUrlAsUri(Environment env){
         URI res = null;
@@ -56,22 +42,4 @@ public enum BaseUrl {
 
         return res;
     }
-
-    /*
-    public URI getBaseUrlAsUri(int env){
-        URI res = null;
-
-        try {
-            URL u = new URL(urlString[env]);
-            res = u.toURI();
-        }
-        catch (MalformedURLException e) {
-            throw new Meta2FileException(e);
-        }
-        catch (URISyntaxException e) {
-            throw new Meta2FileException(e);
-        }
-
-        return res;
-    }*/
 }
