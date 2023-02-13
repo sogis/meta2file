@@ -172,6 +172,136 @@ public class TestUtils {
             List<TableInfo> tablesInfo = new ArrayList<>();
             {
                 var tableInfo = new TableInfo();
+                tableInfo.setSqlName("zzzzz_fooo");
+                tableInfo.setTitle("ZZZZZZ fooo");
+                tableInfo.setShortDescription("Enthält die Fliessgewässer, unterteilt in kürzere Linien (Gewässerabschnitte) mit gleichen ökomorphologischen Eigenschaften.");
+
+                var attributesInfo = new ArrayList<AttributeInfo>();
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("geometrie");
+                    attributeInfo.setAlias("geometrie");
+                    attributeInfo.setDatatype("LINESTRING");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("sohlenbreite");
+                    attributeInfo.setAlias("Sohlenbreite [m]");
+                    attributeInfo.setShortDescription("Mittlere Sohlenbreite [m].");
+                    attributeInfo.setDatatype("Integer");
+                    attributeInfo.setMandatory(false);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("uferbreitelinks");
+                    attributeInfo.setAlias("rbreite links [m]");
+                    attributeInfo.setShortDescription("MittMittlere Breite Uferbereich links [m].");
+                    attributeInfo.setDatatype("Integer");
+                    attributeInfo.setMandatory(false);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("minimaleruferbereich");
+                    attributeInfo.setAlias("Uferbreite links [m]");
+                    attributeInfo.setShortDescription("Mittlere Breite Uferbereich links [m].");
+                    attributeInfo.setDatatype("Integer");
+                    attributeInfo.setMandatory(false);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("minimaleruferbereich");
+                    attributeInfo.setAlias("Minimaler Uferbereich [m]");
+                    attributeInfo.setShortDescription("Minimaler Uferbereich");
+                    attributeInfo.setDatatype("Integer");
+                    attributeInfo.setMandatory(false);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("boeschungsfussverbaurechts_txt");
+                    attributeInfo.setAlias("Verbauung Böschungsfuss rechts");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("ueberhvegetation_txt");
+                    attributeInfo.setAlias("Überhängende Vegetation");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("beurteilungsuferbreiterechts_txt");
+                    attributeInfo.setAlias("Beurteilung Uferbreite rechts");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("uferbreiterechts");
+                    attributeInfo.setAlias("Uferbreite rechts [m]");
+                    attributeInfo.setShortDescription("Mittlere Breite Uferbereich rechts [m].");
+                    attributeInfo.setDatatype("Integer");
+                    attributeInfo.setMandatory(false);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("raumbedarf");
+                    attributeInfo.setAlias("Raumbedarf [m]");
+                    attributeInfo.setShortDescription("Raumbedarf des Gewässers (Gewässerraum)");
+                    attributeInfo.setDatatype("Integer");
+                    attributeInfo.setMandatory(false);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("nutzungumlandlinks_txt");
+                    attributeInfo.setAlias("Nutzung Umland links");
+                    attributeInfo.setShortDescription("Mittlere Sohlenbreite [m].");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("boeschungsfussverbaulinks_txt");
+                    attributeInfo.setAlias("Verbauung Böschungsfuss links");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("algenbewuchs_txt");
+                    attributeInfo.setAlias("Algenbewuchs [m]");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                {
+                    var attributeInfo = new AttributeInfo();
+                    attributeInfo.setName("sohlenverbauung_txt");
+                    attributeInfo.setAlias("Sohlenverbauung");
+                    attributeInfo.setDatatype("Text");
+                    attributeInfo.setMandatory(true);
+                    attributesInfo.add(attributeInfo);
+                }
+                tableInfo.setAttributesInfo(attributesInfo);
+                tablesInfo.add(tableInfo);
+            }
+            
+            {
+                var tableInfo = new TableInfo();
                 tableInfo.setSqlName("grundbuchkreise_grundbuchkreis");
                 tableInfo.setTitle("Grundbuchkreis");
                 tableInfo.setShortDescription("Grundbuchkreisaufteilung inkl. Anschrift etc. der einzelnen Kreise");

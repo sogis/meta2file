@@ -458,7 +458,9 @@
 
                     <h2>Inhalt</h2>
 
-                    <xsl:apply-templates select="tablesInfo/tableInfo" /> 
+                    <xsl:apply-templates select="tablesInfo/tableInfo"> 
+                        <xsl:sort lang="de" order="ascending" data-type="text" select="title" />            
+                    </xsl:apply-templates>
 
                 </xsl:if>
 
