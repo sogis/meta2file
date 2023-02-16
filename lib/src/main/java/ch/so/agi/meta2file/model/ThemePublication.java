@@ -89,6 +89,12 @@ public class ThemePublication {
     private URI licence;
 
     /**
+     * Host-URL der Datenablage (Teil der URL vor Pfad)
+     */
+    @NotNull
+    private URI downloadHostUrl;
+
+    /**
      * Angebotene Datenformate
      */
     @JacksonXmlElementWrapper(localName = "fileFormats")
@@ -201,7 +207,12 @@ public class ThemePublication {
     public void setLicence(URI licence) {
         this.licence = licence;
     }
-
+    public URI getDownloadHostUrl() {
+        return downloadHostUrl;
+    }
+    public void setDownloadHostUrl(URI downloadHostUrl) {
+        this.downloadHostUrl = downloadHostUrl;
+    }
     public List<FileFormat> getFileFormats() {
         return fileFormats;
     }
