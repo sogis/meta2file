@@ -2,6 +2,8 @@ name: meta2file CI
 
 on: 
   push:
+    branches:
+      - '**'
     paths-ignore:
       - '**.md'
   workflow_dispatch:
