@@ -357,7 +357,7 @@
                         <br/>
                         </xsl:if>
 
-                        Tabellen dieses Themas sind in folgenden Diensten als Karten- oder Datenlayer publiziert:
+                        Daten dieses Themas sind in den folgenden Diensten als Karten- oder Datenlayer publiziert:
 
                         <table>
                             <colgroup>
