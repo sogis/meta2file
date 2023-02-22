@@ -748,7 +748,7 @@
           <gmd:onLine>
             <gmd:CI_OnlineResource>
               <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>${dataAppPageUrl}</gmd:URL>
+                <gmd:URL>${previewUrl}</gmd:URL>
                 <che:PT_FreeURL>
                   <che:URLGroup>
                     <che:LocalisedURL locale="#DE">${previewUrl}</che:LocalisedURL>
