@@ -54,6 +54,7 @@ public class TestUtils {
             try {
                 themePublication.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
                 themePublication.setLicence(new URI("https://www.gl.ch/public/upload/assets/5053/ktgl-ogd-geo-20180601.pdf?fp=1"));
+                themePublication.setDownloadHostUrl(new URI("https://files-t.geo.so.ch"));
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -134,6 +135,7 @@ public class TestUtils {
             try {
                 themePublication.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
                 themePublication.setLicence(new URI("https://www.gl.ch/public/upload/assets/5053/ktgl-ogd-geo-20180601.pdf?fp=1"));
+                themePublication.setDownloadHostUrl(new URI("https://files-t.geo.so.ch"));
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -616,6 +618,7 @@ public class TestUtils {
             try {
                 themePublication.setFurtherInformation(new URI("http://google.ch/oder/wikipedia"));
                 themePublication.setLicence(new URI("https://www.gl.ch/public/upload/assets/5053/ktgl-ogd-geo-20180601.pdf?fp=1"));
+                themePublication.setDownloadHostUrl(new URI("https://files-t.geo.so.ch"));
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }

@@ -77,7 +77,14 @@ public class ThemePublication {
      * Verantwortliche technische Stelle
      */
     @NotNull
-    private Office servicer; 
+    private Office servicer;
+
+    /**
+     * Host-URL der Datenablage (Linker Teil der URL vor Pfad). Bsp: https://files-t.geo.so.ch
+     */
+    @NotNull
+    private URI downloadHostUrl;
+
     /**
      * Link zu weiteren Informationen
      */
@@ -87,12 +94,6 @@ public class ThemePublication {
      */
     @NotNull
     private URI licence;
-
-    /**
-     * Host-URL der Datenablage (Teil der URL vor Pfad)
-     */
-    @NotNull
-    private URI downloadHostUrl;
 
     /**
      * Angebotene Datenformate
