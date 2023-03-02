@@ -570,12 +570,22 @@
       </gmd:descriptiveKeywords>
       <gmd:resourceConstraints>
         <gmd:MD_LegalConstraints>
-          <gmd:useConstraints>
-            <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" />
-          </gmd:useConstraints>
-          <!--die Nutzungsbedingungen und Zugangsberechtigungsstufen angeben. Mehrfachnennungen möglich. Bei opendata.swiss ist die korrekte Bezeichnung entscheidend für das korrekte Mapping, siehe Beispiel unten -->
           <gmd:otherConstraints xsi:type="gmd:PT_FreeText_PropertyType">
-            <gmx:Anchor xlink:href="https://opendata.swiss/en/terms-of-use/#terms_open">Opendata: Freie Nutzung. Quellenangabe empfohlen.</gmx:Anchor>
+            <gmx:Anchor xlink:href="https://opendata.swiss/terms-of-use/#terms_open">Opendata OPEN: Freie Nutzung.</gmx:Anchor>
+            <gmd:PT_FreeText>
+              <gmd:textGroup>
+                <gmd:LocalisedCharacterString locale="#DE">Opendata OPEN: Freie Nutzung.</gmd:LocalisedCharacterString>
+              </gmd:textGroup>
+              <gmd:textGroup>
+                <gmd:LocalisedCharacterString locale="#FR">Opendata OPEN: Utilisation libre.</gmd:LocalisedCharacterString>
+              </gmd:textGroup>
+              <gmd:textGroup>
+                <gmd:LocalisedCharacterString locale="#IT">Opendata OPEN: Libero utilizzo.</gmd:LocalisedCharacterString>
+              </gmd:textGroup>
+              <gmd:textGroup>
+                <gmd:LocalisedCharacterString locale="#EN">Opendata OPEN: Open use.</gmd:LocalisedCharacterString>
+              </gmd:textGroup>
+            </gmd:PT_FreeText>
           </gmd:otherConstraints>
         </gmd:MD_LegalConstraints>
       </gmd:resourceConstraints>
@@ -749,6 +759,7 @@
             <gmd:CI_OnlineResource>
               <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
                 <gmd:URL>${previewUrl}</gmd:URL>
+                <gmd:URL>${previewUrl}</gmd:URL>
                 <che:PT_FreeURL>
                   <che:URLGroup>
                     <che:LocalisedURL locale="#DE">${previewUrl}</che:LocalisedURL>
@@ -783,34 +794,69 @@
           <!-- End Vorschau Web GIS -->
           <!--Download-Formate-->
           <#if hasDirectPortalDownloads>
-          <#list fileFormats as ff>
+            <#list fileFormats as ff>
+            <gmd:onLine>
+              <gmd:CI_OnlineResource>
+                <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
+                  <gmd:URL>${ff.url}</gmd:URL>
+                  <che:PT_FreeURL>
+                    <che:URLGroup>
+                      <che:LocalisedURL locale="#DE">${ff.url}</che:LocalisedURL>
+                    </che:URLGroup>
+                  </che:PT_FreeURL>
+                </gmd:linkage>
+                <gmd:protocol>
+                  <gco:CharacterString>${ff.protocol}</gco:CharacterString>
+                </gmd:protocol>
+                <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>${ff.nameWithTpTitle}</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                    <gmd:textGroup>
+                      <gmd:LocalisedCharacterString locale="#DE">${ff.nameWithTpTitle}</gmd:LocalisedCharacterString>
+                    </gmd:textGroup>
+                  </gmd:PT_FreeText>
+                </gmd:name>
+                <gmd:function>
+                  <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" />
+                </gmd:function>
+              </gmd:CI_OnlineResource>
+            </gmd:onLine>
+            </#list>
+          <#else> <!-- Fall keine direkten Downloads verfügbar (Gebietsauswahl): Behelfsmässig Landing Page als Ressource angeben, damit opendata.swiss nicht auf Nutzungsbedingung "closed" setzt -->
           <gmd:onLine>
             <gmd:CI_OnlineResource>
               <gmd:linkage xsi:type="che:PT_FreeURL_PropertyType">
-                <gmd:URL>${ff.url}</gmd:URL>
+                <gmd:URL>${dataAppPageUrl}</gmd:URL>
                 <che:PT_FreeURL>
                   <che:URLGroup>
-                    <che:LocalisedURL locale="#DE">${ff.url}</che:LocalisedURL>
+                    <che:LocalisedURL locale="#DE">${dataAppPageUrl}</che:LocalisedURL>
                   </che:URLGroup>
                 </che:PT_FreeURL>
               </gmd:linkage>
               <gmd:protocol>
-                <gco:CharacterString>${ff.protocol}</gco:CharacterString>
+                <gco:CharacterString>WWW:DOWNLOAD-URL</gco:CharacterString>
               </gmd:protocol>
               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
-                <gco:CharacterString>${ff.nameWithTpTitle}</gco:CharacterString>
+                <gco:CharacterString>Download über data.geo.so.ch</gco:CharacterString>
                 <gmd:PT_FreeText>
                   <gmd:textGroup>
-                    <gmd:LocalisedCharacterString locale="#DE">${ff.nameWithTpTitle}</gmd:LocalisedCharacterString>
+                    <gmd:LocalisedCharacterString locale="#DE">Download über data.geo.so.ch</gmd:LocalisedCharacterString>
                   </gmd:textGroup>
                 </gmd:PT_FreeText>
               </gmd:name>
+              <gmd:description xsi:type="gmd:PT_FreeText_PropertyType">
+                <gco:CharacterString>Die Daten liegen in Teilgebiete gegliedert vor. Bezug darum via Gebietsauswahl auf data.geo.so.ch</gco:CharacterString>
+                <gmd:PT_FreeText>
+                  <gmd:textGroup>
+                    <gmd:LocalisedCharacterString locale="#DE">Die Daten liegen in Teilgebiete gegliedert vor. Bezug darum via Gebietsauswahl auf data.geo.so.ch</gmd:LocalisedCharacterString>
+                  </gmd:textGroup>
+                </gmd:PT_FreeText>
+              </gmd:description>
               <gmd:function>
-                <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" />
+                <gmd:CI_OnLineFunctionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information" />
               </gmd:function>
             </gmd:CI_OnlineResource>
           </gmd:onLine>
-          </#list>
           </#if>
         </gmd:MD_DigitalTransferOptions>
       </gmd:transferOptions>
