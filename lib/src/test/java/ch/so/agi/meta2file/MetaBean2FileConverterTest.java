@@ -61,8 +61,8 @@ class MetaBean2FileConverterTest {
         HashMap<String,ThemePublication> themePublications = TestUtils.getDatasets();
         var themePublication = themePublications.get(themePublicationName);
 
-        //var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
-        var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
+        var tmpFolder = Files.createTempDirectory("metabean2filetest-").toFile();
+        //var tmpFolder = new File("/Users/stefan/tmp/metabean2file/");
         var htmlFilePath = Paths.get(tmpFolder.getAbsolutePath(), themePublication.getIdentifier()+".html");
 
         MetaBean2FileConverter.runBean2Html(htmlFilePath, themePublication);
