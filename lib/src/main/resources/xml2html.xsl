@@ -347,6 +347,7 @@
                     </xsl:element>
                 </p>
 
+<!--
                 <xsl:if test="services">
                 <h2>Dienste / Web GIS Client</h2>
                     <p class="datenebene">
@@ -453,6 +454,7 @@
                         Geobasidaten nach Bundesrecht werden ebenfalls auf <a href="https://geodienste.ch">geodienste.ch</a> publiziert.
                     </p>
                 </xsl:if>
+-->
 
                 <xsl:if test="tablesInfo/tableInfo">
 
