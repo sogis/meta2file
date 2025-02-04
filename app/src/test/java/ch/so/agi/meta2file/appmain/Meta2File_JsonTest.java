@@ -51,7 +51,7 @@ class Meta2File_JsonTest {
     @Test
     public void app_vecAll_OK() throws Exception {
         String xml = appJsonTest(InputType.VEC_ALL);
-        Util.assertContains(xml, "wgcPreviewLayer");
+        Util.assertContains(xml, "<synonym>");
     }
 
     @Test
@@ -62,7 +62,7 @@ class Meta2File_JsonTest {
     @Test
     public void app_otherAll_OK() throws Exception {
         String xml = appJsonTest(InputType.OTHER_ALL);
-        Util.assertContains(xml, "wgcPreviewLayer");
+        Util.assertContains(xml, "<synonym>");
     }
 
     @Test
