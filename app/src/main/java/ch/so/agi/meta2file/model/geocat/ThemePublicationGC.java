@@ -94,12 +94,16 @@ public class ThemePublicationGC {
     }
 
     public String getPreviewUrl(){
+        return null; // 2025-02-13 Dienste und WGC Ausgabe deaktiviert.
+        /*
         if(inner.getWgcPreviewLayer() == null)
             return null;
 
         URI full = BaseUrl.WGC.getBaseUrlAsUri(Meta2File.environment).resolve("map?l=" + inner.getWgcPreviewLayer().getIdentifier());
 
         return full.toString();
+
+         */
     }
 
     public String getRandomUid(){
